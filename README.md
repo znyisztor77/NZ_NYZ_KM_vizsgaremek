@@ -1,5 +1,5 @@
 # NZ_NYZviszga
-Német Zoltán Nyisztor Zoltán Vizsga remek dokumentáció 
+Német Zoltán Nyisztor Zoltán Vizsgaremek dokumentáció 
 
  
 
