@@ -12,6 +12,9 @@ https://www.djangoproject.com/
 
 A Django Framework kezeli az Mysql adatbázist és segítségével van megjelenítve a webes kezelő felület. 
 A adatbázist a XAMPP laklamazás kezeli.
+
+https://www.apachefriends.org/hu/index.html
+
 A felhasználói felület és az adtbázis közötti kapcsolatot a XAMPP alkalmazás biztosítja a Django Framework-ön keresztül. 
 
 A webes kezelő felület html, css fájlokból tevődik össze. Az sql adatbázis kapcsolatot pedig a django framework biztosítja. 
