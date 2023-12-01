@@ -1,0 +1,49 @@
+body{
+    margin: 0;
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.bevitel{
+    justify-content: center;
+    align-items: center;
+    border-style: groove;
+    border: 2px solid black;
+    padding: 10px;
+}
+.megrendelesek{
+    justify-content: center;
+    align-items: center;
+    border-style: groove;
+    border: 2px solid black;
+    padding: 10px;
+
+}
+.alapanyagok{
+    justify-content: center;
+    flex-direction: column;
+    border-style: groove;
+    border: 2px solid black;
+    padding: 10px;
+
+}
+
+.fooldal{
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    width: 90%;
+    max-width: 800pxpx;
+    justify-content: start; 
+    
+}
+.print_page{
+    justify-content: end;
+    /*flex-direction: column;*/
+    
+    border: 2px solid black;
+    padding: 10px;
+}
