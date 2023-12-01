@@ -7,28 +7,27 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="fooldal">
-        <div class="bevitel">
-           
-        <form >
-            <h2>Dolgozók</h2>
-            <label for="Dolgozók neve">Válaszd ki a dolgozót:</label> <br>
-            <select id="dolgozok" name="dolgozok">
-                <option value="Kovacs_Bela">Kovács Béla</option>
-                <option value="Takacs_Karoly">Takács Károly</option>
-                <option value="Horvat_Janos">Horváh János</option>
-                <option value="Szabo_Roland">Szabó Roland</option>
-            </select>
-        </form>
-        <form >
-            <label for="Beosztás">Válaszd ki a dolgozó beosztását:</label><br>
-            <select id="beosztas" name="beosztas">
-                <option value="raktaros">raktáros</option>
-                <option value="lezervago">lézer vágó</option>            
-            </select><br>
-            <p></p>
-            <input type="submit">
-        </form>
+    <div class="bevitel">
+        <div class="dolgozok">
+            <form >
+                <h2>Dolgozók</h2>
+                <label for="Dolgozók neve">Válaszd ki a dolgozót:</label> <br>
+                <select id="dolgozok" name="dolgozok">
+                    <option value="Kovacs_Bela">Kovács Béla</option>
+                    <option value="Takacs_Karoly">Takács Károly</option>
+                    <option value="Horvat_Janos">Horváh János</option>
+                    <option value="Szabo_Roland">Szabó Roland</option>
+                </select>
+            </form>
+            <form >
+                <label for="Beosztás">Válaszd ki a dolgozó beosztását:</label><br>
+                <select id="beosztas" name="beosztas">
+                    <option value="raktaros">raktáros</option>
+                    <option value="lezervago">lézer vágó</option>            
+                </select><br>
+                <p></p>
+                <input type="submit">
+            </form>
         </div>
         <div class="megrendelesek">
             <form >
@@ -73,10 +72,12 @@
             </form>
         </div>
         
-        <div class="print_page">
+      
+</div> <!--bevitel vége-->
+<div class="print_page">
             <p>Ezt fogjuk kinyomtatni!</p>
             <button onclick="window.print()">Print This Page</button>
-        </div>
 </div>
+
 </body>
 </html>
