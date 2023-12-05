@@ -7,17 +7,16 @@ body{
     align-items: center;
     
 }
-.dolgozok{
+.adatCard{
+    display: flex;
     justify-content: center;
     align-items: center;
-    border-style: groove;
     border: 2px solid black;
     padding: 10px;
 }
 .megrendelesek{
     justify-content: center;
     align-items: center;
-    border-style: groove;
     border: 2px solid black;
     padding: 10px;
 
@@ -39,6 +38,7 @@ body{
     max-width: 300px;
     justify-content: start; 
     background-color: aqua;
+    border: 2px solid black;
     
 }
 .print_page{
