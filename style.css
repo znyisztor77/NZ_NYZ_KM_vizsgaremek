@@ -1,53 +1,35 @@
 body{
     margin: 0;
-    width: 100%;
+    padding: 10px;
+    
+    
+}
+
+.container{
+    width: 100vw;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: row;
+    background-color: aqua;
+    gap: 30px;
+    padding: 10px;
     
+}   
+.adat_card{
+    width: 500px;
+    border: 1px solid black;
+    max-height: 600px;
+    padding: 10px;
 }
-.adatCard{
+
+.print_page{
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid black;
-    padding: 10px;
-}
-.megrendelesek{
-    justify-content: center;
-    align-items: center;
-    border: 2px solid black;
-    padding: 10px;
-
-}
-.alapanyagok{
-    justify-content: center;
-    flex-direction: column;
-    border-style: groove;
-    border: 2px solid black;
-    padding: 10px;
-
-}
-
-.bevitel{
-    display: grid;
-    grid-template-columns: 300px;
-    gap: 10px;
-    width: 90%;
-    max-width: 300px;
-    justify-content: start; 
-    background-color: aqua;
-    border: 2px solid black;
-    
-}
-.print_page{
     background-color: aquamarine;
-    justify-content: end;
-    flex-direction: column;
-    width: 210px;
-    height: 297px;
+    width: 30vw;
+    height: 600px;
     gap: 20px;
-    border: 2px solid black;
-    padding: 10px;
+    border: 1px solid black;
+    padding-right: 10px;
 }
