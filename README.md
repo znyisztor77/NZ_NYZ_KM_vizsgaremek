@@ -19,13 +19,39 @@ A felhasználói felület és az adtbázis közötti kapcsolatot a XAMPP alkalma
 
 A webes kezelő felület html, css fájlokból tevődik össze. Az sql adatbázis kapcsolatot pedig a django framework biztosítja. 
 
+
+
 ---
 A legelső oldal egy bejelentkező form.
 Szükséges megadni a nevet é jelszőt.
 A főoldal aszerint töltődik be, hogy ki fogja használni az alkalmazást.
-Raktáros oldal:
- feladatköre:
-  - anyag kiadása
-  - új anyagok hozzáadása
-  - 
+1. admin
+2. raktáros
+3. operator(lézervágó)
+
+Adim:
+Teljes hozzáférés a raktárkezeléshez.
+- új dolgozó felvétele
+- régi dolgozó törlése
+- új anyagok rögzítése
+- adatbázis karbantartása
+  
+Raktáros:
+- anyag kiadása
+- anyag bevétele
+- hiány esetén megrendelés rögzítése
+
+Operator:
+- új munka rögzítése
+- a munkához szükséges anyag kiválasztása
+- befejezett munka rögzítése(szükség esetén munkalap nyomtatása)
+
+Munkalap tartalma:
+- a munka sorszáma
+- felhasznált alap anyag
+- munka kezdete
+- munka vége
+- dolgozó neve
+- munka megnevezése ha van
+
 
