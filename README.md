@@ -19,3 +19,13 @@ A felhasználói felület és az adtbázis közötti kapcsolatot a XAMPP alkalma
 
 A webes kezelő felület html, css fájlokból tevődik össze. Az sql adatbázis kapcsolatot pedig a django framework biztosítja. 
 
+---
+A legelső oldal egy bejelentkező form.
+Szükséges megadni a nevet é jelszőt.
+A főoldal aszerint töltődik be, hogy ki fogja használni az alkalmazást.
+Raktáros oldal:
+ feladatköre:
+  - anyag kiadása
+  - új anyagok hozzáadása
+  - 
+
