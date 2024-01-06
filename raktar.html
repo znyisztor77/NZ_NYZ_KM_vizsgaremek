@@ -7,6 +7,304 @@
     <title>Raktár</title>
 </head>
 <body>
+    <div class="raktarcontainer">
+        <div class="raktaroldalsav">
+            
+            <button type="button" id="raktarkilepes" onclick="window.open('login.html')">Kilépés</button>
+            <form >
+                <h2>Bevétel</h2>
+                <label for="Dolgozók neve">Anyagtipus:</label>
+                <select id="anyagtipus">
+                    <option value="aluminium">Aluminium</option>
+                    <option value="horganyzott">Horganyzott</option>
+                    <option value="plexi">Plexi</option>
+                    <option value="rozsdamentes">Rozsdamentes</option>
+                    <option value="szenacel">Szénacél</option>
+                </select>
+                <label for="szelesseg">Szélesség:</label>
+                <select id="szelesseg" >
+                    <option value="2000">2000</option>
+                    <option value="3000">3000</option>
+                </select>
+                <label for="hossz">Hossz:</label>
+                <select id="hossz">
+                    <option value="1000">1000</option>
+                    <option value="1250">1250</option>
+                    <option value="1500">1500</option>
+                </select>
+                <label for="vastagsag">Vastagság:</label>
+                <select id="vastagsag">
+                    <option value="">0,5mm</option>
+                    <option value="">0,8mm</option>
+                    <option value="">1mm</option>
+                    <option value="">1,5mm</option>
+                    <option value="">2mm</option>
+                    <option value="">2,5mm</option>
+                    <option value="">3mm</option>
+                    <option value="">5mm</option>
+                    <option value="">6mm</option>
+                    <option value="">8mm</option>
+                    <option value="">10mm</option>
+                    <option value="">12mm</option>
+                    <option value="">15mm</option>
+                    <option value="">20mm</option>    
+                </select>
+                <input type="text" id="raktardarab" placeholder="darabszam">
+                <button type="text" id="raktarrogzit">Rögzítés</button> 
+
+            </form>
+            <form >
+                <h2>Kiadás</h2>
+                <label for="Dolgozók neve">Dolgozó:</label>
+                <select id="dolgozok" name="dolgozok">
+                    <option value="Kovacs_Bela">Kovács Béla</option>
+                    <option value="Takacs_Karoly">Takács Károly</option>
+                    <option value="Horvat_Janos">Horváh János</option>
+                    <option value="Szabo_Roland">Szabó Roland</option>
+                </select>
+                <label for="Dolgozók neve">Anyagtipus:</label>
+                <select id="anyagtipus">
+                    <option value="aluminium">Aluminium</option>
+                    <option value="horganyzott">Horganyzott</option>
+                    <option value="plexi">Plexi</option>
+                    <option value="rozsdamentes">Rozsdamentes</option>
+                    <option value="szenacel">Szénacél</option>
+                </select>
+                <label for="szelesseg">Szélesség:</label>
+                <select id="szelesseg" >
+                    <option value="2000">2000</option>
+                    <option value="3000">3000</option>
+                </select>
+                <label for="hossz">Hossz:</label>
+                <select id="hossz">
+                    <option value="1000">1000</option>
+                    <option value="1250">1250</option>
+                    <option value="1500">1500</option>
+                </select>
+                <label for="vastagsag">Vastagság:</label>
+                <select id="vastagsag">
+                    <option value="">0,5mm</option>
+                    <option value="">0,8mm</option>
+                    <option value="">1mm</option>
+                    <option value="">1,5mm</option>
+                    <option value="">2mm</option>
+                    <option value="">2,5mm</option>
+                    <option value="">3mm</option>
+                    <option value="">5mm</option>
+                    <option value="">6mm</option>
+                    <option value="">8mm</option>
+                    <option value="">10mm</option>
+                    <option value="">12mm</option>
+                    <option value="">15mm</option>
+                    <option value="">20mm</option>    
+                </select>
+                <input type="text" id="raktardarab" placeholder="darabszam">
+                <button type="text" id="raktarrogzit">Rögzítés</button>    
+            </form>
+
+        </div>
+        <div class="raktartartalom">
+            <h1>Készlet</h1>
+         <table>
+            <tr>
+                <th>Anyagtipus</th>
+                <th>Hossza</th>
+                <th>Szélesség</th>
+                <th>Vastagsag/mm</th>
+                <th>Készleten/db</th>
+            </tr>
+            <tr>
+                <td>Aluminium</td>
+                <td>2000</td>
+                <td>1000</td>
+                <td>0,5</td>
+                <td>5</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>2000</td>
+                <td>1000</td>
+                <td>1</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Plexi</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>10</td>
+            </tr>
+            <tr>
+                <td>Rozsdamentes</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>5</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Rozsdamentes</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>20</td>
+            </tr>
+            <tr>
+                <td>Szénacél</td>
+                <td>2000</td>
+                <td>1250</td>
+                <td>3</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>Szénacél</td>
+                <td>3000</td>
+                <td>1250</td>
+                <td>0,8</td>
+                <td>4</td>
+            </tr>
+            <tr>
+                <td>Aluminium</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>5</td>
+                <td>3</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>0,5</td>
+                <td>11</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            <tr>
+                <td>Horganyzott</td>
+                <td>3000</td>
+                <td>1500</td>
+                <td>10</td>
+                <td>8</td>
+            </tr>
+            
+         </table>
+        </div>
     
 </body>
 </html>
