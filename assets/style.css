@@ -1,16 +1,22 @@
 body{
-    margin: 0;
+   margin: 0;
+       
+}
+
+
+.logincontainer{
     width: 100vw;
     min-height: 100vh;
-    text-align: center;
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: row;     
-    
+    flex-direction: row;
+    gap: 30px;
+    padding: 10px;
+
 }
 
-.container{
+.admincontainer{
     width: 100vw;
     min-height: 100vh;
     display: flex;
@@ -44,7 +50,6 @@ input{
     width: 300px;
     height: 30px;
     border-radius: 5px;
-  
 }
 
 button{
@@ -56,6 +61,28 @@ form{
     flex-direction: column;
     gap: 15px;
 }
+/*operator oldal*/
+.operatorcontainer{
+    display: flex;
+    flex-direction: row;
 
+}
+.oldalsav{
+    height: auto;
+    width: 15%;
+    background-color: aqua;
+    
+
+}
+.tartalom{
+    height: auto;
+    width: 100%;
+    background-color: coral;
+}
+li{
+    list-style-type: none;
+}
+
+ 
 
 

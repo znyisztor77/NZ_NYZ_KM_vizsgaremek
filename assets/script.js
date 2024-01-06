@@ -9,7 +9,7 @@ function login() {
     {
         alert("Sikeres bejelentkezés!")
         
-        window.open('index.html');
+        window.open('admin.html');
         
         
     }
