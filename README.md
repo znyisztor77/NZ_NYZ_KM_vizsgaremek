@@ -22,7 +22,7 @@ A webes kezelő felület html, css fájlokból tevődik össze. Az sql adatbázi
 
 
 ---
-A legelső oldal egy bejelentkező (login)form.
+A betöltő oldal egy bejelentkező (login)form.
 Szükséges megadni a nevet és jelszőt.
 A főoldal aszerint töltődik be, hogy ki fogja használni az alkalmazást.
 1. admin
