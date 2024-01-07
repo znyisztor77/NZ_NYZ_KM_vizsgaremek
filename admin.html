@@ -8,9 +8,14 @@
 </head>
 <body>
     <div class="admincontainer">
-        <div class="adat_card">
+        <div class="adminnavbar">
+            <button type="button" id="raktarkilepes" onclick="closedTab()">Kilépés</button>
             <a href="login.html">Login oldal</a>
             <a href="operator.html">Operator</a>
+
+        </div>
+
+        <div class="admincard">
             <form >
                 <h2>Dolgozók</h2>
                 <label for="Dolgozók neve">Válaszd ki a dolgozót:</label> <br>
@@ -31,7 +36,7 @@
                 <!--input type="submit"-->
             </form>
         </div>
-        <div class="adat_card">
+        <div class="admincard">
             <form >
                 <h2>Megrendelések</h2>
                 <label for="Dolgozók neve">Válaszd ki a dolgozót:</label> <br>
@@ -52,7 +57,7 @@
                 <!--input type="submit"-->
             </form>
         </div>
-        <div class="adat_card">
+        <div class="admincard">
             <form >
                 <h2>Alapanyagok</h2>
                 <label for="Dolgozók neve">Válaszd ki a dolgozót:</label> <br>
@@ -79,7 +84,7 @@
             <button onclick="window.print()">Nyomtatás</button>
       </div>
 </div> <!--conatiner vége-->
-
+<script src="assets/script.js"></script>
 
 </body>
 </html>

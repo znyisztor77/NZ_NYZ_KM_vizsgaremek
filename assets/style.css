@@ -16,31 +16,36 @@ body{
 }
 /*admin oldal cuccai*/
 .admincontainer{
+    
     width: 100vw;
     min-height: 100vh;
     display: flex;
-    flex-direction: row;
-    background-color: aqua;
+    flex-direction: row;    
     gap: 30px;
-    padding: 10px;
+    
 }  
-.adat_card{
+.admincard{
     width: 500px;
     border: 1px solid black;
     max-height: 600px;
     padding: 10px;
 }
+.adminnavbar{
+    color: azure;
+    height: auto;
+    width: 20%;
+    background-color: rgb(80, 103, 233);
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap:  10px;
+}
 
 .print_page{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: aquamarine;
-    width: 30vw;
-    height: 600px;
-    gap: 20px;
+    width: 500px;
     border: 1px solid black;
-    padding-right: 10px;
+    max-height: 600px;
+    padding: 10px;
 }
 
 
@@ -95,6 +100,7 @@ tr {
   }
 
  td{
+    position: sticky;
     padding: 10px;
     text-align: center;
  } 
