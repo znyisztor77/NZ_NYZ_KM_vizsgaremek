@@ -22,15 +22,15 @@ A webes kezelő felület html, css fájlokból tevődik össze. Az sql adatbázi
 
 
 ---
-A legelső oldal egy bejelentkező form.
-Szükséges megadni a nevet é jelszőt.
+A legelső oldal egy bejelentkező (login)form.
+Szükséges megadni a nevet és jelszőt.
 A főoldal aszerint töltődik be, hogy ki fogja használni az alkalmazást.
 1. admin
 2. raktáros
 3. operator(lézervágó)
 
 Adim:
-Teljes hozzáférés a raktárkezeléshez.
+Teljes hozzáférés a raktárkezeléshez és adatbázis módosításáshoz.
 - új dolgozó felvétele
 - régi dolgozó törlése
 - új anyagok rögzítése
