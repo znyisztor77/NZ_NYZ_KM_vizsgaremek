@@ -53,6 +53,8 @@ Munkalap tartalma:
 - munka vége
 - dolgozó neve
 - munka megnevezése ha van
+-
+- 
 - ![My_Image](adatbazis/Raktári_lemezkezelés_3.drawio.png)
 -
 Figma minta:
