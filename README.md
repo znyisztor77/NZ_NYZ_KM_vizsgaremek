@@ -53,8 +53,9 @@ Munkalap tartalma:
 - munka vége
 - dolgozó neve
 - munka megnevezése ha van
-
+---
 Django környezet létrehozása windows és linux op rendszeren:
+---
 Windows:
 
 mkdir nznyz_vizsga
@@ -74,8 +75,9 @@ python manage.py runserver
 python manage.py startapp raktar_app  # raktar app létrehozása
 
 code .  # a project megnyitása visual studio code alkalmazásban
-
+---
 Linux:
+
 mkdir nznyz_vizsga
 cd nznyz_vizsga
 python3 -m venv raktar_venv
