@@ -87,7 +87,7 @@ Linux:
 - mkdir nznyz_vizsga
 - cd nznyz_vizsga
 - python3 -m venv raktar_venv
-- source raktar_lemezkezeles/bin/activate
+- source raktar_venv/bin/activate
 - pip install django
 - django-admin stratproject config
 - mv config backend # # config mappa átnevezése backendre
