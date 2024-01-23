@@ -53,13 +53,13 @@ Munkalap tartalma:
 - munka vége
 - dolgozó neve
 - munka megnevezése ha van
--
-- 
+
+  
 - ![My_Image](adatbazis/Raktári_lemezkezelés_3.drawio.png)
--
-Figma minta:
+
+- Figma minta:
 https://www.figma.com/file/dhj0E8Fwr5VxQ5VDCPejjW/Inventory-Management-system-(Community)?type=design&node-id=0%3A1&mode=design&t=pe2mPrLWeKtfYyed-1
----
+
 Django környezet létrehozása windows és linux op rendszeren:
 ---
 Windows:
