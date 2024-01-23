@@ -60,47 +60,46 @@ https://www.figma.com/file/dhj0E8Fwr5VxQ5VDCPejjW/Inventory-Management-system-(C
 Django környezet létrehozása windows és linux op rendszeren:
 ---
 Windows:
+---
+-mkdir nznyz_vizsga
+-cd nznyz_vizsga
+-python -m venv raktar_venv
+-cd raktar_venv
+-Scripts\activate
+-pip install django
+-django-admin stratproject config
+-rename config backend # config mappa átnevezése backendre
+-cd backend
+-pip freeze > requirements.txt # a telepítési követelmény létrehozása txt fájlba
+-python manage.py migrate
+-python manage.py createsperuser
+-python manage.py runserver
 
-mkdir nznyz_vizsga
-cd nznyz_vizsga
-python -m venv raktar_venv
-cd raktar_venv
-Scripts\activate
-pip install django
-django-admin stratproject config
-rename config backend # config mappa átnevezése backendre
-cd backend
-pip freeze > requirements.txt # a telepítési követelmény létrehozása txt fájlba
-python manage.py migrate
-python manage.py createsperuser
-python manage.py runserver
+-python manage.py startapp raktar_app  # raktar app létrehozása
 
-python manage.py startapp raktar_app  # raktar app létrehozása
-
-code .  # a project megnyitása visual studio code alkalmazásban
+-code .  # a project megnyitása visual studio code alkalmazásban
 
 Linux:
+---
+-mkdir nznyz_vizsga
+-cd nznyz_vizsga
+-python3 -m venv raktar_venv
+-source raktar_lemezkezeles/bin/activate
+-pip install django
+-django-admin stratproject config
+-mv config backend # # config mappa átnevezése backendre
+-cd backend
+-pip freeze > requirements.txt  # a telepítési követelmény létrehozása txt fájlba
+-python manage.py migrate
+-python manage.py createsperuser
+-python manage.py runserver
 
-mkdir nznyz_vizsga
-cd nznyz_vizsga
-python3 -m venv raktar_venv
-source raktar_lemezkezeles/bin/activate
-pip install django
-dj
-ango-admin stratproject config
-mv config backend # # config mappa átnevezése backendre
-cd backend
-pip freeze > requirements.txt  # a telepítési követelmény létrehozása txt fájlba
-python manage.py migrate
-python manage.py createsperuser
-python manage.py runserver
+-python manage.py startapp raktar_app
 
-python manage.py startapp raktar_app
+-code .
 
-code .
-
-adatbázis dump fájl étrehozása
-
+Adatbázis dump fájl étrehozása
+---
 from django.core.management import call_command
 
 output = open(output_filename,'w') # Point stdout at a file for dumping data to.
