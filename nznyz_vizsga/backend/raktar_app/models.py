@@ -15,11 +15,11 @@ class Dolgozok(models.Model):
     
 class Anyagtipus(models.Model):
      anyagtipus = models.CharField(max_length = 255)
-     anyag_kivalaszt = [(1,"Aluminium"),
-                         (2, "Horganyzott"),
-                         (3, "Plexi"),
-                         (4, "Rozsdamente"),
-                         (5, "Szenacél")]
+     anyag_kivalaszt = [(1,'Aluminium'),
+                         (2, 'Horganyzott'),
+                         (3, 'Plexi'),
+                         (4, 'Rozsdamentes'),
+                         (5, 'Szenacél')]
      anyagtipusa = models.IntegerField(choices = anyag_kivalaszt)
 
      def __str__(self):
