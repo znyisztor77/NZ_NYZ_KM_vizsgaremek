@@ -111,8 +111,8 @@ output.close()
 
 A Django REST Framework fő összetevői a következők:
 ---
-- ![My_Image](assets/images/django_serializer.webp)
-https://www.thetechplatform.com/post/exploring-django-rest-framework-building-powerful-apis-with-ease
+![My_Image](assets/images/django_serializer.webp)
+- A kép linkje: https://www.thetechplatform.com/post/exploring-django-rest-framework-building-powerful-apis-with-ease
 - Requests: A kéréseket az ügyfelek küldik az API-nak. Ezek lehetnek GET, POST, PUT vagy DELETE kérések, és tartalmazhatnak adatokat JSON vagy más formátumban.
 - URL patterns:  Az URL-minták arra szolgálnak, hogy a kéréseket meghatározott nézetekhez igazítsák.
 - Views: A Views felelős a kérések kezeléséért és a válaszok generálásáért.
