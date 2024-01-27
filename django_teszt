@@ -1,0 +1,6 @@
+Dajngo tesztelés
+
+mkdir vizsgaremek
+cd vizsgaremek
+python -m venv raktar_venv
+
