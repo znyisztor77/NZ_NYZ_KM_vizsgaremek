@@ -2,5 +2,13 @@ Dajngo tesztelés
 
 mkdir vizsgaremek
 cd vizsgaremek
+git clone https://github.com/znyisztor77/NZ_NYZvizsga.git
 python -m venv raktar_venv
+cd raktar_venv
+Scripts\activate
 
+cd backend
+python manage.py runserver
+http://127.0.0.1:8000/admin
+Username: Zoltan
+passw:Zoltan1234
