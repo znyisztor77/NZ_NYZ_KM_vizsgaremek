@@ -12,5 +12,8 @@ pip install -r requirements.txt
 pip install djangorestframework 
 python manage.py runserver
 http://127.0.0.1:8000/admin
-Username: Zoltan
+Username: zoltan
 passw:Zoltan1234
+
+api lekérése:
+http://127.0.0.1:8000/api/megrendelesek

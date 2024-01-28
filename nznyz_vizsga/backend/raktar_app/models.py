@@ -1,4 +1,5 @@
 from django.db import models
+#from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -16,10 +17,10 @@ class Dolgozok(models.Model):
 class Anyagtipus(models.Model):
      anyagtipus = models.CharField(max_length = 255)
      anyag_kivalaszt = [(1,'Aluminium'),
-                         (2, 'Horganyzott'),
-                         (3, 'Plexi'),
-                         (4, 'Rozsdamentes'),
-                         (5, 'Szenacél')]
+                        (2, 'Horganyzott'),
+                        (3, 'Plexi'),
+                        (4, 'Rozsdamentes'),
+                        (5, 'Szenacél')]
      anyagtipusa = models.IntegerField(choices = anyag_kivalaszt)
 
      def __str__(self):
@@ -32,22 +33,23 @@ class Alapanyag(models.Model):
                   (3, "1,5"),
                   (4, "2.0"),
                   (5, "2,5")]
+     vastagsag_valaszt = models.IntegerField(choices = vastagsag)
      
      meret_x = [(1, "1000"),
                 (2, "1250"),
                 (3, "1500"),]
+     meret_x_valaszt = models.IntegerField(choices = meret_x)
+
      meret_y = [(1, "2000"),
                 (2, "2500"),
                 (3, "3000"),]
-     aktualiMennyiseg = models.IntegerField()
-
-     anyagtipus = models.ForeignKey(Anyagtipus, on_delete =models.CASCADE ) 
-     vastagsag_valaszt = models.IntegerField(choices = vastagsag)
-     meret_x_valaszt = models.IntegerField(choices = meret_x) 
      meret_y_valaszt = models.IntegerField(choices = meret_y)       
+     aktualiMennyiseg = models.IntegerField()
+     anyagtipus = models.ForeignKey(Anyagtipus, on_delete =models.CASCADE ) 
 
 class Megrendelesek(models.Model):
         dolgozo = models.ForeignKey(Dolgozok, on_delete = models.CASCADE)
+        #author = models.ForeignKey(User, on_delete=models.CASCADE)
         felhasznaltMennyiseg = models.IntegerField()
         datumKezdes = models.DateField()
         datumBefejezes = models.DateField()

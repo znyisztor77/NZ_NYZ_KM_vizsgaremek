@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block body%}
+    {% for adatok in object_list%}
+        <h1>{{adatok.dolgozo}}</h1>
+        <p>Alapanyag: {{adatok.alapanyag}}</p>
+        <p>Kezdés dátuma: {{adatok.datumKezdes}}</p>
+        <p>Befejezés dátuma {{adatok.datumBefejezes}}</p> 
+        <p>Felhasznált mennyiség {{adatok.felhasznaltMennyiseg}} db</p>
+    <!--p>{{post.body}}</p-->    
+    {% endfor %}
+{%endblock%}    

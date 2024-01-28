@@ -5,4 +5,6 @@ class MegrendelesekSerializer(ModelSerializer):
     class Meta:
         fields = '__all__'
         model = Megrendelesek
-        depth = 1
+        depth = 2
+        
+        
