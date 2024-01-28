@@ -93,11 +93,11 @@ Linux:
 - mv config backend # # config mappa átnevezése backendre
 - cd backend
 - pip freeze > requirements.txt  # a telepítési követelmény létrehozása txt fájlba
-- python manage.py migrate
-- python manage.py createsperuser
-- python manage.py runserver
+- python3 manage.py migrate
+- python3 manage.py createsperuser
+- python3 manage.py runserver
 
-- python manage.py startapp raktar_app
+- python3 manage.py startapp raktar_app
 
 - code .
 
