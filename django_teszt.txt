@@ -2,7 +2,7 @@ Dajngo tesztelés
 
 mkdir vizsgaremek
 cd vizsgaremek
-git clone https://github.com/znyisztor77/NZ_NYZvizsga.git
+(opcionális)git clone https://github.com/znyisztor77/NZ_NYZvizsga.git
 python -m venv raktar_venv
 cd raktar_venv
 Scripts\activate
