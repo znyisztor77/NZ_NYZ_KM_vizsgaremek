@@ -15,19 +15,29 @@ class Dolgozok(models.Model):
         return self.nev
     
 class Anyagtipus(models.Model):
-     anyagtipus = models.CharField(max_length = 255)
+     '''anyagtipus = models.CharField(max_length = 255)
      anyag_kivalaszt = [(1,'Aluminium'),
                         (2, 'Horganyzott'),
                         (3, 'Plexi'),
                         (4, 'Rozsdamentes'),
                         (5, 'Szenacél')]
-     anyagtipusa = models.IntegerField(choices = anyag_kivalaszt)
+     anyagtipusa = models.IntegerField(choices = anyag_kivalaszt)'''
+
+     anyag_kivalaszt2 = [
+                        ("Aluminium" , "Aluminium"),
+                        ("Horgganyzott" , "Horganyzott"),
+                        ("Plexi", "Plexi"),
+                        ("Rozsdamentes","Rozsdamentes"),
+                        ("Szénacél", "Szénacél") ]
+     anyagtipusa2= models.CharField(max_length = 20 ,choices = anyag_kivalaszt2)
 
      def __str__(self):
-        return self.anyagtipus
+        return self.anyagtipusa2
 
     
 class Alapanyag(models.Model):
+     anyagtipus = models.ForeignKey(Anyagtipus, on_delete =models.CASCADE )
+      
      vastagsag = [(1, "0.5"),
                   (2, "1.0"),
                   (3, "1,5"),
@@ -44,13 +54,14 @@ class Alapanyag(models.Model):
                 (2, "2500"),
                 (3, "3000"),]
      meret_y_valaszt = models.IntegerField(choices = meret_y)       
-     aktualiMennyiseg = models.IntegerField()
-     anyagtipus = models.ForeignKey(Anyagtipus, on_delete =models.CASCADE ) 
+     keszleten = models.IntegerField()
+
+        
 
 class Megrendelesek(models.Model):
-        dolgozo = models.ForeignKey(Dolgozok, on_delete = models.CASCADE)
-        #author = models.ForeignKey(User, on_delete=models.CASCADE)
+        munka_id = models.IntegerField()
         felhasznaltMennyiseg = models.IntegerField()
+        dolgozo = models.ForeignKey(Dolgozok, on_delete = models.CASCADE)
         datumKezdes = models.DateField()
         datumBefejezes = models.DateField()
         alapanyag = models.ForeignKey(Alapanyag, on_delete = models.CASCADE)

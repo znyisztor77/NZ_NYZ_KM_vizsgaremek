@@ -18,7 +18,7 @@ class HomeView(ListView):
     template_name = 'home.html'
 
 def home(request):
-    megrendelesek = Megrendelesek.objects.all()
+    megrendelesek = Megrendelesek.objects.all().prefetch_related('alapanyag')
     context = {
         'Megrendelések': megrendelesek
     }
