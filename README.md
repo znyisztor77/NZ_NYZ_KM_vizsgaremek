@@ -1,7 +1,9 @@
 # NZ_NYZviszga
 Német Zoltán Nyisztor Zoltán Vizsgaremek dokumentáció 
 
- 
+
+ https://appflowy.io/download
+
 
 Az általunk készített alkalmazás egy lézer vágó cég raktár kezelését végzi, amelyben a raktárban tárolt alapanyagokat(különböző anyag típusok) és a megrendeléseket nyilván tartását végzi.
 Az alkalmazásban nyomon követhető, hogy egy anyagot jelen esetbe egy lemez táblát a melyik dolgozó használta fel és melyik megrendeléshez. 
