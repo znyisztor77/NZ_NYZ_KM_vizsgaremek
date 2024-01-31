@@ -14,14 +14,14 @@ class Dolgozok(models.Model):
     def __str__(self):
         return self.nev
     
-class Anyagtipus(models.Model):
-     '''anyagtipus = models.CharField(max_length = 255)
+'''class Anyagtipus(models.Model):
+     anyagtipus = models.CharField(max_length = 255)
      anyag_kivalaszt = [(1,'Aluminium'),
                         (2, 'Horganyzott'),
                         (3, 'Plexi'),
                         (4, 'Rozsdamentes'),
                         (5, 'Szenacél')]
-     anyagtipusa = models.IntegerField(choices = anyag_kivalaszt)'''
+     anyagtipusa = models.IntegerField(choices = anyag_kivalaszt)
 
      anyag_kivalaszt2 = [
                         ("Aluminium" , "Aluminium"),
@@ -32,12 +32,19 @@ class Anyagtipus(models.Model):
      anyagtipusa2= models.CharField(max_length = 20 ,choices = anyag_kivalaszt2)
 
      def __str__(self):
-        return self.anyagtipusa2
+        return self.anyagtipusa2 '''
 
     
 class Alapanyag(models.Model):
-     anyagtipus = models.ForeignKey(Anyagtipus, on_delete =models.CASCADE )
-      
+     #anyagtipus = models.ForeignKey(Anyagtipus, on_delete =models.CASCADE )
+     anyagtipus = [
+                        ("Aluminium" , "Aluminium"),
+                        ("Horgganyzott" , "Horganyzott"),
+                        ("Plexi", "Plexi"),
+                        ("Rozsdamentes","Rozsdamentes"),
+                        ("Szénacél", "Szénacél") ]
+     anyagtipusa= models.CharField(max_length = 20 ,choices = anyagtipus) 
+
      vastagsag = [(1, "0.5"),
                   (2, "1.0"),
                   (3, "1,5"),
@@ -54,9 +61,11 @@ class Alapanyag(models.Model):
                 (2, "2500"),
                 (3, "3000"),]
      meret_y_valaszt = models.IntegerField(choices = meret_y)       
-     keszleten = models.IntegerField()
+     keszleten = models.PositiveIntegerField(default=0)
+     #keszleten = models.IntegerField()
 
-        
+     '''def __str__(self):
+        return self.anyagtipus'''
 
 class Megrendelesek(models.Model):
         munka_id = models.IntegerField()
