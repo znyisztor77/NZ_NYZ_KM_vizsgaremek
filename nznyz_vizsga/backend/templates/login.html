@@ -1,0 +1,12 @@
+{% extends 'base.html'%}
+
+{% block content %}
+<form method="POST" novalidate>
+        {% csrf_token%}
+        <h2>Bejelentkezés</h2>
+        {{form.as_p}}
+        <input type="submit" value="Bejelentkezés"/>
+
+</form>
+
+{% endblock content%}

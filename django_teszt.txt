@@ -17,3 +17,5 @@ passw:Zoltan1234
 
 api lekérése:
 http://127.0.0.1:8000/api/megrendelesek
+
+Plexi

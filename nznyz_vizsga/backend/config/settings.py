@@ -38,7 +38,9 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'raktar_app',
-    'rest_framework'
+    'rest_framework',
+    
+
 ]
 
 MIDDLEWARE = [
@@ -124,4 +126,9 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_URL = 'static/'
 STATICFILES_DIRS = [BASE_DIR /"static"]
+
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "/"
+AUTH_USER_MODEL = 'raktar_app.CustomUser'

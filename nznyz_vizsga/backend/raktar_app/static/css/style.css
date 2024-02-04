@@ -1,0 +1,30 @@
+body{
+    margin: 0;
+    background-color: rgb(230, 230, 238);
+    text-align: center;
+}
+h1{
+
+    color: rgb(71, 94, 223);
+}
+h2{
+    color: rgb(71, 94, 223);
+}
+
+table {
+    margin-top: 50px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+tr {    
+    border-bottom: 1px solid #ddd;
+  }
+
+ td{
+    position: sticky;
+    padding: 10px;
+    text-align: center;
+ }
+ th{
+    background-color: aquamarine;
+ } 

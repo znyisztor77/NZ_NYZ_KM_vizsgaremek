@@ -17,15 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from raktar_app.views import HomeView
-
 from django.shortcuts import render
 from raktar_app import views
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/megrendelesek', views.getMegrendelesek ),
-    #path('', include('raktar_app.urls'))
-    #path('',views.home, name = 'home')
-    path('', HomeView.as_view(), name= 'home'),
+   
+   # path('',views.home, name = 'home'),
+    #path('', HomeView.as_view(), name= 'home'),
+    path('', include('raktar_app.urls')),
+    #path('', include('users.urls')),
+    
 ]

@@ -1,16 +1,14 @@
 {% extends 'base.html'%}
-{% load static %}
 
 {% block content%}
-    <h1>Üdvözöllek a ARBA-LemezKez oldalán</h1>
-    <h1>Jelentkezz be az alkalmazás használatához</h1>
+
     {% if user.is_authenticated%}
     Hello {{user.username}}!
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Kijelentkezés</button>
       </form>
-      <!--h1>Home oldal</h1>
+      <h1>Dolgozó oldal</h1>
       <table>
           <tr>
               <th>id</th>
@@ -19,6 +17,7 @@
               <th>Alapanyag</th>
               <th>Kezdés dátuma</th>
               <th>Befejezés dátuma</th>
+              <th>Polc száma</th>
               <th>Felhasznált mennyiség</th>
 
               
@@ -31,22 +30,15 @@
             <td>{{adatok.alapanyag}}</td>
             <td>{{adatok.datumKezdes}}</td>
             <td>{{adatok.datumBefejezes}}</td>
+            <td>{{adatok.vastagsag}}</td>
             <td>{{adatok.felhasznaltMennyiseg}} db</td>
         </tr>
         
         {% endfor %}
     </table>
-    {% for adatok in object_list%}
-        <h1>{{adatok.dolgozo}}</h1>
-        <p>Alapanyag: {{adatok.alapanyag}}</p>
-        <p>Kezdés dátuma: {{adatok.datumKezdes}}</p>
-        <p>Befejezés dátuma {{adatok.datumBefejezes}}</p> 
-        <p>Felhasznált mennyiség {{adatok.felhasznaltMennyiseg}} db</p>
-        <p>Vastagsag {{adatok.vastagsag_valaszt}}</p>
-    p>{{post.body}}</p
-    {% endfor %}  -->  
+    
     {%else%}
-    <h2>Nem vagy bejelentkezeve!</h2>
-    <h3><a href="{%url 'login'%}">Bejelentkezés</a></h3>
+    <p>Nem vagy bejelentkezeve!</p>
+    <a href="{%url 'login'%}">Bejelentkezés</a>
     {%endif%}
 {%endblock%}    
