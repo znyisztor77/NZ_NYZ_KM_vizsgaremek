@@ -15,6 +15,8 @@ urlpatterns = [
     #path('',HomeView.as_view(), name = 'home'),
     path('megrendelesek/', HomeView.as_view(), name= 'home'),
     #path('dolgozo/',views.dolgozo, name = 'dolgozo'),
+    path('raktar/' ,views.bevitel),
+    path('bevitel/' ,views.bevitel, name='bevitel')
    
     
     

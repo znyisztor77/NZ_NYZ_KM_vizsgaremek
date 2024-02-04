@@ -32,7 +32,12 @@
         
         {% endfor %}
     </table>   
-    
+    <form method="POST">
+        {% csrf_token%}
+        <h2>Bevitel</h2>
+        {{bevform.as_p}}
+        <input type="submit" value="Rögzítés"/>
+    </form>
     {%else%}
     <p>Nem vagy bejelentkezeve!</p>
     <a href="{%url 'login'%}">Bejelentkezés</a>

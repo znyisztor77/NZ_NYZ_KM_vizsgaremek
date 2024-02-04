@@ -6,13 +6,21 @@
     <h1>Jelentkezz be az alkalmazás használatához</h1>
     {% if user.is_authenticated%}
     Hello {{user.username}}!
-    <form action="{% url 'logout' %}" method="post">
+      <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Kijelentkezés</button>
       </form>
+
       
     {%else%}
-    <h2>Nem vagy bejelentkezeve!</h2>
-    <h3><a href="{%url 'login'%}">Bejelentkezés</a></h3>
+      <h2>Nem vagy bejelentkezeve!</h2>
+      <h3><a href="{%url 'login'%}">Bejelentkezés</a></h3>
     {%endif%}
-{%endblock%}    
+      <!--form method="POST">
+        {% csrf_token%}
+        <h2>Bevitel</h2>
+        {{bevform.as_p}}
+        <button type="submit">Rögzítés</button>
+        
+      </form-->
+      {%endblock%}    

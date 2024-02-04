@@ -6,7 +6,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.views.generic import ListView
 from django.shortcuts import render,redirect
-from .forms import LoginForm
+from .forms import LoginForm,BevitelForm, KiadasForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 
@@ -76,9 +76,18 @@ def bejelentkezes(request):
         return render(request, 'login.html', {'form':form})   
 
 
-
-
-
 def logout_page(request):
     logout(request)
     return redirect('login')
+
+def bevitel(request):
+    #request.method == 'POST'
+    #bevform = BevitelForm(request.POST)
+    bevform = BevitelForm()
+    return render(request, 'raktar.html', {'bevform': bevform})
+
+
+
+'''def kiadas(request):
+    form = KiadasForm()
+    return render(request, 'raktar.html', {'form': form})'''
