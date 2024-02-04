@@ -77,9 +77,7 @@ def bejelentkezes(request):
 
 
 
-'''def raktar_view(request):
-    # Ide írd meg az index oldal betöltését vagy egyéb műveleteket
-    return render(request, 'raktar.html')'''
+
 
 def logout_page(request):
     logout(request)
