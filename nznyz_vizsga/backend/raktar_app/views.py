@@ -33,7 +33,7 @@ class HomeView(ListView):
 
 
 def home(request):
-    
+
     return render(request, 'home.html')
 
 def raktar(request):
