@@ -2,7 +2,7 @@
 
 {% block content%}
 
-    {% if user.is_authenticated%}
+    {% if user.is_authenticated and user.lezervago == True%}
     Hello {{user.username}}!
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}

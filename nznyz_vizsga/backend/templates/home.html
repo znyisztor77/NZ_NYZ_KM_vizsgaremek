@@ -1,41 +1,18 @@
 {% extends 'base.html'%}
+{% load static %}
 
 {% block content%}
-
+    <h1>Üdvözöllek a ARBA-LemezKez oldalán</h1>
+    <h1>Jelentkezz be az alkalmazás használatához</h1>
     {% if user.is_authenticated%}
     Hello {{user.username}}!
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Kijelentkezés</button>
-    </form>
-
-      <h1>Raktár oldal</h1>
-      <table>
-          <tr>
-              
-              <th>Anyag tipusa</th>
-              <th>Vastagsag</th>
-              <th>Meret</th>
-              <th>Darabszam</th>
-              <th>Polc száma</th>
-             
-           </tr>
-
-            {% for adatok in object_list%}
-        <tr>
-            <td>{{adatok.anyagtipusa}}</td>
-            <td>{{adatok.vastagsag_valaszt}}</td>
-            <td>{{adatok.meret_valaszt}}</td>
-            <td>{{adatok.darabszam}}</td>
-            <td>{{adatok.polc_szama}}</td>
-        </tr>
-        
-        {% endfor %}
-    </table>   
-    
+      </form>
+      
     {%else%}
-    <p>Nem vagy bejelentkezeve!</p>
-    <a href="{%url 'login'%}">Bejelentkezés</a>
+    <h2>Nem vagy bejelentkezeve!</h2>
+    <h3><a href="{%url 'login'%}">Bejelentkezés</a></h3>
     {%endif%}
-
 {%endblock%}    
