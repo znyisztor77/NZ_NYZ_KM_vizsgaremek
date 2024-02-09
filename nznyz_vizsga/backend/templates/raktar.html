@@ -31,11 +31,20 @@
         </tr>
         
         {% endfor %}
-    </table>   
+    </table>  
+    <hr> 
     <form method="POST">
         {% csrf_token%}
         <h2>Bevitel</h2>
         {{bevform.as_p}}
+        <input type="submit" value="Rögzítés"/>
+        
+    </form>
+    <hr>
+    <form method="POST">
+        {% csrf_token%}
+        <h2>Kiadás</h2>
+        {{kiform.as_p}}
         <input type="submit" value="Rögzítés"/>
     </form>
     {%else%}

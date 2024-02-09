@@ -44,12 +44,14 @@ class Alapanyag(models.Model):
      meret_valaszt = models.CharField(max_length =30, choices = meret)  
      darabszam = models.PositiveIntegerField(default=0)
      polc_szama = models.PositiveIntegerField(default=0)
+     rogzit_datum = models.DateField()
      
 
      def __str__(self):
         return f"{self.anyagtipusa} {self.meret_valaszt} {self.vastagsag_valaszt}"
 
 class Megrendelesek(models.Model):
+        
         munkalap_szama = models.CharField(max_length = 30)
         dolgozo = models.ForeignKey(Dolgozok, on_delete = models.CASCADE)
         alapanyag = models.ForeignKey(Alapanyag ,on_delete = models.CASCADE)

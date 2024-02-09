@@ -9,6 +9,7 @@ from django.shortcuts import render,redirect
 from .forms import LoginForm,BevitelForm, KiadasForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
+from .admin import CustomUser
 
 @api_view(['GET'])
 def getMegrendelesek(request):
@@ -17,17 +18,17 @@ def getMegrendelesek(request):
 
     return Response(serialized.data)
 
-class RaktarView(ListView):
-    model = Alapanyag 
-    template_name = 'raktar.html' 
-
-class DolgozoView(ListView):
-    model = Megrendelesek
-    template_name = 'dolgozo.html' 
-
 class HomeView(ListView):
     model = Megrendelesek
     template_name = 'home.html'
+class DolgozoView(ListView):
+    model = Megrendelesek
+    template_name = 'dolgozo.html' 
+'''class RaktarView(ListView):
+    model = Alapanyag 
+    template_name = 'raktar.html' '''
+
+
 
 
 
@@ -36,9 +37,9 @@ def home(request):
 
     return render(request, 'home.html')
 
-def raktar(request):
+'''def raktar(request):
     
-    return render(request, 'raktar.html')
+    return render(request, 'raktar.html')'''
 
 def dolgozo(request):
     
@@ -80,14 +81,18 @@ def logout_page(request):
     logout(request)
     return redirect('login')
 
-def bevitel(request):
-    #request.method == 'POST'
+def bevitel_kiadas(request):
+    request.method == 'POST'
     #bevform = BevitelForm(request.POST)
     bevform = BevitelForm()
-    return render(request, 'raktar.html', {'bevform': bevform})
+    kiform = KiadasForm()
+    alapanyagok = Alapanyag.objects.all()
+    return render(request, 'raktar.html', { 'object_list':alapanyagok,'bevform': bevform,'kiform': kiform })
 
 
 
 '''def kiadas(request):
-    form = KiadasForm()
-    return render(request, 'raktar.html', {'form': form})'''
+    request.method =='POST'
+    kiform = KiadasForm()
+    alapanyagok = Alapanyag.objects.all()
+    return render(request, 'raktar.html', {'object_list':alapanyagok,'kiform': kiform})'''
