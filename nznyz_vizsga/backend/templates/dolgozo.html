@@ -9,6 +9,13 @@
         <button type="submit">Kijelentkezés</button>
       </form>
       <h1>Dolgozó oldal</h1>
+      <form method="POST">
+        {% csrf_token%}
+        <h2>Bevitel</h2>
+        {{dolgform.as_p}}
+        <input type="submit" value="Rögzítés"/>
+        
+    </form>
       <table>
           <tr>
               <th>id</th>
@@ -16,8 +23,7 @@
               <th>Dolgozó</th>
               <th>Alapanyag</th>
               <th>Kezdés dátuma</th>
-              <th>Befejezés dátuma</th>
-              <th>Polc száma</th>
+              <th>Befejezés dátuma</th>              
               <th>Felhasznált mennyiség</th>
 
               
@@ -30,7 +36,6 @@
             <td>{{adatok.alapanyag}}</td>
             <td>{{adatok.datumKezdes}}</td>
             <td>{{adatok.datumBefejezes}}</td>
-            <td>{{adatok.vastagsag}}</td>
             <td>{{adatok.felhasznaltMennyiseg}} db</td>
         </tr>
         

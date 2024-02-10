@@ -1,0 +1,79 @@
+body{
+    margin: 0;
+    background-color: rgb(230, 230, 238);
+    text-align: center;
+}
+h1{
+
+    color: rgb(87, 109, 231);
+}
+h2{
+    color: rgb(148, 160, 233);
+}
+
+/*table {
+    margin-top: 50px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+tr {    
+    border-bottom: 1px solid #ddd;
+  }
+
+ td{
+    position: sticky;
+    padding: 10px;
+    text-align: center;
+ }
+ th{
+    background-color: aquamarine;
+ } */
+
+
+ .raktarcontainer{
+    width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: row;
+    
+}
+.raktaroldalsav{
+    color: azure;
+    height: auto;
+    width: 20%;
+    background-color: rgb(80, 103, 233);
+    padding: 10px;
+
+
+}
+.raktartartalom{
+    margin: 0;
+    width: 1280px;
+    height: auto;
+    display: flex;
+    justify-content: end;
+    
+}
+
+.raktaroldalsav>h2{
+    color: white;
+}
+.raktarcontainer>ul{
+    list-style: none;
+
+}
+
+table {
+    margin-top: 50px;
+    border-collapse: collapse;
+    width: 100%;
+  }
+tr {    
+    border-bottom: 1px solid #ddd;
+  }
+
+ td{
+    position: sticky;
+    padding: 10px;
+    text-align: center;
+ } 

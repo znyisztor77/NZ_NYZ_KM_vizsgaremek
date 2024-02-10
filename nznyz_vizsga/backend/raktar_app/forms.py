@@ -8,33 +8,44 @@ class LoginForm(forms.Form):
     username = forms.CharField(max_length = 30)
     password = forms.CharField(max_length = 30, widget= forms.PasswordInput)
 
+class BevitelForm(forms.ModelForm):
 
-class BevitelForm(forms.Form):
-    DATE_INPUT_FORMATS = ['%Y-%m-%d']
-
-    alapanyagtipusa = Alapanyag.anyagtipus
-    anyagtipus = forms.ChoiceField(choices = alapanyagtipusa)
-    merete = Alapanyag.meret
-    méret = forms.ChoiceField(choices = merete)
-    vastagsaga = Alapanyag.vastagsag
-    vastagság = forms.ChoiceField(choices = vastagsaga)
-
-    darabszám = forms.IntegerField()
-    polc_száma = forms.IntegerField()
-    rögzítés_dátum = forms.DateField( widget=forms.DateInput(format = "%Y-%m-%d", attrs={"type": "date"}), input_formats=DATE_INPUT_FORMATS)
+    class Meta:
+        DATE_FORMATS = ['%Y-%m-%d']
+        model = Alapanyag
+        fields = ('anyagtipusa',
+                  'vastagsag_valaszt',
+                  'meret_valaszt',
+                  'darabszam',
+                  'polc_szama',
+                  'rogzit_datum' )
+        widgets={'rogzit_datum': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
 
 
-class KiadasForm(forms.Form):
-    DATE_INPUT_FORMATS = ['%Y-%m-%d']
-    alapanyagtipus = Alapanyag.anyagtipus
-    #dolgozok = CustomUser.USERNAME_FIELD
-    #dolgozo = forms.ChoiceField(choices=dolgozok)
-    alapanyagtipusa = Alapanyag.anyagtipus
-    anyagtipus = forms.ChoiceField(choices = alapanyagtipusa)
-    merete = Alapanyag.meret
-    méret = forms.ChoiceField(choices = merete)
-    vastagsaga = Alapanyag.vastagsag
-    vastagság = forms.ChoiceField(choices = vastagsaga)
-    darabszam = forms.IntegerField()
-    polc_szama = forms.IntegerField()
-    kiadas_datum = forms.DateField(widget=forms.DateInput(format = "%Y-%m-%d", attrs={"type": "date"}), input_formats = DATE_INPUT_FORMATS)
+class KiadasForm(forms.ModelForm):
+
+    class Meta:
+        DATE_FORMATS = ['%Y-%m-%d']
+        model = Alapanyag
+        fields = ('anyagtipusa',
+                  'vastagsag_valaszt',
+                  'meret_valaszt',
+                  'darabszam',
+                  'polc_szama',
+                  'rogzit_datum' )
+        widgets={'rogzit_datum': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
+
+class MegrendelesForm(forms.ModelForm):
+
+    class Meta:
+        model = Megrendelesek
+        fields = ('munkalap_szama',
+                  'dolgozo',
+                  'alapanyag',
+                  'datumKezdes',
+                  'datumBefejezes',
+                  'felhasznaltMennyiseg')
+        widgets={'datumKezdes': forms.DateInput(attrs={"type": "date"},format = "%Y-%m-%d" ), 
+                 'datumBefejezes': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
+
+

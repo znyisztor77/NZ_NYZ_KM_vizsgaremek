@@ -2,51 +2,67 @@
 
 {% block content%}
 
-    {% if user.is_authenticated and user.raktaros == True%}
-    Hello {{user.username}}!
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Kijelentkezés</button>
-    </form>
-
-      <h1>Raktár oldal</h1>
-      <table>
-          <tr>
-              
-              <th>Anyag tipusa</th>
-              <th>Vastagsag</th>
-              <th>Meret</th>
-              <th>Darabszam</th>
-              <th>Polc száma</th>
-             
-           </tr>
-
-            {% for adatok in object_list%}
-        <tr>
-            <td>{{adatok.anyagtipusa}}</td>
-            <td>{{adatok.vastagsag_valaszt}}</td>
-            <td>{{adatok.meret_valaszt}}</td>
-            <td>{{adatok.darabszam}}</td>
-            <td>{{adatok.polc_szama}}</td>
-        </tr>
-        
-        {% endfor %}
-    </table>  
-    <hr> 
-    <form method="POST">
-        {% csrf_token%}
-        <h2>Bevitel</h2>
-        {{bevform.as_p}}
-        <input type="submit" value="Rögzítés"/>
-        
-    </form>
-    <hr>
-    <form method="POST">
-        {% csrf_token%}
-        <h2>Kiadás</h2>
-        {{kiform.as_p}}
-        <input type="submit" value="Rögzítés"/>
-    </form>
+{% if user.is_authenticated and user.raktaros == True%}
+<h1>Hello {{user.username}}!</h1> 
+<form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <button type="submit">Kijelentkezés</button>
+</form>
+{% if messages %}
+{% endif %}
+<h1>Raktár oldal</h1>
+<ul class="messages">
+    {% for message in messages %}
+    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+<div class="raktarcontainer">
+    
+    <div class="raktaroldalsav">
+        <form method="POST">
+            {% csrf_token%}
+            <h2>Bevitel</h2>
+            {{bevform.as_p}}
+            <input type="submit" value="Rögzítés"/>
+            
+        </form>
+        <hr>
+        <form method="POST">
+            {% csrf_token%}
+            <h2>Kiadás</h2>
+            {{kiform.as_p}}
+            <input type="submit" value="Rögzítés"/>
+        </form>
+    </div> <!--raktar oldalsav vége-->
+    
+    <div class="raktartartalom">     
+            <table>
+                <tr>
+                    <th>id</th>
+                    <th>Anyag tipusa</th>
+                    <th>Vastagsag</th>
+                    <th>Meret</th>
+                    <th>Darabszam</th>
+                    <th>Polc száma</th>
+                    <th>Rögzítés dátuma</th>
+                    
+                </tr>
+                
+                {% for adatok in object_list%}
+                <tr>
+                    <td>{{adatok.id}}</td>
+                    <td>{{adatok.anyagtipusa}}</td>
+                    <td>{{adatok.vastagsag_valaszt}}</td>
+                    <td>{{adatok.meret_valaszt}}</td>
+                    <td>{{adatok.darabszam}}</td>
+                    <td>{{adatok.polc_szama}}</td>
+                    <td>{{adatok.rogzit_datum}}</td>
+                </tr>
+                
+                {% endfor %}
+            </table>  
+        </div><!--Raktar tartalom vége-->>
+    </div>
     {%else%}
     <p>Nem vagy bejelentkezeve!</p>
     <a href="{%url 'login'%}">Bejelentkezés</a>
