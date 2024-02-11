@@ -19,7 +19,7 @@ A felhasználói felület és az adtbázis közötti kapcsolatot a XAMPP alkalma
 
 A webes kezelő felület html, css fájlokból tevődik össze. Az sql adatbázis kapcsolatot pedig a django framework biztosítja. 
 
-
+A prjrct leírása, dokumentációja: https://sites.google.com/view/arba-lemezkez-project/f%C5%91oldal
 
 ---
 A betöltő oldal egy bejelentkező (login)form.
