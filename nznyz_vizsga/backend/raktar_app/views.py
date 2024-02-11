@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, HttpResponseRedirect
 from django.http import HttpResponse
 from .models import Megrendelesek, Alapanyag
 from .serializers import MegrendelesekSerializer
@@ -10,6 +10,7 @@ from .forms import LoginForm,BevitelForm, KiadasForm, MegrendelesForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
 from .admin import CustomUser
+from django.db.models import F
 
 @api_view(['GET'])
 def getMegrendelesek(request):
@@ -54,7 +55,7 @@ def bejelentkezes(request):
         return render(request, 'login.html', {'form':form})
 
 def bevitel_kiadas( request):
-     bevform = BevitelForm()
+     #bevform = BevitelForm()
      kiform = KiadasForm()
      alapanyagok_lista = Alapanyag.objects.all()               
 
@@ -63,7 +64,13 @@ def bevitel_kiadas( request):
         if bevform.is_valid():
              if Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                          vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                         meret_valaszt = bevform.cleaned_data['meret_valaszt'],).exists():
+                                         meret_valaszt = bevform.cleaned_data['meret_valaszt'],
+                                         #darabszam = F('darabszam') + bevform.cleaned_data['darabszam'],
+                                         #darabszam = bevform.cleaned_data['darabszam']).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam']
+                                         ).exists():
+                Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                                         vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                                         meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])
                 messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van a raktárban!')
              else:
                 ujanyag = Alapanyag.objects.create(
@@ -74,11 +81,14 @@ def bevitel_kiadas( request):
                     polc_szama = bevform.cleaned_data['polc_szama'],
                     rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
                 ujanyag.save()
+                bevform = BevitelForm()
+                #Alapanyag.objects.none()
+                return redirect('raktar.html')
                    
-        kiform = KiadasForm(request.POST)
+     '''kiform = KiadasForm(request.POST)
 
         if kiform.is_valid():
-            kiform.save()
+            kiform.save()'''
            
      return render(request, 'raktar.html', { 'object_list':alapanyagok_lista,
                                             'bevform': bevform,
