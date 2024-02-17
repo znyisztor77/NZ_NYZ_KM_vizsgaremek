@@ -2,14 +2,13 @@ from django.db import models
 #from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 
-# Create your models here.
 
 class CustomUser(AbstractUser):
      raktaros = models.BooleanField(default=False)
      lezervago = models.BooleanField(default=False)
      
 
-class Dolgozok(models.Model):
+'''class Dolgozok(models.Model):
     nev =models.CharField(max_length = 255)
     beosztas_kivalaszt = [("Raktáros","Raktáros"),
                           ("Lézervágó","Lézervágó")]
@@ -18,7 +17,7 @@ class Dolgozok(models.Model):
 
 
     def __str__(self):
-        return f'{self.nev} {self.beosztas}'
+        return f'{self.nev} {self.beosztas}'''
     
     
 class Alapanyag(models.Model):
@@ -53,7 +52,7 @@ class Alapanyag(models.Model):
 class Megrendelesek(models.Model):
         
         munkalap_szama = models.CharField(max_length = 30)
-        dolgozo = models.ForeignKey(Dolgozok, on_delete = models.CASCADE)
+        dolgozo = models.ForeignKey(CustomUser, on_delete = models.CASCADE)
         alapanyag = models.ForeignKey(Alapanyag ,on_delete = models.CASCADE)
         datumKezdes = models.DateField()
         datumBefejezes = models.DateField()

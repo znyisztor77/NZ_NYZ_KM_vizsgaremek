@@ -1,8 +1,6 @@
 from django.contrib import admin
-from .models import Dolgozok, Alapanyag, Megrendelesek,CustomUser
-#Anyagtipus
+from .models import  Alapanyag, Megrendelesek,CustomUser
 from django.contrib.auth.admin import UserAdmin
-# Register your models here.
 
 class CustomUserAdmin(UserAdmin):
     list_display = (
@@ -52,7 +50,7 @@ class CustomUserAdmin(UserAdmin):
     )
    
 
-admin.site.register(Dolgozok)
+#admin.site.register(Dolgozok)
 admin.site.register(Alapanyag)
 admin.site.register(Megrendelesek)
 admin.site.register(CustomUser, CustomUserAdmin)

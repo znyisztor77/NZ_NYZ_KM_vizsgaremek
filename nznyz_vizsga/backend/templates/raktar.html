@@ -45,7 +45,7 @@
                     <th>Darabszam</th>
                     <th>Polc száma</th>
                     <th>Rögzítés dátuma</th>
-                    
+                   
                 </tr>
                 
                 {% for adatok in object_list%}
@@ -57,7 +57,10 @@
                     <td>{{adatok.darabszam}}</td>
                     <td>{{adatok.polc_szama}}</td>
                     <td>{{adatok.rogzit_datum}}</td>
+                    
                 </tr>
+                
+                
                 
                 {% endfor %}
             </table>  

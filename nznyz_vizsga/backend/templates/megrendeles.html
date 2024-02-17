@@ -8,7 +8,12 @@
         {% csrf_token %}
         <button type="submit">Kijelentkezés</button>
       </form>
-      <h1>Dolgozó oldal</h1>
+      <h1>Megrendeles oldal</h1>
+      <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
       <form method="POST">
         {% csrf_token%}
         <h2>Bevitel</h2>
@@ -25,6 +30,7 @@
               <th>Kezdés dátuma</th>
               <th>Befejezés dátuma</th>              
               <th>Felhasznált mennyiség</th>
+              <th></th>
 
               
             </tr>
@@ -37,6 +43,7 @@
             <td>{{adatok.datumKezdes}}</td>
             <td>{{adatok.datumBefejezes}}</td>
             <td>{{adatok.felhasznaltMennyiseg}} db</td>
+            <td><button type="button">Nyomtatás</button></td>
         </tr>
         
         {% endfor %}
