@@ -81,7 +81,7 @@ def bevitel_kiadas( request):
                     polc_szama = bevform.cleaned_data['polc_szama'],
                     rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
                 ujanyag.save()
-                bevform = BevitelForm()
+                #bevform = BevitelForm()
                 #Alapanyag.objects.none()
                 return redirect('raktar.html')
                    
