@@ -23,7 +23,8 @@
             {% csrf_token%}
             <h2>Bevitel</h2>
             {{bevform.as_p}}
-            <input type="submit" value="Rögzítés"/>
+            <button name="bevitel" type="submit">Rögzítés</button>
+            <!--input type="submit" value="Rögzítés"/-->
             
         </form>
         <hr>
@@ -31,7 +32,8 @@
             {% csrf_token%}
             <h2>Kiadás</h2>
             {{kiform.as_p}}
-            <input type="submit" value="Rögzítés"/>
+            <button name="kiad" type="submit">Rögzítés</button>
+            <!--input type="submit" value="Rögzítés"/-->
         </form>
     </div> <!--raktar oldalsav vége-->
     
