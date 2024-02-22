@@ -1,6 +1,6 @@
 from django import forms
 from .models import Megrendelesek, Alapanyag
-from .admin import CustomUser
+#from .admin import Dolgozo
 
 
 

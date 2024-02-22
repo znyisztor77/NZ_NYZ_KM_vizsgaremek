@@ -2,21 +2,22 @@
 
 {% block content%}
 
-{% if user.is_authenticated and user.raktaros == True%}
-<h1>Hello {{user.username}}!</h1> 
-<form action="{% url 'logout' %}" method="post">
-    {% csrf_token %}
-    <button type="submit">Kijelentkezés</button>
-</form>
-{% if messages %}
-{% endif %}
-<h1>Raktár oldal</h1>
-<ul class="messages">
-    {% for message in messages %}
-    <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-<div class="raktarcontainer">
+    
+    {% if user.is_authenticated and user.raktaros == True%}
+    <h1>Hello {{user.username}}!</h1> 
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button type="submit">Kijelentkezés</button>
+    </form>
+    {% if messages %}
+    {% endif %}
+    <h1>Raktár oldal</h1>
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <div class="raktarcontainer">
     
     <div class="raktaroldalsav">
         <form method="POST">

@@ -1,5 +1,5 @@
 from django.db import models
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.contrib.auth.models import AbstractUser
 
 
@@ -9,15 +9,17 @@ class CustomUser(AbstractUser):
      
 
 '''class Dolgozok(models.Model):
-    nev =models.CharField(max_length = 255)
-    beosztas_kivalaszt = [("Raktáros","Raktáros"),
-                          ("Lézervágó","Lézervágó")]
+    nev = models.OneToOneField(User, on_delete= models.CASCADE)
+    #nev =models.CharField(max_length = 255)
+    beosztas_kivalaszt = [("Raktáros","raktar"),
+                          ("Lézervágó","lezervago")]
 
     beosztas = models.CharField(max_length = 30,  choices = beosztas_kivalaszt)
-
+    raktaros = models.BooleanField(default=False)
+    lezervago = models.BooleanField(default=False)
 
     def __str__(self):
-        return f'{self.nev} {self.beosztas}'''
+        return f'{self.nev.username} {self.beosztas}'''
     
     
 class Alapanyag(models.Model):
@@ -38,7 +40,7 @@ class Alapanyag(models.Model):
      
      meret = [("1000X2000", "1000X2000"),
               ("1250X2500", "1250X2000"),
-              ("1500X3000", "1500X3000")
+              ("1500X3000", "1500X3000"),
               ]
      meret_valaszt = models.CharField(max_length =30, choices = meret)  
      darabszam = models.PositiveIntegerField(default=0)
@@ -57,8 +59,3 @@ class Megrendelesek(models.Model):
         datumKezdes = models.DateField()
         datumBefejezes = models.DateField()
         felhasznaltMennyiseg = models.PositiveIntegerField(default=0)
-       
-
-        
-
-

@@ -24,6 +24,7 @@ from raktar_app import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #path('api/megrendelesek', views.MegrendelesekViewSet ),
     path('api/megrendelesek', views.getMegrendelesek ),
    
    # path('',views.home, name = 'home'),

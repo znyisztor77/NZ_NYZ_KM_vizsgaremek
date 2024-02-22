@@ -13,6 +13,7 @@
 <body>
     <div class="conatiner">
         {% block content %}
+        {% csrf_token%}
 
         {% endblock %}
     </div>

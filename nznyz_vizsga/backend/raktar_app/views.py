@@ -1,23 +1,27 @@
 from django.shortcuts import render, HttpResponseRedirect
 from django.http import HttpResponse
-from .models import Megrendelesek, Alapanyag
+from .models import Megrendelesek, Alapanyag,CustomUser
 from .serializers import MegrendelesekSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.views.generic import ListView
-from django.shortcuts import render,redirect, get_object_or_404
+from django.shortcuts import render,redirect
 from .forms import LoginForm,BevitelForm, KiadasForm, MegrendelesForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
-from .admin import CustomUser
+#from .admin import Dolgozo
 from django.db.models import F
+from django.contrib.auth.models import User
+
+
 
 @api_view(['GET'])
 def getMegrendelesek(request):
-    megrendelesek =Megrendelesek.objects.all().prefetch_related('alapanyag')
+    megrendelesek =Megrendelesek.objects.all() 
     serialized =MegrendelesekSerializer(megrendelesek, many =True)
 
     return Response(serialized.data)
+
 
 
 def home(request):
@@ -25,7 +29,7 @@ def home(request):
     return render(request, 'home.html')
 
 def bejelentkezes(request):
-
+    
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('home')
@@ -41,11 +45,12 @@ def bejelentkezes(request):
             password = form.cleaned_data['password']
             user = authenticate(request, username=username, password=password)
 
-            if user and user.raktaros==True:
-                login(request, user)
-                messages.success(request, f' Hello {username.title()}, ujra itt!')
-                
-                return redirect('raktar')
+            if user and user.raktaros == True:
+                       
+               login(request, user)
+               messages.success(request, f' Hello {username.title()}, ujra itt!')                
+               return redirect('raktar')
+            
             elif user and user.lezervago == True:
                 login(request, user)
                 messages.success(request, f' Hello {username.title()}, ujra itt!')
