@@ -1,5 +1,5 @@
 # NZ_NYZviszga
-Német Zoltán Nyisztor Zoltán Vizsgaremek dokumentáció 
+Német Zoltán Nyisztor Zoltán Kovács Marcell Vizsgaremek dokumentáció 
 
  
 
