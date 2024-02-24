@@ -31,9 +31,8 @@ class KiadasForm(forms.ModelForm):
                   'vastagsag_valaszt',
                   'meret_valaszt',
                   'darabszam',
-                  'polc_szama',
-                  'rogzit_datum' )
-        widgets={'rogzit_datum': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
+                  'kiadasdatuma' )
+        widgets={'kiadasdatuma': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
 
 class MegrendelesForm(forms.ModelForm):
 
@@ -49,3 +48,4 @@ class MegrendelesForm(forms.ModelForm):
                  'datumBefejezes': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
 
 
+#

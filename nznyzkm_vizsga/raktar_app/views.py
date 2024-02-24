@@ -12,7 +12,7 @@ from django.contrib.auth import login, logout, authenticate
 #from .admin import Dolgozo
 from django.db.models import F
 from django.contrib.auth.models import User
-
+from django.utils import timezone
 
 
 @api_view(['GET'])
@@ -73,12 +73,22 @@ def bevitel_kiadas( request):
                                             vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                             meret_valaszt = bevform.cleaned_data['meret_valaszt'],                                         
                                             ).exists():
-                    Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                    '''Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                             vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                            meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])
-                    messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
-                    bevform = BevitelForm()
-                    kiform = KiadasForm()
+                                            meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])'''
+                    if bevform.cleaned_data['rogzit_datum'] != Alapanyag.objects.get(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                                                                                    vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                                                                                    meret_valaszt = bevform.cleaned_data['meret_valaszt'],).rogzit_datum:
+                        Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                                                vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                                                meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
+                                                                                                        rogzit_datum=bevform.cleaned_data['rogzit_datum'])
+                        bevform = BevitelForm()
+                        kiform = KiadasForm()
+                    else:
+                        messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
+                        bevform = BevitelForm()
+                        kiform = KiadasForm()
                 else:
                     ujanyag = Alapanyag.objects.create(
                         anyagtipusa = bevform.cleaned_data['anyagtipusa'],
@@ -108,20 +118,21 @@ def bevitel_kiadas( request):
                                             'kiform': kiform })
 
 def megrendeles(request):
-    dolgform = MegrendelesForm()
+    megrform = MegrendelesForm()
     megrendelesek_lista = Megrendelesek.objects.all() 
     if request.method == 'POST':
-        dolgform = MegrendelesForm(request.POST)
-        if dolgform.is_valid():
-            if Megrendelesek.objects.filter(munkalap_szama = dolgform.cleaned_data['munkalap_szama']).exists():
+        megrform = MegrendelesForm(request.POST)
+        if megrform.is_valid():
+            if Megrendelesek.objects.filter(munkalap_szama = megrform.cleaned_data['munkalap_szama']).exists():
                messages.error(request, f'Ezzel a munkalap számmal már van rögzítve megrndelés!!!!!!')
-               dolgform = MegrendelesForm() 
+               megrform = MegrendelesForm() 
             else:
-                dolgform.save()
-                dolgform = MegrendelesForm()  
+
+                megrform.save()
+                megrform = MegrendelesForm()  
 
     return render(request, 'megrendeles.html', { 'object_list':megrendelesek_lista,
-                                            'dolgform': dolgform})
+                                            'dolgform': megrform})
 
 def logout_page(request):
     logout(request)

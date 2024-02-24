@@ -46,6 +46,7 @@ class Alapanyag(models.Model):
      darabszam = models.PositiveIntegerField(default=0)
      polc_szama = models.PositiveIntegerField(default=0)
      rogzit_datum = models.DateField()
+     kiadasdatuma = models.DateTimeField()
      
 
      def __str__(self):
