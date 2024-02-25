@@ -1,6 +1,6 @@
-from django.shortcuts import render, HttpResponseRedirect
+from django.shortcuts import render
 from django.http import HttpResponse
-from .models import Megrendelesek, Alapanyag,CustomUser
+from .models import Megrendelesek, Alapanyag
 from .serializers import MegrendelesekSerializer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
@@ -9,11 +9,11 @@ from django.shortcuts import render,redirect
 from .forms import LoginForm,BevitelForm, KiadasForm, MegrendelesForm
 from django.contrib import messages
 from django.contrib.auth import login, logout, authenticate
-#from .admin import Dolgozo
 from django.db.models import F
-from django.contrib.auth.models import User
 from django.utils import timezone
-
+from django.conf import settings
+from qrcode import *
+import qrcode
 
 @api_view(['GET'])
 def getMegrendelesek(request):
@@ -23,10 +23,16 @@ def getMegrendelesek(request):
     return Response(serialized.data)
 
 
-
 def home(request):
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    if x_forwarded_for:
+        ip = x_forwarded_for.split(',')[0]
+    else:
+        ip = request.META.get('REMOTE_ADDR')
+        
+    return render(request, 'home.html',{'ip': ip})
 
-    return render(request, 'home.html')
+
 
 def bejelentkezes(request):
     
@@ -138,15 +144,8 @@ def logout_page(request):
     logout(request)
     return redirect('login')
 
-class HomeView(ListView):
-    model = Megrendelesek
-    template_name = 'home.html'
-class DolgozoView(ListView):
-    model = Megrendelesek
-    template_name = 'megrendeles.html'
-'''class RaktarView(ListView):
-    model = Alapanyag 
-    template_name = 'raktar.html' '''
+
+
 
 
 

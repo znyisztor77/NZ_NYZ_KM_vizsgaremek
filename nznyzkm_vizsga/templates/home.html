@@ -1,27 +1,62 @@
-{% extends 'base.html'%}
-{% load static %}
+{% load qr_code %}
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+      body{
+        margin: 0;  
+        
+      }    
+      #udvozlet{
+        background-color: aqua;
+        text-align: center;
+      }
+      #qr{
+        background-color: rgb(231, 166, 68);
+        text-align: center;
+      }
+    </style>
+</head>
+<body>
+  
+  <div class="container">
 
-{% block content%}
-    <h1>Üdvözöllek a ARBA-LemezKez oldalán</h1>
-    <h1>Jelentkezz be az alkalmazás használatához</h1>
-    {% if user.is_authenticated%}
-    Hello {{user.username}}!
+    <div  id="udvozlet">
+      
+      <h1>Üdvözöllek a LemezKez  raktár kezelés oldalán</h1>
+      <h1>Jelentkezz be az alkalmazás használatához</h1>
+      {% if user.is_authenticated%}
+      Hello {{user.username}}!
       <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
         <button type="submit">Kijelentkezés</button>
-      </form>
-
+      </form>    
+      {%else%}
       
-    {%else%}
       <h2>Nem vagy bejelentkezeve!</h2>
       <h3><a href="{%url 'login'%}">Bejelentkezés</a></h3>
-     
-    {%endif%}
-      <!--form method="POST">
-        {% csrf_token%}
-        <h2>Bevitel</h2>
-        {{bevform.as_p}}
-        <button type="submit">Rögzítés</button>
-        
-      </form-->
-      {%endblock%}    
+      
+      {%endif%}
+    </div>
+    
+
+    <div>
+      
+    </div>
+    <div id="qr">   
+      <p></p>
+      <h3>A kiszolgáló Ip cime: {{ip}}</h3>
+      
+      {% qr_from_data ip size='M' %}
+      </div>
+    </div>
+  </div>
+  
+</body>
+</html>
+
+
+ 

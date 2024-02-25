@@ -1,12 +1,20 @@
-{% extends 'base.html'%}
-
-{% block content %}
-<form method="POST" novalidate>
-        {% csrf_token%}
-        <h2>Bejelentkezés</h2>
-        {{form.as_p}}
-        <input type="submit" value="Bejelentkezés"/>
-
-</form>
-
-{% endblock content%}
+{% load static %}
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Login</title>
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+        <form method="POST" novalidate>
+                {% csrf_token%}
+                <h2>Bejelentkezés</h2>
+                {{form.as_p}}
+                <input type="submit" value="Bejelentkezés"/>
+        
+        </form>
+        
+</body>
+</html>

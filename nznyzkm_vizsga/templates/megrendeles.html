@@ -1,56 +1,67 @@
-{% extends 'base.html'%}
-
-{% block content%}
-
-    {% if user.is_authenticated and user.lezervago == True%}
-    Hello {{user.username}}!
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Kijelentkezés</button>
-      </form>
-      <h1>Megrendeles oldal</h1>
-      <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-      <form method="POST">
-        {% csrf_token%}
-        <h2>Bevitel</h2>
-        {{megrform.as_p}}
-        <input type="submit" value="Rögzítés"/>
-        
+{% load static %}
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Megrendelés</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+  
+  {% if user.is_authenticated and user.lezervago == True%}
+  Hello {{user.username}}!
+  <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <button type="submit">Kijelentkezés</button>
     </form>
-      <table>
-          <tr>
-              <th>id</th>
-              <th>Munkalap száma</th>
-              <th>Dolgozó</th>
-              <th>Alapanyag</th>
-              <th>Kezdés dátuma</th>
-              <th>Befejezés dátuma</th>              
-              <th>Felhasznált mennyiség</th>
-              <th></th>
-
-              
-            </tr>
-            {% for adatok in object_list%}
+    <h1>Megrendeles oldal</h1>
+    <ul class="messages">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  
+    <form method="POST">
+      {% csrf_token%}
+      <h2>Bevitel</h2>
+      {{megrform.as_p}}
+      <input type="submit" value="Rögzítés"/>
+      
+  </form>
+    <table>
         <tr>
-            <td>{{adatok.id}}</td>
-            <td>{{adatok.munkalap_szama}}</td>
-            <td>{{adatok.dolgozo}}</td>
-            <td>{{adatok.alapanyag}}</td>
-            <td>{{adatok.datumKezdes}}</td>
-            <td>{{adatok.datumBefejezes}}</td>
-            <td>{{adatok.felhasznaltMennyiseg}} db</td>
-            <td><button type="button">Nyomtatás</button></td>
-        </tr>
-        
-        {% endfor %}
-    </table>
-    
-    {%else%}
-    <p>Nem vagy bejelentkezeve!</p>
-    <a href="{%url 'login'%}">Bejelentkezés</a>
-    {%endif%}
-{%endblock%}    
+            <th>id</th>
+            <th>Munkalap száma</th>
+            <th>Dolgozó</th>
+            <th>Alapanyag</th>
+            <th>Kezdés dátuma</th>
+            <th>Befejezés dátuma</th>              
+            <th>Felhasznált mennyiség</th>
+            <th></th>
+  
+            
+          </tr>
+          {% for adatok in object_list%}
+      <tr>
+          <td>{{adatok.id}}</td>
+          <td>{{adatok.munkalap_szama}}</td>
+          <td>{{adatok.dolgozo}}</td>
+          <td>{{adatok.alapanyag}}</td>
+          <td>{{adatok.datumKezdes}}</td>
+          <td>{{adatok.datumBefejezes}}</td>
+          <td>{{adatok.felhasznaltMennyiseg}} db</td>
+          <td><button type="button">Nyomtatás</button></td>
+      </tr>
+      
+      {% endfor %}
+  </table>
+  
+  {%else%}
+  <p>Nem vagy bejelentkezeve!</p>
+  <a href="{%url 'login'%}">Bejelentkezés</a>
+  {%endif%}
+</body>
+</html>
+
+

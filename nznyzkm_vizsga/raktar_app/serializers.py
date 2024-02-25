@@ -13,10 +13,9 @@ class CustomUserSerializer(serializers.ModelSerializer):
 class MegrendelesekSerializer(serializers.ModelSerializer):
     dolgozo = CustomUserSerializer( read_only=True)
     class Meta:
-        #fields = '__all__'
+
         model = Megrendelesek
         fields = ['dolgozo', 'munkalap_szama', 'alapanyag','datumKezdes','datumBefejezes', 'felhasznaltMennyiseg']
-        
         depth = 1
         
 
