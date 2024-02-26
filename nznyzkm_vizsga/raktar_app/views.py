@@ -138,7 +138,7 @@ def megrendeles(request):
                 megrform = MegrendelesForm()  
 
     return render(request, 'megrendeles.html', { 'object_list':megrendelesek_lista,
-                                            'dolgform': megrform})
+                                            'megrform': megrform})
 
 def logout_page(request):
     logout(request)
