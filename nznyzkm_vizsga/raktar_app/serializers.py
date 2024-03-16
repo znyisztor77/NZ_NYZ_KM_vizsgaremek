@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 class CustomUserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
-        fields = ['username']
+        fields = ['username','first_name','last_name']
 
 class MegrendelesekSerializer(serializers.ModelSerializer):
     dolgozo = CustomUserSerializer( read_only=True)
