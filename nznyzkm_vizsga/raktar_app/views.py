@@ -15,6 +15,11 @@ from django.conf import settings
 
 
 
+
+#from qr_code import *
+#import qr_code
+
+
 @api_view(['GET'])
 def getMegrendelesek(request):
     megrendelesek =Megrendelesek.objects.all() 
