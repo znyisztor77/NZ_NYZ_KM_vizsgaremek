@@ -1,7 +1,9 @@
 # NZ_NYZ_KM_viszga
-![alt text](https://github.com/NZ_NYZ_KM_vizsgaremek/projekt terv fájlok
+![alt text](https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/projekt terv fájlok
 /LemezKEZ_logo.png/image.jpg?raw=true)
 Német Zoltán Nyisztor Zoltán Kovács Marcell Vizsgaremek
+![Image Alt Text]([URL](https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/projekt terv fájlok
+/LemezKEZ_logo.png) 
 
 Windows:
 ---
