@@ -29,10 +29,6 @@ Linux
 
 
 
-  
-Js szerk teszt KM 0317
-
-
 
 
 
