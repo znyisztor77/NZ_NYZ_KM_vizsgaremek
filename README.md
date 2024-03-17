@@ -1,7 +1,7 @@
 # NZ_NYZ_KM_viszga
 Német Zoltán Nyisztor Zoltán Kovács Marcell Vizsgaremek
 
-![Image Alt Text](https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_f%C3%A1jlok/LemezKEZ_logo.png width="250")
+![Image Alt Text](https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_f%C3%A1jlok/LemezKEZ_logo.png)
 
 Windows:
 ---
