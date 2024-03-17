@@ -1,66 +1,104 @@
-{% load qr_code %}
+{% load static %}
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
-    <style>
-      body{
-        margin: 0;  
-        
-      }    
-      #udvozlet{
-        background-color: aqua;
-        text-align: center;
-      }
-      #qr{
-        background-color: rgb(231, 166, 68);
-        text-align: center;
-      }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="description" content="LemezKez - Raktári Lemezkezelés Vizsgaremek">
+  <meta name="keywords" content="HTML, CSS, JavaScript, Django">
+  <meta name="author" content="Németh Zoltán, Nyisztor Zoltán, Kovács Marcell">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+  <!--bootstrap.min belinkelése-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!--saját css linkelése-->
+  <link rel="stylesheet" href="{% static 'css/home.css' %}">
+
+  <title>LemezKez - HOME</title>
+
 </head>
+
 <body>
-  
+
+
+  <!-- Flex Container -->
   <div class="container">
 
-    <div  id="udvozlet">
-      
-      <h1>Üdvözöllek a LemezKez  raktár kezelés oldalán</h1>
-      <h1>Jelentkezz be az alkalmazás használatához</h1>
-      {% if user.is_authenticated%}
-      Hello {{user.username}}!
-      <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Kijelentkezés</button>
-      </form>    
-      {%else%}
-      
-      <h2>Nem vagy bejelentkezeve!</h2>
-      <h3><a href="{%url 'login'%}">Bejelentkezés</a></h3>
-      
-      {%endif%}
-    </div>
-    
 
-    <div>
-      
-    </div>
-    <div id="qr">   
-      <p></p>
-      <h3>A kiszolgáló Ip cime: {{ip}}</h3>
-      <h3>A kiszolgáló portja: {{port}}</h3>
-      <h3> {{qr}} </h3>
+    <h1>Üdvözöllek a LemezKez raktári lemezkezelés oldalán!</h1>
+    {% if user.is_authenticated%}
+    Belépve, mint {{user.username}} !
+    <form action="{% url 'logout' %}" method="post">
+      {% csrf_token %}
+      <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+          type="submit">Kijelentkezés</button></div>
+    </form>
+    {%else%}
 
+    <div class="button" id="button-sargacsikkal">
+      <div id="translate"></div>
+      <a href="{%url 'login'%}">Bejelentkezés</a>
+    </div>
+
+    <!-- End Container -->
+
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+
+    {%endif%}
+
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+    <div class="container mt-5">
+      <div class="row">
+        <div class="col-md-6">
+          <h2>Raktáros Feladatok:</h2>
+          <ul>
+            <li>Anyagok előkészítése a vágáshoz</li>
+            <li>Beérkezett áruk átvétele és rögzítése</li>
+            <li>Raktárkészlet nyomon követése</li>
+            <li>Rendelések összekészítése és kiadása</li>
+            <li>Raktári rend fenntartása</li>
+          </ul>
+        </div>
+        <div class="col-md-6">
+          <h2>Lézervágó Feladatok:</h2>
+          <ul>
+            <li>Anyagok előkészítése a vágáshoz</li>
+            <li>Lézervágó gép beállítása</li>
+            <li>Sugárközpont ellenőrzése</li>
+            <li>Vágási rajzok ellenőrzése</li>
+            <li>Méret, illetve minőségellenőrzés</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+
+    <!-- QR KÓD START -->
+    <div class="qr_code">
+      <div id="qrkod_design" class="bg-warning text-dark">
+        <p>QR KÓD beolvasása: </p>
+      </div>
+      {% load qr_code %}
+      <!-- ip cim ha kellene {{ip}} -->
       {% qr_from_data ip size='M' %}
     </div>
-    <!--{% qr_from_data qr size='M' %}-->
-    
-    </div>
+    <!-- QR KÓD END -->
+
   </div>
-  
+
 </body>
+
 </html>
-
-
- 

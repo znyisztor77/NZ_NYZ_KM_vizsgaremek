@@ -1,87 +1,204 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
     <meta charset="UTF-8">
+    <meta name="description" content="LemezKez - Raktári Lemezkezelés Vizsgaremek">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Django">
+    <meta name="author" content="Németh Zoltán, Nyisztor Zoltán, Kovács Marcell">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raktár</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    <!--bootstrap.min belinkelése-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <!--saját css linkelése-->
+    <link rel="stylesheet" href="{% static 'css/raktar.css' %}">
+
+    <title>LemezKez - Megrendelés felvétele</title>
 </head>
+
 <body>
-    
-    {% if user.is_authenticated and user.raktaros == True%}
-    <h1>Hello {{user.username}}!</h1> 
-    <form action="{% url 'logout' %}" method="post">
-        {% csrf_token %}
-        <button type="submit">Kijelentkezés</button>
-    </form>
-    {% if messages %}
-    {% endif %}
-    
-    <h1>Raktár oldal</h1>
-    <ul class="messages">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    
-    <div class="raktarcontainer">
-    
-    <div class="raktaroldalsav">
-        <form method="POST">
-            {% csrf_token%}
-            <h2>Bevitel</h2>
-            {{bevform.as_p}}
-            <button name="bevitel" type="submit">Rögzítés</button>
-            <!--input type="submit" value="Rögzítés"/-->
-            
+
+
+
+
+    <!-- NAVBAR menüsáv ELEJE -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+
+            <a class="navbar-logo1" href=""><img src="/static/pictures/lemezkez-logo-navbar-forklift.png"
+                    alt="LemezKez Logó" title="LemezKez Logója">
+                <a class="navbar-logo2" href=""><img src="/static/pictures/lemezkez-logo-navbar.png" alt="LemezKez Logó"
+                        title="LemezKez Logója">
+
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/">Főoldal</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:8000/naptar">Naptár</a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link" href="http://127.0.0.1:8000/login">Kijelentkezés</a>
+                            </li>
+                        </ul>
+
+                    </div>
+        </div>
+    </nav>
+    <!-- NAVBAR menüsáv VÉGE -->
+
+
+
+
+
+
+    <!-- START megrendeles oldal tartalma -->
+
+    <div id="kozepre" class="container-fluid">
+
+
+
+
+        <img class="warning-pics" src="/static/pictures/user_icon_raktaros-feher.png" alt="raktáros felhasználói ikon" title="raktáros felhasználói ikon">
+
+
+        {% if user.is_authenticated and user.raktaros == True %}
+        <div class="loggedin">
+            <span> Üdv: {{user.username}} !</span>
+        </div>
+
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+                    type="submit">Kijelentkezés</button></div>
         </form>
-        <hr>
-        <form method="POST">
-            {% csrf_token%}
-            <h2>Kiadás</h2>
-            {{kiform.as_p}}
-            <button name="kiad" type="submit">Rögzítés</button>
-            <!--input type="submit" value="Rögzítés"/-->
-        </form>
-    </div> <!--raktar oldalsav vége-->
-    
-    <div class="raktartartalom">     
-            <table>
-                <tr>
-                    <th>id</th>
-                    <th>Anyag tipusa</th>
-                    <th>Vastagsag</th>
-                    <th>Meret</th>
-                    <th>Darabszam</th>
-                    <th>Polc száma</th>
-                    <th>Rögzítés dátuma</th>
-                   
-                </tr>
-                
-                {% for adatok in object_list%}
-                <tr>
-                    <td>{{adatok.id}}</td>
-                    <td>{{adatok.anyagtipusa}}</td>
-                    <td>{{adatok.vastagsag_valaszt}}</td>
-                    <td>{{adatok.meret_valaszt}}</td>
-                    <td>{{adatok.darabszam}}</td>
-                    <td>{{adatok.polc_szama}}</td>
-                    <td>{{adatok.rogzit_datum}}</td>
-                    
-                </tr>
-                
-                
-                
-                {% endfor %}
-            </table>  
-        </div><!--Raktar tartalom vége-->>
+
+
     </div>
-    {%else%}
-    <p>Nem vagy bejelentkezeve!</p>
-    <a href="{%url 'login'%}">Bejelentkezés</a>
-    {%endif%}
+
+
+    <div id="kozepre" class="container-fluid">
+
+
+        <!--elválasztó-->
+        <div class="sarga-csik"></div>
+
+        {% if messages %}
+        <!--nem kell üzenet-->
+        {% endif %}
+
+        <h1>Lehetőség van a beérkezett lemeztáblák rögzítésére, illetve a felhasználni kívánt lemeztáblák kiadására is.</h1>
+
+
+
+        <div class="raktarcontainer">
+
+            <div class="raktaroldalsav">
+                <form method="POST">
+                    {% csrf_token%}
+                    <h2>Bevitel</h2>
+                    {{bevform.as_p}}
+                    <button name="bevitel" type="submit">Rögzítés</button>
+                    <!--input type="submit" value="Rögzítés"/-->
+
+                </form>
+                <hr>
+                <form method="POST">
+                    {% csrf_token%}
+                    <h2>Kiadás</h2>
+                    {{kiform.as_p}}
+                    <button name="kiad" type="submit">Rögzítés</button>
+                    <!--input type="submit" value="Rögzítés"/-->
+                </form>
+            </div> <!--raktar oldalsav vége-->
+
+            <div class="raktartartalom">
+                <table>
+                    <tr>
+                        <th>id</th>
+                        <th>Anyag tipusa</th>
+                        <th>Vastagsag</th>
+                        <th>Meret</th>
+                        <th>Darabszam</th>
+                        <th>Polc száma</th>
+                        <th>Rögzítés dátuma</th>
+
+                    </tr>
+
+                    {% for adatok in object_list%}
+                    <tr>
+                        <td>{{adatok.id}}</td>
+                        <td>{{adatok.anyagtipusa}}</td>
+                        <td>{{adatok.vastagsag_valaszt}}</td>
+                        <td>{{adatok.meret_valaszt}}</td>
+                        <td>{{adatok.darabszam}}</td>
+                        <td>{{adatok.polc_szama}}</td>
+                        <td>{{adatok.rogzit_datum}}</td>
+
+                    </tr>
+
+
+
+                    {% endfor %}
+                </table>
+            </div><!--Raktar tartalom vége-->>
+
+            
+        </div>
+
+
+        
+    <!-- START bejelentkezés sikeres üzenet -->
+    <ul class="log-informacio">
+        {% for message in messages %}
+        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+          {% endfor %}
+      </ul>
+      <!-- END bejelentkezés sikeres üzenet -->
+
+      
+
+        {%else%}
+        <h2>Be vagy jelentkezve, de nincs jogosultságod a "RAKTÁR" oldal megtekintéséhez!</h2>
+
+        <!--elválasztó-->
+        <div class="sarga-csik"></div>
+        <!--elválasztó-->
+
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+                    type="submit">Kijelentkezés</button></div>
+        </form>
+
+        {%endif%}
+
+        <!-- END Oldal tartalma -->
+
+
+
+
+
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+        <!-- Bootstrap JavaScript betöltése -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+            crossorigin="anonymous"></script>
 
 </body>
-</html>
 
+</html>

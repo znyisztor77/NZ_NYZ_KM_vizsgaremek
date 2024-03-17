@@ -1,0 +1,217 @@
+html,
+body {
+  background: #e5eaee;
+  margin: 0;
+  padding: 0;
+  font-family: calibri, sans-serif;
+}
+
+#container {
+  width: 800px;
+  padding: 60px;
+  margin: 0 auto;
+}
+
+
+/*calendar*/
+
+#calendar {
+  width: 380px;
+  background: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+  float: left;
+}
+
+.ui-datepicker {
+  margin: 30px 20px;
+  font-size: 22px;
+}
+
+.ui-datepicker a {
+  text-decoration: none;
+  color: #6a7883;
+}
+
+.ui-datepicker table {
+  width: 100%;
+}
+
+
+/*Styling the Header Section*/
+
+.ui-datepicker-header {
+  height: 60px;
+  border-bottom: 1px solid #c6cdd2;
+}
+
+.ui-datepicker-title {
+  font-size: 32px;
+  color: #e5eaee;
+  text-align: center;
+}
+
+.ui-datepicker-prev,
+.ui-datepicker-next {
+  width: 12px;
+  height: 12px;
+  text-indent: 9999px;
+  border-radius: 100%;
+  cursor: pointer;
+  overflow: hidden;
+  margin-top: -12px;
+}
+
+.ui-datepicker-prev {
+  float: left;
+  margin-left: 12px;
+}
+
+.ui-datepicker-prev:after {
+  transform: rotate(45deg);
+}
+
+.ui-datepicker-next {
+  float: right;
+  margin-right: 12px;
+}
+
+.ui-datepicker-next:after {
+  transform: rotate(-135deg);
+}
+
+.ui-datepicker-prev:after,
+.ui-datepicker-next:after {
+  content: '';
+  position: absolute;
+  display: block;
+  width: 12px;
+  height: 12px;
+  border-left: 3px solid #6a7883;
+  border-bottom: 3px solid #6a7883;
+}
+
+.ui-datepicker-calendar thead tr th span {
+  display: block;
+  width: 40px;
+  color: #bdc5cb;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 50px;
+}
+
+
+/*Styling the Dates*/
+
+.ui-state-default {
+  display: block;
+  color: #f26a63;
+  line-height: 40px;
+  text-align: center;
+  font-size: 16px;
+  width: 40px;
+}
+
+.ui-datepicker-other-month .ui-state-default {
+  color: #bdc5cb;
+}
+
+
+/*active day*/
+
+.ui-state-default:hover {
+  background: #6a7883;
+  color: #ffffff;
+  border: 1px solid #6a7883;
+  border-radius: 99px;
+  position: relative;
+  margin: -1px;
+}
+
+.ui-datepicker-calendar .ui-state-highlight {
+  color: #f26a63;
+  font-weight: bold;
+}
+
+.ui-datepicker-calendar .ui-state-active {
+  background: #6a7883;
+  color: #ffffff;
+  border: 1px solid #6a7883;
+  border-radius: 99px;
+  position: relative;
+  margin: -1px;
+}
+
+
+/*weather*/
+
+#weather {
+  width: 320px;
+  background: #ffffff;
+  border-radius: 5px;
+  overflow: hidden;
+  float: right;
+  padding: 20px;
+}
+
+#today {
+  margin: 0 auto;
+  width: 120px;
+}
+
+#temp {
+  font-size: 42px;
+  font-weight: 400;
+  color: #6a7883;
+  display: inline-block;
+}
+
+#icon {
+  font-size: 42px;
+  font-weight: 400;
+  color: #6a7883;
+  display: inline-block;
+  margin: 0 5px;
+  ;
+}
+
+#city {
+  font-size: 22px;
+  color: #bdc5cb;
+  text-align: center;
+  margin: 0;
+  line-height: 40px;
+  padding-bottom: 10px;
+}
+
+#week {
+  border-top: 1px solid #c6cdd2;
+  padding-top: 10px;
+}
+
+#weekdays {
+  font-size: 22px;
+  color: #bdc5cb;
+  margin: 0;
+  line-height: 40px;
+}
+
+.icons {
+  text-align: center;
+  font-size: 38px;
+  color: #6c7a85;
+}
+
+#forecast {
+  font-size: 22px;
+  color: #6c7a85;
+  margin: 0;
+  margin-top: 15px;
+}
+
+.gap {
+  display: inline-block;
+  width: 80px;
+  text-align: center;
+}
+

@@ -1,0 +1,151 @@
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+/* FONT - saját roboto mod. */
+.roboto-condensed-sajat {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+}
+
+
+/* SZÖVEGEK formázása*/
+p {
+    color: white;
+    text-align: center;
+}
+
+
+h3 {
+    margin-top: 10px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    /* teljes szélességű blokk legyen, amely középre igazítja magát */
+    width: fit-content;
+    /*csak annyi helyet foglaljon el, amennyi a tartalma szélességéhez szükséges.*/
+}
+
+
+
+/* FŐ DESIGN */
+.login-sotethatteres {
+    background-color: #ffd54f;
+    background-size: cover;
+    /*position: relative;*/
+    display: flex;
+    justify-content: center;
+    /* Vízszintes középre igazítás */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    height: 100vh;
+    /* Teljes képernyős magasság */
+}
+
+/* FORM design */
+.login-sotethatteres form {
+    max-width: 400px;
+    width: 90%;
+    background-color: #161d24;
+    padding: 35px;
+    border-radius: 5px;
+    box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.2);
+
+    position: absolute;
+    /* abszolút pozícióban lévő elem középre igazítása  */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* az elem függőleges és vízszintes középre igazítása */
+}
+
+
+
+/* GOMB */
+.login-sotethatteres .btn-primary {
+    background: #f2bd00;
+    border: none;
+    border-radius: 4px;
+    padding: 11px;
+    box-shadow: none;
+    margin-top: 26px;
+    text-shadow: none;
+    outline: none;
+}
+
+
+/* GOMB HOVER FEKETE */
+.login-sotethatteres .btn-primary:hover,
+.login-sotethatteres .btn-primary:active {
+    background: black;
+    outline: none;
+}
+
+
+/* Elválasztó csík design */
+.sarga-csik {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    width: 100%;
+    height: 1px;
+    background-color: #f2bd00;
+}
+
+
+/* KÉPEK FORMÁZÁSA: */
+.kep_design img {
+    border-radius: 4px;
+    width: 100px;
+}
+
+.kep_design_targonca img {
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+/* QR KÓD formázása */
+.qr_code {
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+    /* Vízszintes középre igazítás */
+    align-items: center;
+    /* Függőleges középre igazítás */
+}
+
+#qrkod_design {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    column-gap: 20px;
+    border-radius: none;
+}
+
+
+
+/* Elfelejtett jelszó lent */
+.elfelejtett {
+    margin-top: 5px;
+    margin-bottom: -15px;
+    display: block;
+    text-align: center;
+    font-size: 14px;
+    color: white;
+    opacity: 0.9;
+    text-decoration: none;
+}
+
+.elfelejtett:hover {
+    text-decoration: none;
+    color: #f2bd00;
+}

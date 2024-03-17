@@ -1,0 +1,282 @@
+/*ROBOTO betűtípus használata*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #161D24;
+    color: white;
+}
+
+
+
+.roboto-condensed-sajat {
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 500;
+    font-style: normal;
+  }
+
+
+
+.login-sotethatteres {
+    background-color: #ffd54f;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    /* Vízszintes középre igazítás */
+    align-items: center;
+    /* Függőleges középre igazítás */
+    height: 100vh;
+    /* Teljes képernyős magasság */
+}
+
+
+.login-sotethatteres form {
+    max-width: 400px;
+    width: 90%;
+    background-color: #161d24;
+    padding: 40px;
+    border-radius: 4px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    color: white;
+    box-shadow: 3px 3px 4px rgba(0, 0, 0, 0.2);
+    transform: translate(-50%, -50%);
+}
+
+
+
+.login-sotethatteres form .btn-primary:hover,
+.login-sotethatteres form .btn-primary:active {
+    background: black;
+    outline: none;
+}
+
+
+.login-sotethatteres form .btn-primary {
+    background: #f2bd00;
+    border: none;
+    border-radius: 4px;
+    padding: 11px;
+    box-shadow: none;
+    margin-top: 26px;
+    text-shadow: none;
+    outline: none;
+}
+
+
+.login-sotethatteres form .forgot:hover,
+.login-sotethatteres form .forgot:active {
+    opacity: 1;
+    text-decoration: none;
+}
+
+
+.login-sotethatteres form .btn-primary:active {
+    transform: translateY(1px);
+}
+
+
+
+/*text formázása*/
+p {
+    color: white;
+    text-align: center;
+}
+
+
+#hely {
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    column-gap: 20px;
+    border-radius: none;
+}
+
+h4 {
+    text-align: center;
+    color: grey;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+#top {
+    margin-top: 20px;
+}
+
+
+
+
+.navbar {
+    background-color: #F2BD00;
+}
+
+
+.navbar-logo1 img {
+    max-height: 120px;
+    height: auto;
+    /* Automatikus magasság beállítása az arányos méretekhez */
+    margin-right: 10px;
+    /* Opcionális: térés a logó és a szöveg között */
+}
+
+.navbar-logo2 img {
+    max-height: 110px;
+    height: auto;
+    /* Automatikus magasság beállítása az arányos méretekhez */
+    margin-right: 10px;
+    /* Opcionális: térés a logó és a szöveg között */
+}
+
+#kozepre {
+    margin-top: 30px;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+
+table {
+    margin-top: 20px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    /* A táblázatot középre igazítjuk */
+    border-collapse: collapse;
+    /* Az oszlopok közti szegélyeket egyesítjük */
+    width: 85%;
+    /* a táblázat szélesség */
+    padding-top: 50px;
+}
+
+th,
+td {
+    border: 1px solid white;
+    /* Oszlopok és sorok szegélye */
+    padding: 8px;
+    /* Belbecs */
+}
+
+
+h1 {
+    text-align: center;
+    color: grey;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h2 {
+    padding-top: 20px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.warning-pics {
+    max-width: 10%;
+}
+
+.warning-pics2 {
+    max-width: 40%;
+    display: flex;
+    justify-content: center; /* vízszintesen középre igazítás */
+    align-items: center; /* függőlegesen középre igazítás */
+}
+
+.loggedin {
+    font-weight: bold;
+    color: white;
+    font-size: 18px;
+    font-family: 'Roboto';
+}
+
+
+
+
+
+
+/* Belépve mint | SÁRGA design */
+
+span {
+    font-family: 'Roboto';
+    font-size: 2em;
+    transform: translate(-70%, -70%);
+    background-image: radial-gradient(#F2BD00, #F2BD00);
+    background-size: 100% 5px;
+    background-repeat: no-repeat;
+    background-position: 100% 0%;
+    transition: background-size .5s, background-position .5s ease-in-out;
+}
+
+span:hover {
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+    transition: background-position .7s, background-size .5s ease-in-out;
+}
+
+
+
+/* Elválasztó csík desgin */
+.sarga-csik {
+    margin-top: 25px;
+    margin-bottom: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 5px;
+    background-color: #f2bd00;
+}
+
+
+.sarga-csik-kicsi {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+    height: 5px;
+    background-color: #f2bd00;
+}
+
+
+#kijelentkezesGomb{
+    margin-top: 10px;
+}
+
+#rogzitesGomb{
+    margin-top: 20px;
+}
+
+
+
+
+.table-header {
+    padding: auto;
+    text-align: left;
+    font-size: 16px;
+    background-color: #F2BD00;
+    border: 4px double white;
+    margin-bottom: 10px; /* A táblázat fejlécének alsó margója */
+}
+
+.table-row {
+    padding: 5px;
+    text-align: left;
+    font-size: 15px;
+    border: 1px solid #FFFFFF;
+    margin-bottom: 10px; /* a táblázatok közötti hézag */
+}
+
+
+
+.log-informacio{
+    text-align: center;
+    color:#F2BD00;
+    list-style-type: none;
+}

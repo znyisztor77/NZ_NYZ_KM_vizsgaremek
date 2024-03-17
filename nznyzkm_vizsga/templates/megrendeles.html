@@ -1,70 +1,197 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="hu">
+
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="LemezKez - Raktári Lemezkezelés Vizsgaremek">
+  <meta name="keywords" content="HTML, CSS, JavaScript, Django">
+  <meta name="author" content="Németh Zoltán, Nyisztor Zoltán, Kovács Marcell">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Megrendelés</title>
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+  <!--bootstrap.min belinkelése-->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+  <!--saját css linkelése-->
+  <link rel="stylesheet" href="{% static 'css/megrendeles.css' %}">
+
+  <title>LemezKez - Megrendelés felvétele</title>
 </head>
+
 <body>
-  
-  {% if user.is_authenticated and user.lezervago == True%}
-  Hello {{user.username}}!
-  
+
+
+  <!-- NAVBAR menüsáv ELEJE -->
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container">
+
+      <a class="navbar-logo1" href=""><img src="/static/pictures/lemezkez-logo-navbar-forklift.png" alt="LemezKez Logó"
+          title="LemezKez Logója">
+        <a class="navbar-logo2" href=""><img src="/static/pictures/lemezkez-logo-navbar.png" alt="LemezKez Logó"
+            title="LemezKez Logója">
+
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="http://127.0.0.1:8000/">Főoldal</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/naptar">Naptár</a>
+              </li>
+
+              <li class="nav-item">
+                <a class="nav-link" href="http://127.0.0.1:8000/login">Kijelentkezés</a>
+              </li>
+            </ul>
+
+          </div>
+    </div>
+  </nav>
+  <!-- NAVBAR menüsáv VÉGE -->
+
+
+
+  <div id="kozepre" class="container-fluid">
+
+
+    <!-- START megrendeles oldal tartalma -->
+    <img class="warning-pics" src="/static/pictures/laser-cutting-machine-feher.png" alt="felhasználói ikon">
+
+    {% if user.is_authenticated and user.lezervago == True %}
+    <div class="loggedin">
+      <span> Üdv: {{user.username}} !</span>
+    </div>
+
     <form action="{% url 'logout' %}" method="post">
       {% csrf_token %}
-      <button type="submit">Kijelentkezés</button>
+      <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+          type="submit">Kijelentkezés</button></div>
     </form>
 
-    <h1>Megrendeles oldal</h1>
 
-    <ul class="messages">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-      {% endfor %}
-    </ul>
-  
+  </div>
+
+
+  <div id="kozepre" class="container-fluid">
+
+
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+    <h1 class="roboto-condensed-sajat">Az űrlap segítségével új megrendeléseket lehet hozzáadni!</h1>
+
     <form method="POST">
       {% csrf_token%}
       <h2>Bevitel</h2>
       {{megrform.as_p}}
-      <input type="submit" value="Rögzítés"/>      
+
+      <div class="form-group" id="rogzitesGomb"><button class="btn btn-block btn btn-warning">Adatlap rögzítése</button>
+      </div>
+
+
     </form>
 
-    <table>
-        <tr>
-            <th>id</th>
-            <th>Munkalap száma</th>
-            <th>Dolgozó</th>
-            <th>Alapanyag</th>
-            <th>Kezdés dátuma</th>
-            <th>Befejezés dátuma</th>              
-            <th>Felhasznált mennyiség</th>
-            <th></th>
-  
-            
-        </tr>
-          {% for adatok in object_list%}
-        <tr>
-            <td>{{adatok.id}}</td>
-            <td>{{adatok.munkalap_szama}}</td>
-            <td>{{adatok.dolgozo}}</td>
-            <td>{{adatok.alapanyag}}</td>
-            <td>{{adatok.datumKezdes}}</td>
-            <td>{{adatok.datumBefejezes}}</td>
-            <td>{{adatok.felhasznaltMennyiseg}} db</td>
-            <td><button type="button">Nyomtatás</button></td>
-        </tr>
-      
-      {% endfor %}
-    </table>
-  
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+  </div>
+
+
+  <!--ÚJ TÁBLÁZAT RESZPONZÍV PRÓBA-->
+  <div class="container">
+    <div class="row table-header">
+      <div class="col-md-1">ID #</div>
+      <div class="col-md-2">Munkalap száma</div>
+      <div class="col-md-2">Dolgozó neve</div>
+      <div class="col-md-3">Alapanyag</div>
+      <div class="col-md-1">Kezdés dátuma</div>
+      <div class="col-md-1">Befejezés dátuma</div>
+      <div class="col-md-1">Felhasznált mennyiség</div>
+      <div class="col-md-1">Nyomtatás</div>
+    </div>
+
+    {% for adatok in object_list %}
+
+    <div class="row table-row">
+      <div class="col-sm-1">{{ adatok.id }}</div>
+      <div class="col-sm-2">{{ adatok.munkalap_szama }}</div>
+      <div class="col-sm-2">{{ adatok.dolgozo }}</div>
+      <div class="col-sm-3">{{ adatok.alapanyag }}</div>
+      <div class="col-sm-1">{{ adatok.datumKezdes }}</div>
+      <div class="col-sm-1">{{ adatok.datumBefejezes }}</div>
+      <div class="col-sm-1">{{ adatok.felhasznaltMennyiseg }} db</div>
+      <div class="col-sm-1"><button class="btn btn-block btn btn-warning btn-sm">Nyomtatás</button></div>
+
+    </div>
+    {% endfor %}
+
+  </div>
+
+
+  <!--elválasztó-->
+  <div class="sarga-csik"></div>
+  <!--elválasztó-->
+
+
+
+
+    
+
+    <!-- START bejelentkezés sikeres üzenet -->
+    <ul class="log-informacio">
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <!-- END bejelentkezés sikeres üzenet -->
+
+
+
+
+
+
   {%else%}
-  <p>Nem vagy bejelentkezeve!</p>
-  <a href="{%url 'login'%}">Bejelentkezés</a>
+  <h2>Be vagy jelentkezve, de nincs jogosultságod a "MEGRENDELÉS" oldal megtekintéséhez!</h2>
+
+  <!--elválasztó-->
+  <div class="sarga-csik"></div>
+  <!--elválasztó-->
+
+  <form action="{% url 'logout' %}" method="post">
+    {% csrf_token %}
+    <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+        type="submit">Kijelentkezés</button></div>
+  </form>
+
   {%endif%}
+
+  <!-- END Oldal tartalma -->
+
+
+
+
+
+
+
+
+
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+  <!-- Bootstrap JavaScript betöltése -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
 </body>
+
 </html>
-
-

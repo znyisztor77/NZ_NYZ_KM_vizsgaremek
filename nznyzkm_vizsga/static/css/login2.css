@@ -1,0 +1,175 @@
+/*ROBOTO betűtípus használata*/
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
+
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+h4{
+    margin-top: 20px;
+    text-align: center;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    display: block; /* teljes szélességű blokk legyen, amely középre igazítja magát */
+    width: fit-content; /*csak annyi helyet foglaljon el, amennyi a tartalma szélességéhez szükséges.*/
+}
+
+
+
+/* FŐ DESIGN */
+.login-sotethatteres {
+    background-color: #ffd54f;
+    background-size: cover;
+    position: relative;
+    display: flex;
+    justify-content: center; /* Vízszintes középre igazítás */
+    align-items: center; /* Függőleges középre igazítás */
+    height:100vh; /* Teljes képernyős magasság */
+} 
+
+
+.login-sotethatteres form {
+    max-width: 400px;
+    width: 90%;
+    background-color: #161d24;
+    padding: 40px;
+    border-radius: 4px;
+    position:absolute;
+    top: 50%;
+    left: 50%;
+    color:white;
+    box-shadow: 3px 3px 4px rgba(0,0,0,0.2);
+    transform:translate(-50%, -50%);
+}
+
+
+
+
+
+/* KÉP FORMÁZÁSA: */
+.kep_design img {
+    border-radius: 4px;
+    width: 100px;
+}
+
+.kep_design_targonca img {
+    border-radius: 4px;
+    position: relative;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+
+
+
+
+
+
+
+
+
+/* SORBA */
+
+
+
+.login-sotethatteres .kep_design {
+    text-align: center;
+    padding: 15px 0 20px;
+    font-size: 100px;
+    color: #f2bd00;
+}
+
+
+/*ionic ikon színe - kulcs logo*/
+ion-icon {
+      color: #f2bd00;
+}
+
+
+
+
+
+.login-sotethatteres form .form-control {
+    background: none;
+    border: none;
+    border-bottom: 1px solid #434a52;
+    border-radius: 0;
+    box-shadow: none;
+    outline: none;
+    color: inherit;
+}
+
+
+.login-sotethatteres form .btn-primary {
+    background:#f2bd00;
+    border:none;
+    border-radius:4px;
+    padding:11px;
+    box-shadow:none;
+    margin-top:26px;
+    text-shadow:none;
+    outline:none;
+}
+
+
+.login-sotethatteres form .btn-primary:hover, .login-sotethatteres form .btn-primary:active {
+    background:black;
+    outline: none;
+}
+
+
+.login-sotethatteres form .forgot {
+    display:block;
+    text-align:center;
+    font-size:12px;
+    color:#6f7a85;
+    opacity:0.9;
+    text-decoration:none;
+}
+
+
+.login-sotethatteres form .forgot:hover, .login-sotethatteres form .forgot:active {
+    opacity:1;
+    text-decoration:none;
+}
+
+
+.login-sotethatteres form .btn-primary:active {
+    transform:translateY(1px);
+}
+
+
+
+
+/*QR KÓD*/
+.qr_code{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center; /* Vízszintes középre igazítás */
+    align-items: center; /* Függőleges középre igazítás */
+}
+
+
+
+/*text formázása*/
+p{
+    color:white;
+    text-align: center;
+}
+
+
+#hely{
+    color: black;
+    font-weight: bold;
+    text-align: center;
+    column-gap: 20px;
+    border-radius: none;
+}
+
