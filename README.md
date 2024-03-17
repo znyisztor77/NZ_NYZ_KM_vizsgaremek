@@ -1,5 +1,5 @@
 # NZ_NYZ_KM_viszga
-Német Zoltán Nyisztor Zoltán Kovács Marcell Vizsgaremek
+Németh Zoltán | Nyisztor Zoltán | Kovács Marcell Vizsgaremek
 
 
 <p align="center">
