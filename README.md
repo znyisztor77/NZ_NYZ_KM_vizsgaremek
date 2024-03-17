@@ -3,7 +3,7 @@ Németh Zoltán | Nyisztor Zoltán | Kovács Marcell Vizsgaremek
 
 
 <p align="center">
-  <img src="https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_f%C3%A1jlok/LemezKEZ_logo.png" width="350" title="LemezKez">
+  <img src="https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_fájlok/LemezKEZ_logo_nevekkel_atlatszo-crop.png" width="350" title="LemezKez">
  </p>
 
 Windows:
