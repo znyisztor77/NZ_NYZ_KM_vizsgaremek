@@ -29,8 +29,9 @@ def home(request):
         ip = x_forwarded_for.split(',')[0]
     else:
         ip = request.META.get('REMOTE_ADDR')
-        
-    return render(request, 'home.html',{'ip': ip})
+        port = request.META.get('SERVER_PORT')
+        qr = (ip+":"+port)
+    return render(request, 'home.html',{'ip': ip, 'port': port, 'qr':qr})
 
 
 

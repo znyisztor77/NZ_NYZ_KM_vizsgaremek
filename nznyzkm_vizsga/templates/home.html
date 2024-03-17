@@ -49,9 +49,13 @@
     <div id="qr">   
       <p></p>
       <h3>A kiszolgáló Ip cime: {{ip}}</h3>
-      
+      <h3>A kiszolgáló portja: {{port}}</h3>
+      <h3> {{qr}} </h3>
+
       {% qr_from_data ip size='M' %}
-      </div>
+    </div>
+    <!--{% qr_from_data qr size='M' %}-->
+    
     </div>
   </div>
   
