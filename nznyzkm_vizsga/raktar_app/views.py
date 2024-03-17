@@ -12,8 +12,8 @@ from django.contrib.auth import login, logout, authenticate
 from django.db.models import F
 from django.utils import timezone
 from django.conf import settings
-from qrcode import *
-import qrcode
+
+
 
 @api_view(['GET'])
 def getMegrendelesek(request):

@@ -1,6 +1,12 @@
+annotated-types==0.6.0
 asgiref==3.7.2
 Django==5.0.2
+django-qr-code==4.0.1
 djangorestframework==3.14.0
+pydantic==2.6.4
+pydantic_core==2.16.3
 pytz==2024.1
+segno==1.6.1
 sqlparse==0.4.4
+typing_extensions==4.10.0
 tzdata==2024.1
