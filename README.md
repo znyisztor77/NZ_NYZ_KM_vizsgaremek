@@ -2,6 +2,10 @@
 Német Zoltán Nyisztor Zoltán Kovács Marcell Vizsgaremek
 
 ![Image Alt Text](https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_f%C3%A1jlok/LemezKEZ_logo.png)
+<p align="center">
+  <img src="https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_f%C3%A1jlok/LemezKEZ_logo.png" width="350" title="hover text">
+  <img src="https://github.com/znyisztor77/NZ_NYZ_KM_vizsgaremek/blob/main/projekt_terv_f%C3%A1jlok/LemezKEZ_logo.png" width="350" alt="accessibility text">
+</p>
 
 Windows:
 ---
