@@ -15,7 +15,7 @@ class MegrendelesekSerializer(serializers.ModelSerializer):
     class Meta:
 
         model = Megrendelesek
-        fields = ['dolgozo', 'munkalap_szama', 'alapanyag','datumKezdes','datumBefejezes', 'felhasznaltMennyiseg']
+        fields = ['id','dolgozo', 'munkalap_szama', 'alapanyag','datumKezdes','datumBefejezes', 'felhasznaltMennyiseg']
         depth = 1
         
 

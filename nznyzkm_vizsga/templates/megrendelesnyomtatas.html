@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Megrendelés nyomtatása</title>
+    <input type="hidden" value="{{ id }}" id="id">
+    <script defer src="{% static 'js/nyomtatas.js' %}"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="table">
+            <table style="border: 1px solid black; 
+                width: 60%; margin: auto; 
+                border-collapse: collapse;">
+                <tbody>
+                    <tr>
+                        <td>
+                            <h2>Raktári kiadás</h2>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="kialitoneve">Kiállító neve</p> <label ></label>
+                            <p id="munkalap_szama"></p> <label ></label>
+               
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p id="bizonylat_kelte"></p> <label ></label>
+                        </td>
+                        <td>
+                            <p></p><label id="teljesites_datuma"></label>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Cikkszám</th>
+                        <th>Mennyiség</th>
+                        <th>Méret</th>
+                        <th>Anyag</th>
+                    </tr>
+                    <tr>
+                        <td id="cikkszam"></td>
+                        <td id="mennyiseg"></td>
+                        <td id="meret"></td>
+                        <td id="anyag"></td>
+                    </tr>
+                </tbody>
+                
+            </table>
+        </div>
+    </div>
+</body>
+</html>

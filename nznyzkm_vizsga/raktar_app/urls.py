@@ -9,6 +9,7 @@ urlpatterns = [
     path('',views.home, name = 'home'),
     path('raktar/' ,views.bevitel_kiadas, name='raktar'),
     path('megrendeles/', views.megrendeles, name= 'megrendeles'),
+    path('megrendelesnyomtatas/<int:id>/', views.megrendelesnyomtatas, name='megrendelesnyomtatas'),
        
    
     #path('megrendelesek/', HomeView.as_view(), name= 'home'),

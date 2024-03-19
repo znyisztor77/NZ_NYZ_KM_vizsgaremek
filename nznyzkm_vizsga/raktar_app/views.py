@@ -15,6 +15,13 @@ from django.conf import settings
 
 
 
+def megrendelesnyomtatas(request, id):
+    context = {
+        "id" : id
+    }
+    
+    return render(request, 'megrendelesnyomtatas.html', context=context)
+
 @api_view(['GET'])
 def getMegrendelesek(request):
     megrendelesek =Megrendelesek.objects.all() 
