@@ -47,8 +47,8 @@ function generateValues(jsondata){
     meret.innerText = jsondata.alapanyag.meret_valaszt;
     anyag.innerText = jsondata.alapanyag.anyagtipusa;
 
-   // window.print();
+    //window.print();
 
-   // window.history.back();
+    //window.history.back();
     
 }
