@@ -7,50 +7,76 @@
     <title>Megrendelés nyomtatása</title>
     <input type="hidden" value="{{ id }}" id="id">
     <script defer src="{% static 'js/nyomtatas.js' %}"></script>
+    <style>
+        h2{
+            text-align: center;
+        }
+        .container{
+            width: 95%; margin: auto;
+            padding: 1%;
+            border-collapse: collapse;
+        }
+        table{
+            border: 1px solid black; 
+            width: 100%; margin: auto;
+            border-collapse: collapse;
+            
+        }
+        th{
+            border: 1px solid black;
+            padding: 1%;
+        }
+        td{
+            border: 1px solid black;
+            text-align: center;
+            padding: 1%;
+        
+        }
+
+        div.signature-line-container{
+            display: flex;
+            justify-content: right;
+            margin-top: 15vh;
+            padding-right: 2%;
+        }
+        div.signature-line-container>p{
+            border-style: dotted none  none  none ;
+            width: 25%;
+            text-align: center;
+        }
+        
+    </style>
 </head>
 <body>
     <div class="container">
-        <div class="table">
-            <table style="border: 1px solid black; 
-                width: 60%; margin: auto; 
-                border-collapse: collapse;">
-                <tbody style="border: 1px solid black">
-                    <tr style="border: 1px solid black">
-                        <td style="border: 1px solid black">
-                            <h2>Raktári kiadás</h2>
-                        </td>
-                    </tr>
-                    <tr style="border: 1px solid black">
-                        <td>
-                            <p id="kialitoneve">Kiállító neve</p> <label ></label>
-                            <p id="munkalap_szama"></p> <label ></label>
-               
-                        </td>
-                    </tr>
-                    <tr style="border: 1px solid black">
-                        <td>
-                            <p id="bizonylat_kelte"></p>
-                        </td>
-                        <td>
-                            <p id="teljesites_datuma"></p>
-                        </td>
-                    </tr>
-                    <tr style="border: 1px solid black">
-                        <th style="border: 1px solid black">Cikkszám</th>
-                        <th style="border: 1px solid black">Mennyiség</th>
-                        <th style="border: 1px solid black">Méret</th>
-                        <th style="border: 1px solid black">Anyag</th>
+        <h2>Raktári kiadás</h2>
+        <p id="kialitoneve">Kiállító neve</p>
+        <p id="munkalap_szama"></p>
+        <p id="bizonylat_kelte"></p>
+        <p id="teljesites_datuma"></p>
+        <div class="table"> 
+            <table>
+                <tbody>
+                    <tr>
+                        <th>Cikkszám</th>
+                        <th>Mennyiség</th>
+                        <th>Méret</th>
+                        <th>Anyag</th>
                     </tr>
                     <tr>
-                        <td id="cikkszam" style="border: 1px solid black"></td>
-                        <td id="mennyiseg" style="border: 1px solid black"></td>
-                        <td id="meret" style="border: 1px solid black"></td>
-                        <td id="anyag" style="border: 1px solid black"></td>
+                        <td id="cikkszam"></td>
+                        <td id="mennyiseg"></td>
+                        <td id="meret"></td>
+                        <td id="anyag"></td>
                     </tr>
                 </tbody>
-                
             </table>
+
         </div>
+        <div class="signature-line-container">
+            <p>Kiállító aláírása</p>
+        </div>
+        
     </div>
 </body>
 </html>
