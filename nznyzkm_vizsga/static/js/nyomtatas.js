@@ -40,7 +40,7 @@ function generateValues(jsondata){
         'Kiállító neve: '+jsondata.dolgozo.first_name+' '+jsondata.dolgozo.last_name;
 
     munkalap_szama.innerText = 'Munkalap száma: '+jsondata.munkalap_szama;
-    bizonylat_kelte.innerText = 'Bizonylat kelte: '+jsondata.datumKezdes;
+    bizonylat_kelte.innerText = 'Megrendelés dátuma: '+jsondata.datumKezdes;
     teljesites_datuma.innerText = 'Teljesítés dátuma: '+jsondata.datumBefejezes;
     cikkszam.innerText = jsondata.alapanyag.id;
     mennyiseg.innerText = jsondata.felhasznaltMennyiseg;
