@@ -14,7 +14,7 @@ from django.utils import timezone
 from django.conf import settings
 import logging, traceback
 
-logger = logging.getLogger('django')
+logger = logging.getLogger('lemezkez')
 
 
 

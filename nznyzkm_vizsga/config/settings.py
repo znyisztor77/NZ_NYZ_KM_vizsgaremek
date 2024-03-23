@@ -147,27 +147,36 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 # LGGING SETUP
 
+
+
 LOGGING = {
     "version": 1,
     'disable_existing_loggers': True,
+    
+
     "loggers":{
-        "django":{
-            "handlers":["file"],
+        "lemezkez":{
+            "handlers":["lemezkez-handle"],
             "level":"DEBUG",
+            'propagate': False,
+        },
+        "django.core.handlers":{
+            "level":"ERROR",
         }
     },
     "handlers":{
         
-        "file":{
+        "lemezkez-handle":{
             "level":"INFO",
             "class":"logging.FileHandler",
             "filename": "./logs/info.log",
-            "formatter":"simpleR",
+            "formatter":"lemezkez-mess-format",
             "encoding":"utf-8",
+           
         }
     },
     "formatters":{
-        "simpleR":{
+        "lemezkez-mess-format":{
             "format": "{levelname} {asctime} {module} {message}",
             "style": "{",
         }

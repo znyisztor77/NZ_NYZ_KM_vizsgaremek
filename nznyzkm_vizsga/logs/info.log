@@ -1,9 +1,2 @@
-INFO 2024-03-23 11:49:39,842 views Nyomtat�s. Id: 1
-INFO 2024-03-23 11:49:39,843 basehttp "GET /megrendelesnyomtatas/1/ HTTP/1.1" 200 1319
-INFO 2024-03-23 11:49:39,944 basehttp "GET /api/megrendelesek?format=json HTTP/1.1" 200 1577
-INFO 2024-03-23 12:15:17,760 autoreload C:\Users\Marci\Documents\django_projects\vizsgaremek\lemezvago_j_git_0317\NZ_NYZ_KM_vizsgaremek\nznyzkm_vizsga\config\settings.py changed, reloading.
-INFO 2024-03-23 12:16:12,355 autoreload Watching for file changes with StatReloader
-INFO 2024-03-23 12:16:17,386 views Nyomtatás. Id: 1
-INFO 2024-03-23 12:16:17,411 basehttp "GET /megrendelesnyomtatas/1/ HTTP/1.1" 200 1319
-INFO 2024-03-23 12:16:17,470 basehttp "GET /static/js/nyomtatas.js HTTP/1.1" 304 0
-INFO 2024-03-23 12:16:17,527 basehttp "GET /api/megrendelesek?format=json HTTP/1.1" 200 1577
+INFO 2024-03-23 15:13:59,582 views Nyomtatás. Id: 1
+INFO 2024-03-23 15:14:16,039 views Nyomtatás. Id: 2
