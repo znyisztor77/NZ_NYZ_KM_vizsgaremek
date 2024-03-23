@@ -4,7 +4,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="description" content="LemezKez - Raktári Lemezkezelés Vizsgaremek">
+  <meta name="description" content="LemezKez - Raktár Lemezkezelés Vizsgaremek">
   <meta name="keywords" content="HTML, CSS, JavaScript, Django">
   <meta name="author" content="Németh Zoltán, Nyisztor Zoltán, Kovács Marcell">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,13 +17,17 @@
   <!--saját css linkelése-->
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
+   <!--saját javascript linkelése-->
+  <script defer src="{% static 'js/nyomtatas.js' %}"></script>
+  <link rel="stylesheet" href="{% static 'css/nyomtatas.css' %}">
+  
   <title>LemezKez - HOME</title>
-
+  
 </head>
 
 <body>
-
-
+  <input type="text" value="{{ qr }}" id="qr" style="color: black;">
+  <!--p id = "qr" style="color: aliceblue;" >Ip:{{qr}}</p-->
   <!-- Flex Container -->
   <div class="container">
 
@@ -94,6 +98,7 @@
       {% load qr_code %}
       <!-- ip cim ha kellene {{ip}} -->
       {% qr_from_data ip size='M' %}
+      
     </div>
     <!-- QR KÓD END -->
 
