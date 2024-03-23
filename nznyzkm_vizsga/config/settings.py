@@ -149,6 +149,7 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGGING = {
     "version": 1,
+    'disable_existing_loggers': True,
     "loggers":{
         "django":{
             "handlers":["file"],
@@ -156,12 +157,13 @@ LOGGING = {
         }
     },
     "handlers":{
+        
         "file":{
             "level":"INFO",
             "class":"logging.FileHandler",
             "filename": "./logs/info.log",
             "formatter":"simpleR",
-
+            "encoding":"utf-8",
         }
     },
     "formatters":{

@@ -12,6 +12,9 @@ from django.contrib.auth import login, logout, authenticate
 from django.db.models import F
 from django.utils import timezone
 from django.conf import settings
+import logging, traceback
+
+logger = logging.getLogger('django')
 
 
 
@@ -19,7 +22,7 @@ def megrendelesnyomtatas(request, id):
     context = {
         "id" : id
     }
-    
+    logger.info("Nyomtatás. Id: "+str(id))
     return render(request, 'megrendelesnyomtatas.html', context=context)
 
 @api_view(['GET'])
