@@ -1,0 +1,19 @@
+INFO 2024-03-23 11:30:50,924 autoreload Watching for file changes with StatReloader
+INFO 2024-03-23 11:31:02,283 basehttp "GET / HTTP/1.1" 200 3401
+INFO 2024-03-23 11:31:02,498 basehttp "GET /static/css/home.css HTTP/1.1" 200 3392
+INFO 2024-03-23 11:31:04,510 basehttp "GET /login/ HTTP/1.1" 200 4546
+INFO 2024-03-23 11:31:04,582 basehttp "GET /static/css/login.css HTTP/1.1" 200 3049
+INFO 2024-03-23 11:31:04,586 basehttp "GET /static/pictures/LemezKEZ_login_picture-resized.png HTTP/1.1" 200 61702
+INFO 2024-03-23 11:31:08,926 basehttp "POST /login/ HTTP/1.1" 302 0
+INFO 2024-03-23 11:31:09,027 basehttp "GET /raktar/ HTTP/1.1" 200 11001
+INFO 2024-03-23 11:31:09,086 basehttp "GET /static/css/raktar.css HTTP/1.1" 200 5253
+INFO 2024-03-23 11:31:09,094 basehttp "GET /static/pictures/user_icon_raktaros-feher.png HTTP/1.1" 200 24145
+INFO 2024-03-23 11:31:09,098 basehttp "GET /static/pictures/lemezkez-logo-navbar-forklift.png HTTP/1.1" 200 274787
+INFO 2024-03-23 11:31:09,111 basehttp "GET /static/pictures/lemezkez-logo-navbar.png HTTP/1.1" 200 9822
+INFO 2024-03-23 11:31:11,915 basehttp "GET /megrendeles/ HTTP/1.1" 200 8397
+INFO 2024-03-23 11:31:11,994 basehttp "GET /static/css/megrendeles.css HTTP/1.1" 200 5330
+INFO 2024-03-23 11:31:11,998 basehttp "GET /static/pictures/laser-cutting-machine-feher.png HTTP/1.1" 200 6987
+INFO 2024-03-23 11:31:15,559 basehttp "GET /megrendelesnyomtatas/1/ HTTP/1.1" 200 1319
+INFO 2024-03-23 11:31:15,608 basehttp "GET /static/css/nyomtatas.css HTTP/1.1" 304 0
+INFO 2024-03-23 11:31:15,610 basehttp "GET /static/js/nyomtatas.js HTTP/1.1" 200 1747
+INFO 2024-03-23 11:31:15,676 basehttp "GET /api/megrendelesek?format=json HTTP/1.1" 200 1577

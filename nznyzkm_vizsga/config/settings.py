@@ -149,14 +149,26 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 LOGGING = {
     "version": 1,
-    "disable_existing_loggers": False,
-    "handlers": {
-        "console": {
-            "class": "logging.StreamHandler",
-        },
+    "loggers":{
+        "django":{
+            "handlers":["file"],
+            "level":"DEBUG",
+        }
     },
-    "root": {
-        "handlers": ["console"],
-        "level": "WARNING",
+    "handlers":{
+        "file":{
+            "level":"INFO",
+            "class":"logging.FileHandler",
+            "filename": "./logs/info.log",
+            "formatter":"simpleR",
+
+        }
     },
+    "formatters":{
+        "simpleR":{
+            "format": "{levelname} {asctime} {module} {message}",
+            "style": "{",
+        }
+    },
+    
 }
