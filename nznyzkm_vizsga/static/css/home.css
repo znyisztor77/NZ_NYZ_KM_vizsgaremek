@@ -44,7 +44,6 @@ body {
 }
 
 
-
 /* GOMB design */
 .button {
     display: inline-flex;
@@ -70,9 +69,9 @@ a {
 }
 
 
-/* Kilépés Sárga csíkkal design */
+/* Kilépés sárga csíkkal design */
 #button-sargacsikkal {
-    width: 150px;
+    width: 170px;
     height: 50px;
     border: none;
     position: relative;
@@ -85,19 +84,20 @@ a {
     transition: all .45s ease-Out;
 }
 
+/* sárga 50fokkal elforgatott effekt, ha az egeret rávisszük */
 #button-sarga-fordit {
     transform: rotate(50deg);
-    width: 110%;
+    width: 110%;    /* 110%!! */
     height: 250%;
     left: -200px;
     top: -30px;
     background: #F2BD00;
     position: absolute;
-    transition: all .3s ease-Out;
+    transition: all .5s ease-Out;   /* átmeneti animáció */
 }
 
 #button-sargacsikkal:hover #button-sarga-fordit {
-    left: 0;
+    left: 0;  /* az adott elem bal pozíciója a szülőelem bal szélétől számított 0 pixelre kerül. Balra tapad. */
 }
 
 #button-sargacsikkal:hover a {
@@ -106,7 +106,7 @@ a {
 
 
 /* Elemek formázása: */
-h1{
+h1, h2{
     justify-content: center;
 }
 
@@ -129,7 +129,6 @@ p{
 }
 
 
-
 /* Feladatok lista formázása: */
 .sajatLista{
     list-style-type: square;
@@ -140,7 +139,6 @@ p{
 .sajatLista li::marker {
     color: white; /* A felsorolás színe */
 }
-
 
 li{
     text-align: justify;

@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
-  <!--bootstrap.min belinkelése-->
+  <!--bootstrap.min linkelése-->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
@@ -22,17 +22,22 @@
   <link rel="stylesheet" href="{% static 'css/nyomtatas.css' %}">
   
   <title>LemezKez - HOME</title>
-  
 </head>
+
 
 <body>
   <input type="text" value="{{ qr }}" id="qr" style="color: black;">
   <!--p id = "qr" style="color: aliceblue;" >Ip:{{qr}}</p-->
   <!-- Flex Container -->
+  
   <div class="container">
 
-
-    <h1>Üdvözöllek a LemezKez raktári lemezkezelés oldalán!</h1>
+    <h1>LemezKez App</h1>
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+    
+    <h2>Üdvözöllek a raktári lemezkezelés oldalán!</h2>
     {% if user.is_authenticated%}
     Belépve, mint {{user.username}} !
     <form action="{% url 'logout' %}" method="post">
@@ -49,9 +54,7 @@
 
     <!-- End Container -->
 
-    <!--elválasztó-->
-    <div class="sarga-csik"></div>
-    <!--elválasztó-->
+
 
 
     {%endif%}
