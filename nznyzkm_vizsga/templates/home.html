@@ -21,12 +21,13 @@
   <script defer src="{% static 'js/nyomtatas.js' %}"></script>
   <link rel="stylesheet" href="{% static 'css/nyomtatas.css' %}">
 
-  <title>LemezKez - HOME</title>
+  <title>LemezKez APP - HOME</title>
 </head>
 
 
 <body>
 
+  <!-- START FŐ konténer -->
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-8">
@@ -34,25 +35,26 @@
         <div class="sajat-fo-container">
 
           <h1 class="text-center">LemezKez App</h1>
+          
           <!--elválasztó-->
           <div class="sarga-csik"></div>
           <!--elválasztó-->
+
           <h2>Üdvözöllek a raktári lemezkezelés oldalán!</h2>
           {% if user.is_authenticated%}
+
           Belépve, mint {{user.username}}!
+          
           <form action="{% url 'logout' %}" method="post">
             {% csrf_token %}
-            <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
-                type="submit">Kijelentkezés</button></div>
+            <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning" type="submit">Kijelentkezés</button></div>
           </form>
-          {%else%}
 
+          {%else%}
           <div class="button" id="button-sargacsikkal">
             <div id="button-sarga-fordit"></div>
             <a href="{%url 'login'%}">Bejelentkezés</a>
           </div>
-
-          <!-- END konténer -->
 
           {%endif%}
 
@@ -101,21 +103,11 @@
       {% qr_from_data ip size='M' %}
     </div>
     <!-- QR KÓD END -->
-
-    
         </div>
-
-
       </div>
-
-
-
     </div>
-
-
-
   </div>
-
+  <!-- END FŐ konténer -->
 
 
   <!-- Bootstrap JavaScript és jQuery -->
