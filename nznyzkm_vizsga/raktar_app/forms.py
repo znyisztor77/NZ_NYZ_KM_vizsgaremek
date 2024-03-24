@@ -4,8 +4,9 @@ from .models import Megrendelesek, Alapanyag
 
 
 class LoginForm(forms.Form):
-    username = forms.CharField(max_length = 30)
-    password = forms.CharField(max_length = 30, widget= forms.PasswordInput)
+    username = forms.CharField(max_length = 30, label="Felhasználónév")
+    password = forms.CharField(max_length = 30, label="Jelszó", widget= forms.PasswordInput)
+
 
 class BevitelForm(forms.ModelForm):
 
