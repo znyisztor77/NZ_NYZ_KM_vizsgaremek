@@ -70,13 +70,11 @@
                                 </div>
                             </div> 
 
-                        <div class="form-group" id="belepesGomb"><button
-                                        class="btn btn-warning btn-block roboto-condensed-sajat"
-                                        type="submit">BELÉPÉS</button></div>
+                        <div class="form-group" id="belepesGomb"><button class="btn btn-warning btn-block roboto-condensed-sajat" type="submit">BELÉPÉS</button></div>
 
                         <!-- QR KÓD START -->
                         <div class="qr_code">
-                                <div id="qrkod_design" class="bg-warning text-dark" class="h1">QR KÓD beolvasása: </div>
+                                <div id="qrkod_design" class="bg-warning text-dark" class="h1">QR KÓD beolvasása:</div>
                                 {% load qr_code %}
                                 {{ip}}
                                 {% qr_from_data ip size='M' %}
