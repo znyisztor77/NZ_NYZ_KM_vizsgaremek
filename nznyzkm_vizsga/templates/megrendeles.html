@@ -22,51 +22,31 @@
 <body>
 
 
-  <!-- NAVBAR menüsáv ELEJE -->
-  <nav class="navbar navbar-expand-lg navbar-light">
+
+   <!-- START NAVBAR menüsáv -->
+  <nav class="navbar-sarga navbar-light" style="background-color: #F2BD00;">
     <div class="container">
-
-      <a class="navbar-logo1" href=""><img src="/static/pictures/lemezkez-logo-navbar-forklift.png" alt="LemezKez Logó"
-          title="LemezKez Logója">
-        <a class="navbar-logo2" href=""><img src="/static/pictures/lemezkez-logo-navbar.png" alt="LemezKez Logó"
-            title="LemezKez Logója">
-
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-
-          <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Főoldal</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="http://127.0.0.1:8000/naptar">Naptár</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'raktar' %}">Raktár oldal</a>
-              </li>
-
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'logout' %}">Kijelentkezés</a>
-              </li>
-            </ul>
-
-          </div>
+      <div class="row">
+        <div class="col">
+          <a class="navbar-logo1" href="#">
+            <img class="img-fluid" src="/static/pictures/lemezkez-logo-navbar-forklift.png" alt="LemezKez Logó 1" title="LemezKez Targonca Logó">
+          </a>
+        </div>
+        <div class="col">
+          <a class="navbar-logo2" href="#">
+            <img class="img-fluid" src="/static/pictures/lemezkez-logo-navbar.png" alt="LemezKez Logó 2" title="LemezKez Logója">
+          </a>
+        </div>
+      </div>
     </div>
   </nav>
-  <!-- NAVBAR menüsáv VÉGE -->
+  <!-- END NAVBAR menüsáv -->
 
 
 
-  <div id="kozepre" class="container-fluid">
-
-
-    <!-- START megrendeles oldal tartalma -->
-    <img class="warning-pics" src="/static/pictures/laser-cutting-machine-feher.png" alt="felhasználói ikon">
+<!-- START megrendeles oldal első része -->
+  <div class="container-fluid">
+    <img class="lezervago-kep" src="/static/pictures/laser-cutting-machine-feher.png" alt="felhasználói ikon" title="lézervágó ikon">
 
     {% if user.is_authenticated and user.lezervago == True %}
     <div class="loggedin">
@@ -78,39 +58,94 @@
       <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
           type="submit">Kijelentkezés</button></div>
     </form>
-
-
   </div>
+<!-- END megrendeles oldal első része -->
 
 
-  <div id="kozepre" class="container-fluid">
-
-
+<!-- START megrendeles oldal második része -->
+  <div class="container-fluid">
     <!--elválasztó-->
     <div class="sarga-csik"></div>
     <!--elválasztó-->
-
     <h1 class="roboto-condensed-sajat">Az űrlap segítségével új megrendeléseket lehet hozzáadni!</h1>
 
-    <form method="POST">
+    <form method="POST" class="megrendeles-form">
       {% csrf_token%}
       <h2>Bevitel</h2>
-      {{megrform.as_p}}
+
+      {{ megrform.as_p }}
+
+
+      <!-- 
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="id_munkalap_szama">{{ form.fields.munkalap_szama.label }}</label>
+                {{ form.munkalap_szama }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="id_dolgozo">{{ form.fields.dolgozo.label }}</label>
+                {{ form.dolgozo }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="id_alapanyag">{{ form.fields.alapanyag.label }}</label>
+                {{ form.alapanyag }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="id_datumKezdes">{{ form.fields.datumKezdes.label }}</label>
+                {{ form.datumKezdes }}
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="id_datumBefejezes">{{ form.fields.datumBefejezes.label }}</label>
+                {{ form.datumBefejezes }}
+            </div>
+            <div class="form-group col-md-6">
+                <label for="id_felhasznaltMennyiseg">{{ form.fields.felhasznaltMennyiseg.label }}</label>
+                {{ form.felhasznaltMennyiseg }}
+            </div>
+        </div> -->
+    </form>
+    
+
+
+
+
+
+
+
+
 
       <div class="form-group" id="rogzitesGomb"><button class="btn btn-block btn btn-warning">Adatlap rögzítése</button>
       </div>
-
-
     </form>
 
     <!--elválasztó-->
     <div class="sarga-csik"></div>
     <!--elválasztó-->
-
   </div>
+  <!-- END megrendeles oldal második része -->
 
 
-  <!--ÚJ TÁBLÁZAT RESZPONZÍV PRÓBA-->
+  
+
+    <!-- START bejelentkezés LOG üzenet -->
+    <ul class="log-informacio">
+      <h3>LOG információ:</h3>
+      {% for message in messages %}
+      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    <!-- END bejelentkezés LOG üzenet -->
+    
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+
+  <!-- START TÁBLÁZAT RESZPONZÍV -->
   <div class="container">
     <div class="row table-header">
       <div class="col-md-1">ID #</div>
@@ -134,33 +169,16 @@
       <div class="col-sm-1">{{ adatok.datumBefejezes }}</div>
       <div class="col-sm-1">{{ adatok.felhasznaltMennyiseg }} db</div>
       <div class="col-sm-1"><a class="btn btn-block btn btn-warning btn-sm" href="{% url 'megrendelesnyomtatas' adatok.id %}">Nyomtatás</a></div>
-
     </div>
     {% endfor %}
 
   </div>
+  <!-- START TÁBLÁZAT RESZPONZÍV -->
 
 
   <!--elválasztó-->
   <div class="sarga-csik"></div>
   <!--elválasztó-->
-
-
-
-
-    
-
-    <!-- START bejelentkezés sikeres üzenet -->
-    <ul class="log-informacio">
-      {% for message in messages %}
-      <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    <!-- END bejelentkezés sikeres üzenet -->
-
-
-
-
 
 
   {%else%}
@@ -178,24 +196,15 @@
 
   {%endif%}
 
-  <!-- END Oldal tartalma -->
 
 
-
-
-
-
-
-
-
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+ <!-- Bootstrap JavaScript és jQuery -->
+ <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+ <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
   <!-- Bootstrap JavaScript betöltése -->
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </body>
 
 </html>
