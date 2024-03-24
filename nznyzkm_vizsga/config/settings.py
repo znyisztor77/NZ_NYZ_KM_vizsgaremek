@@ -47,7 +47,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'raktar_app',
     'rest_framework',    
-     'qr_code',
+    'qr_code',
+    'django_db_logger',
     
 
 ]
@@ -150,36 +151,31 @@ MEDIA_ROOT = BASE_DIR / 'media'
 
 
 LOGGING = {
-    "version": 1,
-    'disable_existing_loggers': True,
-    
-
-    "loggers":{
-        "lemezkez":{
-            "handlers":["lemezkez-handle"],
-            "level":"DEBUG",
-            'propagate': False,
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'verbose': {
+            'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
         },
-        "django.core.handlers":{
-            "level":"ERROR",
-        }
+        'simple': {
+            'format': '%(levelname)s %(asctime)s %(message)s'
+        },
     },
-    "handlers":{
-        
-        "lemezkez-handle":{
-            "level":"INFO",
-            "class":"logging.FileHandler",
-            "filename": "./logs/info.log",
-            "formatter":"lemezkez-mess-format",
-            "encoding":"utf-8",
-           
-        }
+    'handlers': {
+        'db_log': {
+            'level': 'DEBUG',
+            'class': 'django_db_logger.db_log_handler.DatabaseLogHandler'
+        },
     },
-    "formatters":{
-        "lemezkez-mess-format":{
-            "format": "{levelname} {asctime} {module} {message}",
-            "style": "{",
+    'loggers': {
+        'db': {
+            'handlers': ['db_log'],
+            'level': 'DEBUG'
+        },
+        'django.request': { # logging 500 errors to database
+            'handlers': ['db_log'],
+            'level': 'ERROR',
+            'propagate': False,
         }
-    },
-    
+    }
 }

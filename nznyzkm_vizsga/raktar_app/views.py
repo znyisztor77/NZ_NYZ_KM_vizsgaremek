@@ -14,7 +14,7 @@ from django.utils import timezone
 from django.conf import settings
 import logging, traceback
 
-logger = logging.getLogger('lemezkez')
+db_logger = logging.getLogger('db')
 
 
 
@@ -22,7 +22,7 @@ def megrendelesnyomtatas(request, id):
     context = {
         "id" : id
     }
-    logger.info("Nyomtatás. Id: "+str(id))
+    db_logger.info(f'Nyomtatva. (id: {id})')
     return render(request, 'megrendelesnyomtatas.html', context=context)
 
 @api_view(['GET'])
