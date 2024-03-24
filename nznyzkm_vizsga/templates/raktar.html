@@ -64,16 +64,14 @@
 
 
 
-
-
     <!-- START megrendeles oldal tartalma -->
 
     <div id="kozepre" class="container-fluid">
 
 
 
-
-        <img class="warning-pics" src="/static/pictures/user_icon_raktaros-feher.png" alt="raktáros felhasználói ikon" title="raktáros felhasználói ikon">
+        <img class="warning-pics" src="/static/pictures/user_icon_raktaros-feher.png" alt="raktáros felhasználói ikon"
+            title="raktáros felhasználói ikon">
 
 
         {% if user.is_authenticated and user.raktaros == True %}
@@ -91,6 +89,8 @@
     </div>
 
 
+
+
     <div id="kozepre" class="container-fluid">
 
 
@@ -101,104 +101,178 @@
         <!--nem kell üzenet-->
         {% endif %}
 
-        <h1>Lehetőség van a beérkezett lemeztáblák rögzítésére, illetve a felhasználni kívánt lemeztáblák kiadására is.</h1>
 
 
 
-        <div class="raktarcontainer">
-
-            <div class="raktaroldalsav">
-                <form method="POST">
-                    {% csrf_token%}
-                    <h2>Bevitel</h2>
-                    {{bevform.as_p}}
-                    <button name="bevitel" type="submit">Rögzítés</button>
-                    <!--input type="submit" value="Rögzítés"/-->
-
-                </form>
-                <hr>
-                <form method="POST">
-                    {% csrf_token%}
-                    <h2>Kiadás</h2>
-                    {{kiform.as_p}}
-                    <button name="kiad" type="submit">Rögzítés</button>
-                    <!--input type="submit" value="Rögzítés"/-->
-                </form>
-            </div> <!--raktar oldalsav vége-->
-
-            <div class="raktartartalom">
-                <table>
-                    <tr>
-                        <th>id</th>
-                        <th>Anyag tipusa</th>
-                        <th>Vastagsag</th>
-                        <th>Meret</th>
-                        <th>Darabszam</th>
-                        <th>Polc száma</th>
-                        <th>Rögzítés dátuma</th>
-
-                    </tr>
-
-                    {% for adatok in object_list%}
-                    <tr>
-                        <td>{{adatok.id}}</td>
-                        <td>{{adatok.anyagtipusa}}</td>
-                        <td>{{adatok.vastagsag_valaszt}}</td>
-                        <td>{{adatok.meret_valaszt}}</td>
-                        <td>{{adatok.darabszam}}</td>
-                        <td>{{adatok.polc_szama}}</td>
-                        <td>{{adatok.rogzit_datum}}</td>
-
-                    </tr>                 
-
-                    {% endfor %}
-                </table>
-            </div><!--Raktar tartalom vége-->>
-
+            <h2>Bevitel: A beérkezett lemeztáblák rögzítése, felvitele.</h2>
             
+<!-- TOGGLE gombok -->
+        <div class="container">
+            <div class="row mt-5 justify-content-center">
+                <div class="col-md-6">
+                    <div class="d-flex flex-column">
+
+                        <button class="btn btn-primary btn-warning mb-3" onclick="toggleContent(1)">Bevitel
+                            megnyitása</button>
+                        <div id="content1" class="content">
+
+                            <!-- bevitel tartalma 1 -->
+                            <form method="POST">
+                                {% csrf_token%}
+                                {{bevform.as_p}}
+                                <button name="bevitel" type="submit">Rögzítés1</button>
+                            </form>
+                            <div class="text-warning" role="status">
+                                <span class="sr-only"></span>
+                            </div>
+                        </div>
+
+                              <!--elválasztó-->
+        <div class="sarga-csik"></div>
+        <!--elválasztó-->
+
+        <h2>Kiadás: Lemeztáblák kiadása, kivétele.</h2>
+                        <button class="btn btn-primary btn-warning mt-3" onclick="toggleContent(2)">Kiadás
+                            megnyitása</button>
+                        <div id="content2" class="content mt-3">
+
+                            <!-- bevitel tartalma 2 -->
+                            <form method="POST">
+                                {% csrf_token%}
+                                {{kiform.as_p}}
+                                <button name="kiad" type="submit">Rögzítés2</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-
-        
-    <!-- START bejelentkezés sikeres üzenet -->
-    <ul class="log-informacio">
-        {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
-          {% endfor %}
-      </ul>
-      <!-- END bejelentkezés sikeres üzenet -->
-
-      
-
-        {%else%}
-        <h2>Be vagy jelentkezve, de nincs jogosultságod a "RAKTÁR" oldal megtekintéséhez!</h2>
 
         <!--elválasztó-->
         <div class="sarga-csik"></div>
         <!--elválasztó-->
 
-        <form action="{% url 'logout' %}" method="post">
-            {% csrf_token %}
-            <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
-                    type="submit">Kijelentkezés</button></div>
-        </form>
 
-        {%endif%}
-
-        <!-- END Oldal tartalma -->
-
-
+        <!-- START bejelentkezés LOG üzenet -->
+        <ul class="log-informacio">
+            <h3>LOG információ:</h3>
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+                {% endfor %}
+        </ul>
+        <!-- END bejelentkezés LOG üzenet -->
 
 
+        <!--elválasztó-->
+        <div class="sarga-csik"></div>
+        <!--elválasztó-->
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-        <!-- Bootstrap JavaScript betöltése -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-            integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-            crossorigin="anonymous"></script>
+    </div>
+
+    <div class="raktartartalom">
+        <table>
+            <tr>
+                <th>id</th>
+                <th>Anyag tipusa</th>
+                <th>Vastagsag</th>
+                <th>Meret</th>
+                <th>Darabszam</th>
+                <th>Polc száma</th>
+                <th>Rögzítés dátuma</th>
+
+            </tr>
+
+            {% for adatok in object_list%}
+            <tr>
+                <td>{{adatok.id}}</td>
+                <td>{{adatok.anyagtipusa}}</td>
+                <td>{{adatok.vastagsag_valaszt}}</td>
+                <td>{{adatok.meret_valaszt}}</td>
+                <td>{{adatok.darabszam}}</td>
+                <td>{{adatok.polc_szama}}</td>
+                <td>{{adatok.rogzit_datum}}</td>
+
+            </tr>
+
+            {% endfor %}
+        </table>
+    </div><!--Raktar tartalom vége-->>
+
+
+
+
+
+    {%else%}
+    <h2>Be vagy jelentkezve, de nincs jogosultságod a "RAKTÁR" oldal megtekintéséhez!</h2>
+
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+    <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+                type="submit">Kijelentkezés</button></div>
+    </form>
+
+    {%endif%}
+
+    <!-- END Oldal tartalma -->
+
+    <!--elválasztó-->
+    <div class="sarga-csik"></div>
+    <!--elválasztó-->
+
+
+
+    <!-- Bootstrap JS (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+
+    <script>
+        function toggleContent(id) {
+            var content = document.getElementById('content' + id);
+            var isVisible = content.style.display === 'block';
+
+            // Bezár minden tartalmat, ha nyitva van
+            if (isVisible) {
+                content.style.display = 'none';
+            } else {
+                // Bezár minden tartalmat
+                document.querySelectorAll('.content').forEach(content => {
+                    content.style.display = 'none';
+                });
+
+                // Nyitja meg a kiválasztott tartalmat
+                content.style.display = 'block';
+            }
+        }
+    </script>
+
+
+    <script>
+        function scrollImage(event) {
+            // A görgetés mértékének kiszámítása
+            let scrollRatio = event.target.scrollLeft / (event.target.scrollWidth - event.target.clientWidth);
+
+            // A kép vízszintes pozíciójának beállítása a görgetés mértékének függvényében
+            let image = document.querySelector('.scrollable-image');
+            let maxOffset = event.target.clientWidth - image.width;
+            let offset = maxOffset * scrollRatio;
+            image.style.left = -offset + 'px';
+        }
+    </script>
+
+
+
+
+
+
+
+
+
 
 </body>
 
