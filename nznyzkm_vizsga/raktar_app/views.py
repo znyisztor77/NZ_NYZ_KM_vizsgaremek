@@ -141,7 +141,7 @@ def megrendeles(request):
         megrform = MegrendelesForm(request.POST)
         if megrform.is_valid():
             if Megrendelesek.objects.filter(munkalap_szama = megrform.cleaned_data['munkalap_szama']).exists():
-               messages.error(request, f'Ezzel a munkalap számmal már van rögzítve megrndelés!!!!!!')
+               messages.error(request, f'Ezzel a munkalapszámmal már van rögzítve megrendelés!')
                megrform = MegrendelesForm() 
             else:
 
