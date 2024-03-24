@@ -1,8 +1,15 @@
 
 
+const getURL = 'http://127.0.0.1:8000/api/megrendelesek?format=json';
 const megrendelesID = document.getElementById("id").value;
 
-const getURL = 'http://127.0.0.1:8000/api/megrendelesek?format=json';
+const qr = document.getElementById('qr').value;
+//const my_ip = 'http://'+qr+'/api/megrendelesek?format=json';
+//const getURL = my_ip;
+console.log(qr)
+//console.log(my_ip)
+//console.log(getURL)
+
 getMegrendelesek();
 
 function getMegrendelesek(){
@@ -47,8 +54,8 @@ function generateValues(jsondata){
     meret.innerText = jsondata.alapanyag.meret_valaszt;
     anyag.innerText = jsondata.alapanyag.anyagtipusa;
 
-    window.print();
+    //window.print();
 
-    window.history.back();
+    //window.history.back();
     
 }
