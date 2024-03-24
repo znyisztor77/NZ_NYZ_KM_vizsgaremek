@@ -29,7 +29,7 @@ h3 {
     color: white;
     margin-left: auto;
     margin-right: auto;
-    display: block; /* teljes szélességű blokk, középre igazítja magát */
+    display: block;     /* teljes szélességű blokk, középre igazítja magát */
 }
 
 
@@ -37,12 +37,12 @@ h3 {
 /* FŐ DESIGN */
 .login-sotethatteres {
     background-color: #ffd54f;
-    background-size: cover;
-    /*position: relative;*/
+    background-size: cover;     /*position: relative;*/
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Teljes képernyős magasság */
+    flex-direction: row;
+    height: 100vh;  /* Teljes képernyős magasság */
 }
 
 /* FORM design */
@@ -53,13 +53,10 @@ h3 {
     padding: 35px;
     border-radius: 5px;
     box-shadow: 10px 10px 3px rgba(0, 0, 0, 0.2);
-
-    position: absolute;
-    /* abszolút pozícióban lévő elem középre igazítása  */
+    position: absolute;     /* abszolút pozícióban lévő elem középre igazítása  */
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    /* az elem függőleges és vízszintes középre igazítása */
+    transform: translate(-50%, -50%);   /* az elem függőleges és vízszintes középre igazítása */
 }
 
 
@@ -120,7 +117,6 @@ h3 {
 }
 
 
-
 /* Elfelejtett jelszó lent formázása */
 .elfelejtett {
     margin-top: 5px;
@@ -137,4 +133,26 @@ h3 {
 .elfelejtett:hover {
     text-decoration: none;
     color: #f2bd00;
+}
+
+
+
+.kozepre {
+    display: flex;
+    margin-top: 5px;
+    color: white;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.kozepre label {
+    margin-right: 10px;
+}
+
+.kozepre input[type="text"],
+.kozepre input[type="password"] {
+    flex: auto;
+    width: 90%;
+    box-sizing: border-box; /* A paddingot és a bordert is figyeli a szélesség kiszámításánál */
 }

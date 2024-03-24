@@ -26,8 +26,10 @@
         <!-- LOGIN - beléptetés -->
         <div class="login-sotethatteres">
                 <form method="POST">
-                       
-                        <div class="kep_lemezkez-targonca"><img src="/static/pictures/LemezKEZ_login_picture-resized.png" alt="LemezKez logója" title="LemezKez">
+
+                        <div class="kep_lemezkez-targonca"><img
+                                        src="/static/pictures/LemezKEZ_login_picture-resized.png" alt="LemezKez logója"
+                                        title="LemezKez">
 
                                 <!-- <h3 class="roboto-condensed-sajat">Üdvözöllek!</h3> -->
 
@@ -46,7 +48,7 @@
                         {%else%}
 
                         <p class="roboto-condensed-sajat">Belépés szükséges a folytatáshoz!</p>
-                        
+
                         <!--elválasztó-->
                         <div class="sarga-csik"></div>
                         <!--elválasztó-->
@@ -55,8 +57,22 @@
 
                         {% csrf_token%}
 
-                        {{form.as_p}}
-                        <div class="form-group" id="belepesGomb"><button class="btn btn-warning btn-block roboto-condensed-sajat" type="submit">BELÉPÉS</button></div>
+
+                        <div class="label-design">
+                                <div class="kozepre">
+                                    <label for="id_username">Felhasználónév:</label>
+                                    {{ form.username }}
+                                </div>
+                            
+                                <div class="kozepre">
+                                    <label for="id_password">Jelszó:</label>
+                                    {{ form.password }}
+                                </div>
+                            </div> 
+
+                        <div class="form-group" id="belepesGomb"><button
+                                        class="btn btn-warning btn-block roboto-condensed-sajat"
+                                        type="submit">BELÉPÉS</button></div>
 
                         <!-- QR KÓD START -->
                         <div class="qr_code">
