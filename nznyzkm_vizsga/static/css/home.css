@@ -10,119 +10,19 @@ body {
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    /*background-image: linear-gradient(45deg, #f6d200 25%, #000000 25%, #000000 50%, #f6d200 50%, #f6d200 75%, #000000 75%, #000000 100%);*/
     background-image: linear-gradient(45deg, #f6d200 12.5%, #000000 12.5%, #000000 25%, #f6d200 25%, #f6d200 37.5%, #000000 37.5%, #000000 50%, #f6d200 50%, #f6d200 62.5%, #000000 62.5%, #000000 75%, #f6d200 75%, #f6d200 87.5%, #000000 87.5%);
-
-
-
 }
+
 
 .container {
     background-color: #000000;
     color: white;
     text-align: center;
     padding: 20px;
-    /* Válaszd megfelelően a belső margót a konténer körül */
     margin: 0 auto;
-    /* Konténer középre igazítása */
     max-width: 800px;
     border-radius: 15px;
     border-style: solid 2px white;
-}
-
-/*QR KÓD*/
-.qr_code {
-    margin-top: 50px;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    /* Vízszintes középre igazítás */
-    align-items: center;
-    /* Függőleges középre igazítás */
-}
-
-
-
-
-/* CONTAINER elrendezés formázása */
-#container {
-    width: 100%;
-    margin: 0 auto;
-    padding: 50px 0 150px 0;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-
-/* Gomb DESIGN */
-.button {
-    display: inline-flex;
-    height: 40px;
-    width: 150px;
-    border: 2px solid #BFC0C0;
-    margin: 20px 20px 20px 20px;
-    color: #BFC0C0;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: .8em;
-    letter-spacing: 1.5px;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-}
-
-a {
-    color: #BFC0C0;
-    text-decoration: none;
-    letter-spacing: 1px;
-}
-
-
-
-
-/* Kilépés Sárga csikkal design */
-#button-sargacsikkal {
-    position: relative;
-    overflow: hidden;  /* túlcsorduló tartalmakat nem mutatjuk meg az elem határán túl */
-    cursor: pointer;
-}
-
-#button-sargacsikkal a {
-    position: relative;
-    transition: all .45s ease-Out;
-}
-
-#translate {
-    transform: rotate(50deg);
-    width: 110%;
-    height: 250%;
-    left: -200px;
-    top: -30px;
-    background: #F2BD00;
-    position: absolute;
-    transition: all .3s ease-Out;
-}
-
-#button-sargacsikkal:hover #translate {
-    left: 0;
-}
-
-#button-sargacsikkal:hover a {
-    color: #2D3142;
-}
-
-
-h1{
-    justify-content: center;
-}
-
-p{
-    color:black;
-    text-align: center;
-    justify-content: center;
 }
 
 
@@ -131,8 +31,8 @@ p{
     margin-left: auto;
     margin-right: auto;
     display: flex;
-    justify-content: center; /* Vízszintes középre igazítás */
-    align-items: center; /* Függőleges középre igazítás */
+    justify-content: center; /* vízszint köz igazít */
+    align-items: center; /* függő köz igazít */
 }
 
 #qrkod_design{
@@ -145,8 +45,79 @@ p{
 
 
 
+/* GOMB design */
+.button {
+    display: inline-flex;
+    height: 40px;
+    width: 150px;
+    border: 2px solid #BFC0C0;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
 
-/* Elválasztó csík desgin */
+
+/* Link formázása: */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* Kilépés Sárga csíkkal design */
+#button-sargacsikkal {
+    width: 150px;
+    height: 50px;
+    border: none;
+    position: relative;
+    overflow: hidden;  /* túlcsorduló tartalmakat nem mutatjuk meg az elem határán túl */
+    cursor: pointer;
+}
+
+#button-sargacsikkal a {
+    position: relative;
+    transition: all .45s ease-Out;
+}
+
+#button-sarga-fordit {
+    transform: rotate(50deg);
+    width: 110%;
+    height: 250%;
+    left: -200px;
+    top: -30px;
+    background: #F2BD00;
+    position: absolute;
+    transition: all .3s ease-Out;
+}
+
+#button-sargacsikkal:hover #button-sarga-fordit {
+    left: 0;
+}
+
+#button-sargacsikkal:hover a {
+    color: white;
+}
+
+
+/* Elemek formázása: */
+h1{
+    justify-content: center;
+}
+
+p{
+    color:black;
+    text-align: center;
+    justify-content: center;
+}
+
+
+/* Sárga elválasztó csík */
 .sarga-csik {
     margin-top: 25px;
     margin-bottom: 20px;
@@ -155,4 +126,22 @@ p{
     width: 90%;
     height: 5px;
     background-color: #f2bd00;
+}
+
+
+
+/* Feladatok lista formázása: */
+.sajatLista{
+    list-style-type: square;
+    color: #f2bd00;
+    list-style-position: outside;
+}
+
+.sajatLista li::marker {
+    color: white; /* A felsorolás színe */
+}
+
+
+li{
+    text-align: justify;
 }
