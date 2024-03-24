@@ -4,10 +4,10 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    width: 100%;
-    height: 100vh;
     display: flex;
     align-items: center;
+    width: 100%;
+    height: 100vh;
     justify-content: center;
     flex-direction: column;
     background-image: linear-gradient(45deg, #f6d200 12.5%, #000000 12.5%, #000000 25%, #f6d200 25%, #f6d200 37.5%, #000000 37.5%, #000000 50%, #f6d200 50%, #f6d200 62.5%, #000000 62.5%, #000000 75%, #f6d200 75%, #f6d200 87.5%, #000000 87.5%);
@@ -43,9 +43,8 @@ body {
     border-radius: none;
     text-align: center;
     padding: 30px;
+    background-color: white;
 }
-
-
 
 
 
@@ -119,7 +118,7 @@ h1, h2{
     justify-content: center;
 }
 
-h3{
+h4{
     text-align: center;
 }
 

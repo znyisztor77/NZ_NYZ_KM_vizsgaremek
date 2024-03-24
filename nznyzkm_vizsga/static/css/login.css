@@ -24,10 +24,7 @@ h3 {
     color: white;
     margin-left: auto;
     margin-right: auto;
-    display: block;
-    /* teljes szélességű blokk legyen, amely középre igazítja magát */
-    width: fit-content;
-    /*csak annyi helyet foglaljon el, amennyi a tartalma szélességéhez szükséges.*/
+    display: block; /* teljes szélességű blokk, középre igazítja magát */
 }
 
 
@@ -39,11 +36,8 @@ h3 {
     /*position: relative;*/
     display: flex;
     justify-content: center;
-    /* Vízszintes középre igazítás */
     align-items: center;
-    /* Függőleges középre igazítás */
-    height: 100vh;
-    /* Teljes képernyős magasság */
+    height: 100vh; /* Teljes képernyős magasság */
 }
 
 /* FORM design */
@@ -133,7 +127,7 @@ h3 {
 
 
 
-/* Elfelejtett jelszó lent */
+/* Elfelejtett jelszó lent formázása */
 .elfelejtett {
     margin-top: 5px;
     margin-bottom: -15px;

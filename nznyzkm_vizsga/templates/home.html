@@ -26,8 +26,8 @@
 
 
 <body>
-  <input type="text" value="{{ qr }}" id="qr" style="color: black;">
-  <!--p id = "qr" style="color: aliceblue;" >Ip:{{qr}}</p-->
+  <!-- <input type="text" value="{{ qr }}" id="qr" style="color: black;"> -->
+  <!-- p id = "qr" style="color: aliceblue;" >Ip:{{qr}}</p-->
   <!-- Flex Container -->
 
 
@@ -96,12 +96,11 @@
     <!-- QR KÓD START -->
     <div class="qr_code">
       <div id="qrkod_design" class="bg-warning text-dark">
-        <h3>QR KÓD beolvasása:</h3>
+        <h4>QR KÓD beolvasása:</h4>
       </div>
       {% load qr_code %}
       <!-- ip cim ha kellene {{ip}} -->
       {% qr_from_data ip size='M' %}
-      
     </div>
     <!-- QR KÓD END -->
 

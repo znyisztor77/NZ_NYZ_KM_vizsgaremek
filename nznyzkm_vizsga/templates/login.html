@@ -27,8 +27,7 @@
         <div class="login-sotethatteres">
                 <form method="POST">
 
-                        <div class="kep_design_targonca"><img src="/static/pictures/LemezKEZ_login_picture-resized.png"
-                                        alt="LemezKez logója" title="LemezKez logója">
+                        <div class="kep_design_targonca"><img src="/static/pictures/LemezKEZ_login_picture-resized.png" alt="LemezKez logója" title="LemezKez">
 
                                 <h3 class="roboto-condensed-sajat">Üdvözöllek!</h3>
 
@@ -37,8 +36,8 @@
 
                                 <form action="{% url 'logout' %}" method="post">
 
-                                        {% csrf_token %}        <!-- CSRF (Cross Site Request Forgery) -->
-                                        
+                                        {% csrf_token %} <!-- CSRF (Cross Site Request Forgery) -->
+
                                         <button type="submit">Kijelentkezés</button>
                                 </form>
                         </div>
@@ -53,9 +52,7 @@
                         {% csrf_token%}
 
                         {{form.as_p}}
-
-                        <div class="form-group"><button class="btn btn-warning btn-block roboto-condensed-sajat"
-                                        type="submit">BELÉPÉS</button></div>
+                        <div class="form-group" id="belepesGomb"><button class="btn btn-warning btn-block roboto-condensed-sajat" type="submit">BELÉPÉS</button></div>
 
                         <!-- QR KÓD START -->
                         <div class="qr_code">
@@ -73,11 +70,14 @@
 
 
 
-<!-- SCRIPTEK Futtatása -->
-<!-- jQuery egy gyakran használt JavaScript könyvtár: HTML dokumentumok DOM (Dokumentum Objektum Modell) manipulálása, eseménykezelés, animációk kezelése -->
-<!--ez nem fog kellene régebbi csomag.... <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
-<script src="https://code.jquery.com/jquery-3.7.1.slim.js" integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+        <!-- SCRIPTEK Futtatása -->
+        <!-- jQuery egy gyakran használt JavaScript könyvtár: HTML dokumentumok DOM (Dokumentum Objektum Modell) manipulálása, eseménykezelés, animációk kezelése -->
+        <!--ez nem fog kellene régebbi csomag.... <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>-->
+        <script src="https://code.jquery.com/jquery-3.7.1.slim.js"
+                integrity="sha256-UgvvN8vBkgO0luPSUl2s8TIlOSYRoGFAX4jlCIm9Adc=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+                integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+                crossorigin="anonymous"></script>
 
 
 </body>
