@@ -46,6 +46,12 @@ class MegrendelesForm(forms.ModelForm):
                   'felhasznaltMennyiseg')
         widgets={'datumKezdes': forms.DateInput(attrs={"type": "date"},format = "%Y-%m-%d" ), 
                  'datumBefejezes': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
-
-
-#
+        
+        labels = {
+        'munkalap_szama': 'Munkalap száma',
+        'dolgozo': 'Dolgozó',
+        'alapanyag': 'Alapanyag',
+        'datumKezdes': 'Dátum kezdés',
+        'datumBefejezes': 'Dátum befejezés',
+        'felhasznaltMennyiseg': 'Felhasznált mennyiség'
+    }
