@@ -41,7 +41,12 @@ body {
     text-align: center;
     column-gap: 20px;
     border-radius: none;
+    text-align: center;
+    padding: 30px;
 }
+
+
+
 
 
 /* GOMB design */
@@ -61,6 +66,10 @@ body {
     overflow: hidden;
 }
 
+
+#kijelentkezesGomb{
+    margin-top: 10px;
+}
 
 /* Link formázása: */
 a {
@@ -110,6 +119,11 @@ h1, h2{
     justify-content: center;
 }
 
+h3{
+    text-align: center;
+}
+
+
 p{
     color:black;
     text-align: center;
@@ -119,8 +133,8 @@ p{
 
 /* Sárga elválasztó csík */
 .sarga-csik {
-    margin-top: 25px;
-    margin-bottom: 20px;
+    margin-top: 15px;
+    margin-bottom: 15px;
     margin-left: auto;
     margin-right: auto;
     width: 90%;
@@ -129,7 +143,7 @@ p{
 }
 
 
-/* Feladatok lista formázása: */
+/* Raktáros, Lézervágó feladatok lista formázása: */
 .sajatLista{
     list-style-type: square;
     color: #f2bd00;

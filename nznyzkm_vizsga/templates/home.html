@@ -29,17 +29,17 @@
   <input type="text" value="{{ qr }}" id="qr" style="color: black;">
   <!--p id = "qr" style="color: aliceblue;" >Ip:{{qr}}</p-->
   <!-- Flex Container -->
-  
-  <div class="container">
 
+
+  <!-- START konténer -->
+  <div class="container">
     <h1>LemezKez App</h1>
     <!--elválasztó-->
     <div class="sarga-csik"></div>
     <!--elválasztó-->
-    
     <h2>Üdvözöllek a raktári lemezkezelés oldalán!</h2>
     {% if user.is_authenticated%}
-    Belépve, mint {{user.username}} !
+    Belépve, mint {{user.username}}!
     <form action="{% url 'logout' %}" method="post">
       {% csrf_token %}
       <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
@@ -52,7 +52,7 @@
       <a href="{%url 'login'%}">Bejelentkezés</a>
     </div>
 
-    <!-- End Container -->
+    <!-- END konténer -->
 
 
 
@@ -78,7 +78,7 @@
         <div class="col-md-6">
           <h2>Lézervágó Feladatok:</h2>
           <ul class="sajatLista">
-            <li>Anyagok előkészítése a vágáshoz.</li>
+            <li>Előkészített anyagokat a gépre helyezni.</li>
             <li>A lézervágó gép beállítása.</li>
             <li>Sugárközpont ellenőrzése.</li>
             <li>Vágási rajzok ellenőrzése.</li>
@@ -96,7 +96,7 @@
     <!-- QR KÓD START -->
     <div class="qr_code">
       <div id="qrkod_design" class="bg-warning text-dark">
-        <p>QR KÓD beolvasása: </p>
+        <h3>QR KÓD beolvasása:</h3>
       </div>
       {% load qr_code %}
       <!-- ip cim ha kellene {{ip}} -->
