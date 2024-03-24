@@ -26,10 +26,10 @@
         <!-- LOGIN - beléptetés -->
         <div class="login-sotethatteres">
                 <form method="POST">
+                       
+                        <div class="kep_lemezkez-targonca"><img src="/static/pictures/LemezKEZ_login_picture-resized.png" alt="LemezKez logója" title="LemezKez">
 
-                        <div class="kep_design_targonca"><img src="/static/pictures/LemezKEZ_login_picture-resized.png" alt="LemezKez logója" title="LemezKez">
-
-                                <h3 class="roboto-condensed-sajat">Üdvözöllek!</h3>
+                                <!-- <h3 class="roboto-condensed-sajat">Üdvözöllek!</h3> -->
 
                                 {% if user.is_authenticated %}
                                 Hello {{user.username}} !
@@ -45,8 +45,12 @@
 
                         {%else%}
 
-                        <p class="roboto-condensed-sajat">Belépés szükséges a folytatáshoz.</p>
+                        <p class="roboto-condensed-sajat">Belépés szükséges a folytatáshoz!</p>
+                        
+                        <!--elválasztó-->
                         <div class="sarga-csik"></div>
+                        <!--elválasztó-->
+
                         {%endif%}
 
                         {% csrf_token%}
