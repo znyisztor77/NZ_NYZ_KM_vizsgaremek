@@ -1,20 +1,21 @@
-/*ROBOTO betűtípus használata*/
+/* ROBOTO betűtípus importálása */
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 
 body {
     font-family: 'Roboto', sans-serif;
     display: flex;
-    align-items: center;
     width: 100%;
     height: 100vh;
-    justify-content: center;
+    /*align-items:flex-start;
     flex-direction: column;
+    justify-content: center;*/
+  
     background-image: linear-gradient(45deg, #f6d200 12.5%, #000000 12.5%, #000000 25%, #f6d200 25%, #f6d200 37.5%, #000000 37.5%, #000000 50%, #f6d200 50%, #f6d200 62.5%, #000000 62.5%, #000000 75%, #f6d200 75%, #f6d200 87.5%, #000000 87.5%);
 }
 
 
-.container {
+.sajat-fo-container {
     background-color: #000000;
     color: white;
     text-align: center;
@@ -23,10 +24,13 @@ body {
     max-width: 800px;
     border-radius: 15px;
     border-style: solid 2px white;
+    margin-top: 20px;
+
 }
 
 
-/* QR KÓD formázása */
+
+  /* QR KÓD formázása */
 .qr_code{
     margin-left: auto;
     margin-right: auto;
@@ -36,52 +40,73 @@ body {
 }
 
 #qrkod_design{
+    background-color: white;
     color: black;
     font-weight: bold;
     text-align: center;
-    column-gap: 20px;
     border-radius: none;
     text-align: center;
-    padding: 30px;
-    background-color: white;
+    padding: 20px;
+    margin-right: 20px;
+}
+
+
+/* Sárga elválasztó csík */
+.sarga-csik {
+    margin-top: 15px;
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 90%;
+    height: 5px;
+    background-color: #f2bd00;
 }
 
 
 
-/* GOMB design */
-.button {
-    display: inline-flex;
-    height: 40px;
-    width: 150px;
-    border: 2px solid #BFC0C0;
-    margin: 20px 20px 20px 20px;
-    color: #BFC0C0;
-    text-transform: uppercase;
-    text-decoration: none;
-    font-size: 0.9rem;
-    letter-spacing: 1.5px;
-    align-items: center;
+
+/* Elemek formázása: */
+h1, h2{
     justify-content: center;
-    overflow: hidden;
+}
+
+h4{
+    text-align: center;
 }
 
 
-#kijelentkezesGomb{
-    margin-top: 10px;
+p{
+    color:black;
+    text-align: center;
+    justify-content: center;
 }
 
-/* Link formázása: */
-a {
-    color: white;
-    text-decoration: none;
+
+
+
+/* Raktáros, Lézervágó feladatok lista formázása: */
+.sajatLista{
+    list-style-type: square;
+    color: #f2bd00;
+    list-style-position: outside;
 }
+
+.sajatLista li::marker {
+    color: white; /* A felsorolás színe */
+}
+
+li{
+    text-align: justify;
+}
+
+
 
 
 /* Kilépés sárga csíkkal design */
 #button-sargacsikkal {
     width: 170px;
     height: 50px;
-    border: none;
+    border: 1px solid white;
     position: relative;
     overflow: hidden;  /* túlcsorduló tartalmakat nem mutatjuk meg az elem határán túl */
     cursor: pointer;
@@ -113,46 +138,33 @@ a {
 }
 
 
-/* Elemek formázása: */
-h1, h2{
+
+#kijelentkezesGomb{
+    margin-top: 10px;
+}
+
+/* Link formázása: */
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+
+
+/* GOMB design */
+.button {
+    display: inline-flex;
+    height: 40px;
+    width: 150px;
+    border: 2px solid #BFC0C0;
+    margin: 20px 20px 20px 20px;
+    color: #BFC0C0;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 0.9rem;
+    letter-spacing: 1.5px;
+    align-items: center;
     justify-content: center;
-}
-
-h4{
-    text-align: center;
-}
-
-
-p{
-    color:black;
-    text-align: center;
-    justify-content: center;
-}
-
-
-/* Sárga elválasztó csík */
-.sarga-csik {
-    margin-top: 15px;
-    margin-bottom: 15px;
-    margin-left: auto;
-    margin-right: auto;
-    width: 90%;
-    height: 5px;
-    background-color: #f2bd00;
-}
-
-
-/* Raktáros, Lézervágó feladatok lista formázása: */
-.sajatLista{
-    list-style-type: square;
-    color: #f2bd00;
-    list-style-position: outside;
-}
-
-.sajatLista li::marker {
-    color: white; /* A felsorolás színe */
-}
-
-li{
-    text-align: justify;
+    overflow: hidden;
 }

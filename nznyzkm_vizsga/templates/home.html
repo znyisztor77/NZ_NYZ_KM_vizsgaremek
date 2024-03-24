@@ -17,85 +17,83 @@
   <!--saját css linkelése-->
   <link rel="stylesheet" href="{% static 'css/home.css' %}">
 
-   <!--saját javascript linkelése-->
+  <!--saját javascript linkelése-->
   <script defer src="{% static 'js/nyomtatas.js' %}"></script>
   <link rel="stylesheet" href="{% static 'css/nyomtatas.css' %}">
-  
+
   <title>LemezKez - HOME</title>
 </head>
 
 
 <body>
-  <!-- <input type="text" value="{{ qr }}" id="qr" style="color: black;"> -->
-  <!-- p id = "qr" style="color: aliceblue;" >Ip:{{qr}}</p-->
-  <!-- Flex Container -->
 
-
-  <!-- START konténer -->
   <div class="container">
-    <h1>LemezKez App</h1>
-    <!--elválasztó-->
-    <div class="sarga-csik"></div>
-    <!--elválasztó-->
-    <h2>Üdvözöllek a raktári lemezkezelés oldalán!</h2>
-    {% if user.is_authenticated%}
-    Belépve, mint {{user.username}}!
-    <form action="{% url 'logout' %}" method="post">
-      {% csrf_token %}
-      <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
-          type="submit">Kijelentkezés</button></div>
-    </form>
-    {%else%}
+    <div class="row justify-content-center">
+      <div class="col-md-8">
 
-    <div class="button" id="button-sargacsikkal">
-      <div id="button-sarga-fordit"></div>
-      <a href="{%url 'login'%}">Bejelentkezés</a>
-    </div>
+        <div class="sajat-fo-container">
 
-    <!-- END konténer -->
+          <h1 class="text-center">LemezKez App</h1>
+          <!--elválasztó-->
+          <div class="sarga-csik"></div>
+          <!--elválasztó-->
+          <h2>Üdvözöllek a raktári lemezkezelés oldalán!</h2>
+          {% if user.is_authenticated%}
+          Belépve, mint {{user.username}}!
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <div class="form-group" id="kijelentkezesGomb"><button class="btn btn-block btn btn-warning"
+                type="submit">Kijelentkezés</button></div>
+          </form>
+          {%else%}
+
+          <div class="button" id="button-sargacsikkal">
+            <div id="button-sarga-fordit"></div>
+            <a href="{%url 'login'%}">Bejelentkezés</a>
+          </div>
+
+          <!-- END konténer -->
+
+          {%endif%}
+
+          <!--elválasztó-->
+          <div class="sarga-csik"></div>
+          <!--elválasztó-->
+
+          <div class="container mt-5">
+            <div class="row">
+              <div class="col-md-6">
+                <h2>Raktáros Feladatok:</h2>
+                <ul class="sajatLista">
+                  <li>Beérkezett áruk átvétele és rögzítése.</li>
+                  <li>Rendelések összekészítése és kiadása.</li>
+                  <li>Anyagok előkészítése a vágáshoz.</li>
+                  <li>Raktárkészlet nyomon követése.</li>
+                  <li>Raktári rend fenntartása.</li>
+                </ul>
+              </div>
+              <div class="col-md-6">
+                <h2>Lézervágó Feladatok:</h2>
+                <ul class="sajatLista">
+                  <li>Előkészített anyagokat a gépre helyezni.</li>
+                  <li>A lézervágó gép beállítása.</li>
+                  <li>Sugárközpont ellenőrzése.</li>
+                  <li>Vágási rajzok ellenőrzése.</li>
+                  <li>Méretarány, minőségellenőrzés.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!--elválasztó-->
+          <div class="sarga-csik"></div>
+          <!--elválasztó-->
 
 
-
-
-    {%endif%}
-
-    <!--elválasztó-->
-    <div class="sarga-csik"></div>
-    <!--elválasztó-->
-
-    <div class="container mt-5">
-      <div class="row">
-        <div class="col-md-6">
-          <h2>Raktáros Feladatok:</h2>
-          <ul class="sajatLista">
-            <li>Beérkezett áruk átvétele és rögzítése.</li>
-            <li>Rendelések összekészítése és kiadása.</li>
-            <li>Anyagok előkészítése a vágáshoz.</li>
-            <li>Raktárkészlet nyomon követése.</li>
-            <li>Raktári rend fenntartása.</li>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <h2>Lézervágó Feladatok:</h2>
-          <ul class="sajatLista">
-            <li>Előkészített anyagokat a gépre helyezni.</li>
-            <li>A lézervágó gép beállítása.</li>
-            <li>Sugárközpont ellenőrzése.</li>
-            <li>Vágási rajzok ellenőrzése.</li>
-            <li>Méretarány, minőségellenőrzés.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-
-    <!--elválasztó-->
-    <div class="sarga-csik"></div>
-    <!--elválasztó-->
-
-
+            
     <!-- QR KÓD START -->
     <div class="qr_code">
-      <div id="qrkod_design" class="bg-warning text-dark">
+      <div id="qrkod_design">
         <h4>QR KÓD beolvasása:</h4>
       </div>
       {% load qr_code %}
@@ -104,7 +102,27 @@
     </div>
     <!-- QR KÓD END -->
 
+    
+        </div>
+
+
+      </div>
+
+
+
+    </div>
+
+
+
   </div>
+
+
+
+  <!-- Bootstrap JavaScript és jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
 
 </body>
 
