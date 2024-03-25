@@ -25,11 +25,10 @@ body {
 
 /* logo targonca */
 .navbar-logo1 img {
-    max-height: 100%;
+    max-height: 125px;
     display: flex;
     align-items: center;
-    justify-content:last baseline;
-
+    justify-content: center;
 }
 
 /* logo lemezkez */
