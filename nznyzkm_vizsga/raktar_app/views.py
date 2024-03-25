@@ -27,26 +27,33 @@ def megrendelesnyomtatas(request, id):
 
 @api_view(['GET'])
 def getMegrendelesek(request):
-    megrendelesek =Megrendelesek.objects.all() 
-    serialized =MegrendelesekSerializer(megrendelesek, many =True)
-
-    return Response(serialized.data)
+    try:
+        megrendelesek =Megrendelesek.objects.all() 
+        serialized =MegrendelesekSerializer(megrendelesek, many =True)
+        return Response(serialized.data)
+    except Exception as e:
+        db_logger.exception(e)
+    
 
 
 def home(request):
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0]
-    else:
-        ip = request.META.get('REMOTE_ADDR')
-        port = request.META.get('SERVER_PORT')
-        qr = (ip+":"+port)
-    return render(request, 'home.html',{'ip': ip, 'port': port, 'qr':qr})
+    try:
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            ip = x_forwarded_for.split(',')[0]
+        else:
+            ip = request.META.get('REMOTE_ADDR')
+            port = request.META.get('SERVER_PORT')
+            qr = (ip+":"+port)
+        return render(request, 'home.html',{'ip': ip, 'port': port, 'qr':qr})
+    except Exception as e:
+        db_logger.exception(e)
+    
 
 
 
 def bejelentkezes(request):
-    
+
     if request.method == 'GET':
         if request.user.is_authenticated:
             return redirect('home')
