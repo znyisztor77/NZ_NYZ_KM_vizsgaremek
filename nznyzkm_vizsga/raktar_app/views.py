@@ -19,11 +19,15 @@ db_logger = logging.getLogger('db')
 
 
 def megrendelesnyomtatas(request, id):
-    context = {
-        "id" : id
-    }
-    db_logger.info(f'Nyomtatva. (id: {id})')
-    return render(request, 'megrendelesnyomtatas.html', context=context)
+    try:
+
+        context = {
+            "id" : id
+        }
+        db_logger.info(f'Nyomtatva. (id: {id})')
+        return render(request, 'megrendelesnyomtatas.html', context=context)
+    except Exception as e:
+        db_logger.error(e)
 
 @api_view(['GET'])
 def getMegrendelesek(request):
@@ -32,7 +36,7 @@ def getMegrendelesek(request):
         serialized =MegrendelesekSerializer(megrendelesek, many =True)
         return Response(serialized.data)
     except Exception as e:
-        db_logger.exception(e)
+        db_logger.error(e)
     
 
 
@@ -47,120 +51,132 @@ def home(request):
             qr = (ip+":"+port)
         return render(request, 'home.html',{'ip': ip, 'port': port, 'qr':qr})
     except Exception as e:
-        db_logger.exception(e)
+        db_logger.error(e)
     
 
 
 
 def bejelentkezes(request):
-
-    if request.method == 'GET':
-        if request.user.is_authenticated:
-            return redirect('home')
+    try:
+        if request.method == 'GET':
+            if request.user.is_authenticated:
+                return redirect('home')
         
-        form = LoginForm()
-        return render(request, 'login.html', {'form': form})
+            form = LoginForm()
+            return render(request, 'login.html', {'form': form})
     
-    elif request.method == 'POST':
-        form = LoginForm(request.POST)
+        elif request.method == 'POST':
+            form = LoginForm(request.POST)
 
-        if form.is_valid():
-            username = form.cleaned_data['username']
-            password = form.cleaned_data['password']
-            user = authenticate(request, username=username, password=password)
+            if form.is_valid():
+                username = form.cleaned_data['username']
+                password = form.cleaned_data['password']
+                user = authenticate(request, username=username, password=password)
 
-            if user and user.raktaros == True:
-                       
-               login(request, user)
-               messages.success(request, f' Hello {username.title()}, ujra itt!')                
-               return redirect('raktar')
+                if user and user.raktaros == True:
+                        
+                    login(request, user)
+                    messages.success(request, f' Hello {username.title()}, ujra itt!')                
+                    return redirect('raktar')
+                
+                elif user and user.lezervago == True:
+                    login(request, user)
+                    messages.success(request, f' Hello {username.title()}, ujra itt!')
+                    return redirect('megrendeles')
             
-            elif user and user.lezervago == True:
-                login(request, user)
-                messages.success(request, f' Hello {username.title()}, ujra itt!')
-                return redirect('megrendeles')
-        
-        messages.error(request, f'Helytelen felhasználónév vagy jelszó') 
-        return render(request, 'login.html', {'form':form})
+            messages.error(request, f'Helytelen felhasználónév vagy jelszó') 
+            return render(request, 'login.html', {'form':form})
+    except Exception as e:
+        db_logger.error(e)
+
+    
 
 def bevitel_kiadas( request):
-     bevform = BevitelForm()
-     kiform = KiadasForm()
-     alapanyagok_lista = Alapanyag.objects.all()               
+    try:
+        bevform = BevitelForm()
+        kiform = KiadasForm()
+        alapanyagok_lista = Alapanyag.objects.all()               
 
-     if request.method == 'POST':  
-        bevform = BevitelForm(request.POST or None)
-        kiform = KiadasForm(request.POST or None)
-        if 'bevitel' in request.POST:
-            if bevform.is_valid():
-                if Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                            vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                            meret_valaszt = bevform.cleaned_data['meret_valaszt'],                                         
-                                            ).exists():
-                    '''Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                            vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                            meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])'''
-                    if bevform.cleaned_data['rogzit_datum'] != Alapanyag.objects.get(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                                                                    vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                                                                    meret_valaszt = bevform.cleaned_data['meret_valaszt'],).rogzit_datum:
-                        Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+        if request.method == 'POST':  
+            bevform = BevitelForm(request.POST or None)
+            kiform = KiadasForm(request.POST or None)
+            if 'bevitel' in request.POST:
+                if bevform.is_valid():
+                    if Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                                 vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                                meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
-                                                                                                        rogzit_datum=bevform.cleaned_data['rogzit_datum'])
-                        bevform = BevitelForm()
-                        kiform = KiadasForm()
-                    else:
-                        messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
-                        bevform = BevitelForm()
-                        kiform = KiadasForm()
-                else:
-                    ujanyag = Alapanyag.objects.create(
-                        anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                        vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                        meret_valaszt = bevform.cleaned_data['meret_valaszt'],
-                        darabszam = bevform.cleaned_data['darabszam'],
-                        polc_szama = bevform.cleaned_data['polc_szama'],
-                        rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
-                    ujanyag.save()
-                    bevform = BevitelForm()
-                    kiform = KiadasForm()
-                    return redirect('raktar')
-        elif 'kiad' in request.POST:          
-             if kiform.is_valid():
-                if Alapanyag.objects.filter(anyagtipusa = kiform.cleaned_data['anyagtipusa'],
-                                                vastagsag_valaszt = kiform.cleaned_data['vastagsag_valaszt'],
-                                                meret_valaszt = kiform.cleaned_data['meret_valaszt'],                                         
+                                                meret_valaszt = bevform.cleaned_data['meret_valaszt'],                                         
                                                 ).exists():
-                    Alapanyag.objects.filter(anyagtipusa = kiform.cleaned_data['anyagtipusa'],
-                                                vastagsag_valaszt = kiform.cleaned_data['vastagsag_valaszt'],
-                                                meret_valaszt = kiform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') - kiform.cleaned_data['darabszam'])
-                    
-                    kiform = KiadasForm()
-                    return redirect('raktar')
-     return render(request, 'raktar.html', { 'object_list':alapanyagok_lista,
-                                            'bevform': bevform,
-                                            'kiform': kiform })
+                        '''Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                                                vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                                                meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])'''
+                        if bevform.cleaned_data['rogzit_datum'] != Alapanyag.objects.get(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                                                                                        vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                                                                                        meret_valaszt = bevform.cleaned_data['meret_valaszt'],).rogzit_datum:
+                            Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                                                    vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                                                    meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
+                                                                                                            rogzit_datum=bevform.cleaned_data['rogzit_datum'])
+                            bevform = BevitelForm()
+                            kiform = KiadasForm()
+                        else:
+                            messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
+                            bevform = BevitelForm()
+                            kiform = KiadasForm()
+                    else:
+                        ujanyag = Alapanyag.objects.create(
+                            anyagtipusa = bevform.cleaned_data['anyagtipusa'],
+                            vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
+                            meret_valaszt = bevform.cleaned_data['meret_valaszt'],
+                            darabszam = bevform.cleaned_data['darabszam'],
+                            polc_szama = bevform.cleaned_data['polc_szama'],
+                            rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
+                        ujanyag.save()
+                        bevform = BevitelForm()
+                        kiform = KiadasForm()
+                        return redirect('raktar')
+            elif 'kiad' in request.POST:          
+                if kiform.is_valid():
+                    if Alapanyag.objects.filter(anyagtipusa = kiform.cleaned_data['anyagtipusa'],
+                                                    vastagsag_valaszt = kiform.cleaned_data['vastagsag_valaszt'],
+                                                    meret_valaszt = kiform.cleaned_data['meret_valaszt'],                                         
+                                                    ).exists():
+                        Alapanyag.objects.filter(anyagtipusa = kiform.cleaned_data['anyagtipusa'],
+                                                    vastagsag_valaszt = kiform.cleaned_data['vastagsag_valaszt'],
+                                                    meret_valaszt = kiform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') - kiform.cleaned_data['darabszam'])
+                        
+                        kiform = KiadasForm()
+                        return redirect('raktar')
+        return render(request, 'raktar.html', { 'object_list':alapanyagok_lista,
+                                                'bevform': bevform,
+                                                'kiform': kiform })
+    except Exception as e:
+         db_logger.error(e)
 
 def megrendeles(request):
-    megrform = MegrendelesForm()
-    megrendelesek_lista = Megrendelesek.objects.all() 
-    if request.method == 'POST':
-        megrform = MegrendelesForm(request.POST)
-        if megrform.is_valid():
-            if Megrendelesek.objects.filter(munkalap_szama = megrform.cleaned_data['munkalap_szama']).exists():
-               messages.error(request, f'Ezzel a munkalapszámmal már van rögzítve megrendelés!')
-               megrform = MegrendelesForm() 
-            else:
+    try:
+        megrform = MegrendelesForm()
+        megrendelesek_lista = Megrendelesek.objects.all() 
+        if request.method == 'POST':
+            megrform = MegrendelesForm(request.POST)
+            if megrform.is_valid():
+                if Megrendelesek.objects.filter(munkalap_szama = megrform.cleaned_data['munkalap_szama']).exists():
+                    messages.error(request, f'Ezzel a munkalapszámmal már van rögzítve megrendelés!')
+                    megrform = MegrendelesForm() 
+                else:
+                    megrform.save()
+                    megrform = MegrendelesForm()  
 
-                megrform.save()
-                megrform = MegrendelesForm()  
-
-    return render(request, 'megrendeles.html', { 'object_list':megrendelesek_lista,
-                                            'megrform': megrform})
+        return render(request, 'megrendeles.html', { 'object_list':megrendelesek_lista,
+                                                'megrform': megrform})
+    except Exception as e:
+        db_logger.error(e)
 
 def logout_page(request):
-    logout(request)
-    return redirect('login')
+    try:
+        logout(request)
+        return redirect('login')
+    except Exception as e:
+        db_logger.error(e)
 
 
 
