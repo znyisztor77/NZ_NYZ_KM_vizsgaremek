@@ -76,12 +76,14 @@ def bejelentkezes(request):
                 if user and user.raktaros == True:
                         
                     login(request, user)
-                    messages.success(request, f' Hello {username.title()}, ujra itt!')                
+                    messages.success(request, f' Hello {username.title()}, ujra itt!')
+                    db_logger.info(f"{username.title()} raktáros bejelentkezett. ")               
                     return redirect('raktar')
                 
                 elif user and user.lezervago == True:
                     login(request, user)
                     messages.success(request, f' Hello {username.title()}, ujra itt!')
+                    db_logger.info(f"{username.title()} lézervágó bejelentkezett. ")
                     return redirect('megrendeles')
             
             messages.error(request, f'Helytelen felhasználónév vagy jelszó') 
@@ -130,6 +132,7 @@ def bevitel_kiadas( request):
                             darabszam = bevform.cleaned_data['darabszam'],
                             polc_szama = bevform.cleaned_data['polc_szama'],
                             rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
+                        
                         ujanyag.save()
                         bevform = BevitelForm()
                         kiform = KiadasForm()
