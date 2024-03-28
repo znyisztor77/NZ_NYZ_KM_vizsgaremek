@@ -24,7 +24,7 @@ def megrendelesnyomtatas(request, id):
         context = {
             "id" : id
         }
-        db_logger.info(f'Nyomtatva. (id: {id})')
+        db_logger.info(f'Nyomtatva. (id: {id}). (User: {request.username.title()})')
         return render(request, 'megrendelesnyomtatas.html', context=context)
     except Exception as e:
         db_logger.error(e)
@@ -118,6 +118,7 @@ def bevitel_kiadas( request):
                                                     vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                     meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
                                                                                                             rogzit_datum=bevform.cleaned_data['rogzit_datum'])
+                            db_logger.info(f"Anyag módosítva. ")
                             bevform = BevitelForm()
                             kiform = KiadasForm()
                         else:
@@ -132,7 +133,7 @@ def bevitel_kiadas( request):
                             darabszam = bevform.cleaned_data['darabszam'],
                             polc_szama = bevform.cleaned_data['polc_szama'],
                             rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
-                        
+                        db_logger.info(f"új alapanyag létrehozása. {ujanyag}, létrehozta: {request.username.title()}")
                         ujanyag.save()
                         bevform = BevitelForm()
                         kiform = KiadasForm()
