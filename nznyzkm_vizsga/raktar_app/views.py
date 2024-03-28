@@ -114,6 +114,7 @@ def bevitel_kiadas(request):
                                                     meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
                                                                                                             rogzit_datum=bevform.cleaned_data['rogzit_datum'])
                             messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
+                            db_logger.info(f"Anyag módosítva. ")
                             bevform = BevitelForm()
                             kiform = KiadasForm()
                     else:
@@ -124,7 +125,7 @@ def bevitel_kiadas(request):
                             darabszam = bevform.cleaned_data['darabszam'],
                             polc_szama = bevform.cleaned_data['polc_szama'],
                             rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
-                        
+                        db_logger.info(f"új alapanyag létrehozása. {ujanyag}, létrehozta: {request.username.title()}")
                         ujanyag.save()
                         bevform = BevitelForm()
                         kiform = KiadasForm()
