@@ -9,15 +9,6 @@ urlpatterns = [
     path('',views.home, name = 'home'),
     path('raktar/' ,views.bevitel_kiadas, name='raktar'),
     path('megrendeles/', views.megrendeles, name= 'megrendeles'),
-    path('megrendelesnyomtatas/<int:id>/', views.megrendelesnyomtatas, name='megrendelesnyomtatas'),
+    path('megrendelesnyomtatas/<int:id>/', views.megrendelesnyomtatas, name='megrendelesnyomtatas'),     
        
-   
-    #path('megrendelesek/', HomeView.as_view(), name= 'home'),
-    #path('raktar/', RaktarView.as_view(), name= 'raktar'),
-    #path('dolgozo/', DolgozoView.as_view(), name= 'dolgozo'),
-    #path('',HomeView.as_view(), name = 'home'),
-    #path('dolgozo/',views.dolgozo, name = 'dolgozo'),
-    #path('bevitel/' ,views.bevitel, name='bevitel')
-    
-    
 ]   

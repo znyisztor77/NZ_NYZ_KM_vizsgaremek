@@ -108,20 +108,14 @@ def bevitel_kiadas( request):
                                                 vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                 meret_valaszt = bevform.cleaned_data['meret_valaszt'],                                         
                                                 ).exists():
-                        '''Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                                vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                                meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])'''
-                        if bevform.cleaned_data['rogzit_datum'] != Alapanyag.objects.get(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                                                                        vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                                                                        meret_valaszt = bevform.cleaned_data['meret_valaszt'],).rogzit_datum:
+                        
                             Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                                     vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                     meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
                                                                                                             rogzit_datum=bevform.cleaned_data['rogzit_datum'])
                             db_logger.info(f"Anyag módosítva. ")
-                            bevform = BevitelForm()
-                            kiform = KiadasForm()
-                        else:
+                            
+                       
                             messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
                             bevform = BevitelForm()
                             kiform = KiadasForm()

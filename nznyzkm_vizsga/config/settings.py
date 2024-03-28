@@ -2,7 +2,7 @@
 Németh Zoltán
 Kovács Marcel
 Nyisztor Zoltán
-
+LemezKez project
 Vizsgaremek 2024
 
 Django settings for config project.
