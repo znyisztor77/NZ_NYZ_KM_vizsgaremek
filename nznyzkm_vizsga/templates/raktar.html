@@ -118,9 +118,11 @@
 
                             <!-- bevitel tartalma 1 -->
                             <form method="POST">
-                                {% csrf_token%}
+                                {% csrf_token %}
                                 {{bevform.as_p}}
-                                <button name="bevitel" type="submit">Rögzítés1</button>
+                                <!--button type="submit" name="bevitel">Rögzítés1</button-->
+                                <button class="btn btn-block btn btn-warning" type="submit" name="bevitel">Bevétel rögzítése</button>
+
                             </form>
                             <div class="text-warning" role="status">
                                 <span class="sr-only"></span>
@@ -138,9 +140,10 @@
 
                             <!-- bevitel tartalma 2 -->
                             <form method="POST">
-                                {% csrf_token%}
+                                {% csrf_token %}
                                 {{kiform.as_p}}
-                                <button name="kiad" type="submit">Rögzítés2</button>
+                                <!--button name="kiad" type="submit">Rögzítés2</button-->
+                                <button class="btn btn-block btn btn-warning" type="submit" name="kiad">Rögzítése</button>
                             </form>
                         </div>
                     </div>

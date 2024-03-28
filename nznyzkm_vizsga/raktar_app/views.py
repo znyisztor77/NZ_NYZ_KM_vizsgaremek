@@ -93,7 +93,7 @@ def bejelentkezes(request):
 
     
 
-def bevitel_kiadas( request):
+def bevitel_kiadas(request):
     try:
         bevform = BevitelForm()
         kiform = KiadasForm()
@@ -107,15 +107,12 @@ def bevitel_kiadas( request):
                     if Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                                 vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                 meret_valaszt = bevform.cleaned_data['meret_valaszt'],                                         
-                                                ).exists():
-                        
+                                                ).exists():                        
+                           
                             Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                                     vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                     meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
                                                                                                             rogzit_datum=bevform.cleaned_data['rogzit_datum'])
-                            db_logger.info(f"Anyag módosítva. ")
-                            
-                       
                             messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
                             bevform = BevitelForm()
                             kiform = KiadasForm()
@@ -127,12 +124,13 @@ def bevitel_kiadas( request):
                             darabszam = bevform.cleaned_data['darabszam'],
                             polc_szama = bevform.cleaned_data['polc_szama'],
                             rogzit_datum = bevform.cleaned_data['rogzit_datum'],)
-                        db_logger.info(f"új alapanyag létrehozása. {ujanyag}, létrehozta: {request.username.title()}")
+                        
                         ujanyag.save()
                         bevform = BevitelForm()
                         kiform = KiadasForm()
                         return redirect('raktar')
             elif 'kiad' in request.POST:          
+                kiform = KiadasForm(request.POST or None)       
                 if kiform.is_valid():
                     if Alapanyag.objects.filter(anyagtipusa = kiform.cleaned_data['anyagtipusa'],
                                                     vastagsag_valaszt = kiform.cleaned_data['vastagsag_valaszt'],
@@ -144,11 +142,10 @@ def bevitel_kiadas( request):
                         
                         kiform = KiadasForm()
                         return redirect('raktar')
-        return render(request, 'raktar.html', { 'object_list':alapanyagok_lista,
-                                                'bevform': bevform,
-                                                'kiform': kiform })
+        return render(request, 'raktar.html', {'object_list':alapanyagok_lista,'bevform': bevform,'kiform': kiform })
     except Exception as e:
          db_logger.error(e)
+
 
 def megrendeles(request):
     try:

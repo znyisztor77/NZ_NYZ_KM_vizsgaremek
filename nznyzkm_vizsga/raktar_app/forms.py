@@ -30,9 +30,8 @@ class KiadasForm(forms.ModelForm):
         fields = ('anyagtipusa',
                   'vastagsag_valaszt',
                   'meret_valaszt',
-                  'darabszam',
-                  'kiadasdatuma' )
-        widgets={'kiadasdatuma': forms.DateInput(attrs={"type": "date"}, format = "%Y-%m-%d" )}
+                  'darabszam',)
+       
 
 class MegrendelesForm(forms.ModelForm):
 

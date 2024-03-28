@@ -6,20 +6,6 @@ from django.contrib.auth.models import AbstractUser
 class CustomUser(AbstractUser):
      raktaros = models.BooleanField(default=False)
      lezervago = models.BooleanField(default=False)
-     
-
-'''class Dolgozok(models.Model):
-    nev = models.OneToOneField(User, on_delete= models.CASCADE)
-    #nev =models.CharField(max_length = 255)
-    beosztas_kivalaszt = [("Raktáros","raktar"),
-                          ("Lézervágó","lezervago")]
-
-    beosztas = models.CharField(max_length = 30,  choices = beosztas_kivalaszt)
-    raktaros = models.BooleanField(default=False)
-    lezervago = models.BooleanField(default=False)
-
-    def __str__(self):
-        return f'{self.nev.username} {self.beosztas}'''
     
     
 class Alapanyag(models.Model):
@@ -46,7 +32,7 @@ class Alapanyag(models.Model):
      darabszam = models.PositiveIntegerField(default=0)
      polc_szama = models.PositiveIntegerField(default=0)
      rogzit_datum = models.DateField()
-     kiadasdatuma = models.DateTimeField()
+     
      
 
      def __str__(self):
