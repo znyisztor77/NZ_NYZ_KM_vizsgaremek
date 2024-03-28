@@ -58,23 +58,18 @@
 
                     </div>
         </div>
-    </nav>
-    <!-- NAVBAR menüsáv VÉGE -->
-
-
-
+    </nav> <!-- NAVBAR menüsáv VÉGE -->
+   
 
     <!-- START megrendeles oldal tartalma -->
 
     <div id="kozepre" class="container-fluid">
 
-
-
         <img class="warning-pics" src="/static/pictures/user_icon_raktaros-feher.png" alt="raktáros felhasználói ikon"
             title="raktáros felhasználói ikon">
 
-
         {% if user.is_authenticated and user.raktaros == True %}
+
         <div class="loggedin">
             <span> Üdv: {{user.username}} !</span>
         </div>
@@ -85,14 +80,9 @@
                     type="submit">Kijelentkezés</button></div>
         </form>
 
-
     </div>
 
-
-
-
     <div id="kozepre" class="container-fluid">
-
 
         <!--elválasztó-->
         <div class="sarga-csik"></div>
@@ -101,10 +91,8 @@
         <!--nem kell üzenet-->
         {% endif %}
 
-
-
-
-            <h2>Bevitel: A beérkezett lemeztáblák rögzítése, felvitele.</h2>
+        <h2>Bevitel: A beérkezett lemeztáblák rögzítése, felvitele.</h2>
+        <a href="{%url 'megrendeles'%}">Megrendelés oldal</a>
             
 <!-- TOGGLE gombok -->
         <div class="container">
@@ -118,9 +106,12 @@
 
                             <!-- bevitel tartalma 1 -->
                             <form method="POST">
-                                {% csrf_token%}
+                                {% csrf_token %}
                                 {{bevform.as_p}}
-                                <button name="bevitel" type="submit">Rögzítés1</button>
+                                <!--input type="submit" value = "Rögzítés" name="bevitel"-->
+                                <!--button  type="submit" name="bevitel">Rögzítés1</button-->
+                                <button class="btn btn-block btn btn-warning" type="submit" name="bevitel">Bevétel rögzítése</button> 
+                                
                             </form>
                             <div class="text-warning" role="status">
                                 <span class="sr-only"></span>
@@ -132,16 +123,16 @@
         <!--elválasztó-->
 
         <h2>Kiadás: Lemeztáblák kiadása, kivétele.</h2>
-                        <button class="btn btn-primary btn-warning mt-3" onclick="toggleContent(2)">Kiadás
-                            megnyitása</button>
-                        <div id="content2" class="content mt-3">
+            <button class="btn btn-primary btn-warning mt-3" onclick="toggleContent(2)">Kiadás megnyitása</button>
+                <div id="content2" class="content mt-3">
 
-                            <!-- bevitel tartalma 2 -->
-                            <form method="POST">
-                                {% csrf_token%}
-                                {{kiform.as_p}}
-                                <button name="kiad" type="submit">Rögzítés2</button>
-                            </form>
+                    <!-- bevitel tartalma 2 -->
+                    <form method="POST">
+                        {%csrf_token%}
+                        {{ kiform.as_p }}
+                         <!--button name="kiad" type="submit">Rögzítés2</button-->
+                         <button class="btn btn-block btn btn-warning" type="submit" name="kiad">Kiadás rögzítése</button> 
+                    </form>
                         </div>
                     </div>
                 </div>
@@ -158,16 +149,14 @@
         <ul class="log-informacio">
             <h3>LOG információ:</h3>
             {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+            <li{% if message.tags %} class="{{ message.tags }}" {% endif %} style="list-style-type: none;">{{ message }}</li>
                 {% endfor %}
         </ul>
         <!-- END bejelentkezés LOG üzenet -->
 
-
         <!--elválasztó-->
         <div class="sarga-csik"></div>
         <!--elválasztó-->
-
 
     </div>
 
@@ -198,11 +187,7 @@
 
             {% endfor %}
         </table>
-    </div><!--Raktar tartalom vége-->>
-
-
-
-
+    </div><!--Raktar tartalom vége-->
 
     {%else%}
     <h2>Be vagy jelentkezve, de nincs jogosultságod a "RAKTÁR" oldal megtekintéséhez!</h2>

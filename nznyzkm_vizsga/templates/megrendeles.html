@@ -68,16 +68,18 @@
     <div class="sarga-csik"></div>
     <!--elválasztó-->
     <h1 class="roboto-condensed-sajat">Az űrlap segítségével új megrendeléseket lehet hozzáadni!</h1>
+    <a href="{%url 'raktar'%}">Raktár oldal</a>
 
     <form method="POST" class="megrendeles-form">
       {% csrf_token%}
       <h2>Bevitel</h2>
 
       {{ megrform.as_p }}
+      
+      <button class="btn btn-block btn btn-warning" type="submit">Adatlap rögzítése</button>
 
-
-      <!-- 
-        <div class="form-row">
+      
+        <!--div class="form-row">
             <div class="form-group col-md-6">
                 <label for="id_munkalap_szama">{{ form.fields.munkalap_szama.label }}</label>
                 {{ form.munkalap_szama }}
@@ -106,7 +108,7 @@
                 <label for="id_felhasznaltMennyiseg">{{ form.fields.felhasznaltMennyiseg.label }}</label>
                 {{ form.felhasznaltMennyiseg }}
             </div>
-        </div> -->
+        </div--> 
     </form>
     
 
@@ -118,9 +120,8 @@
 
 
 
-      <div class="form-group" id="rogzitesGomb"><button class="btn btn-block btn btn-warning">Adatlap rögzítése</button>
-      </div>
-    </form>
+      <!--div class="form-group" id="rogzitesGomb"><button class="btn btn-block btn btn-warning" type="submit">Adatlap rögzítése</button>
+      </div-->
 
     <!--elválasztó-->
     <div class="sarga-csik"></div>

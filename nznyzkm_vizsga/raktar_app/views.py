@@ -93,7 +93,7 @@ def bejelentkezes(request):
 
     
 
-def bevitel_kiadas( request):
+def bevitel_kiadas(request):
     try:
         bevform = BevitelForm()
         kiform = KiadasForm()
@@ -107,20 +107,12 @@ def bevitel_kiadas( request):
                     if Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                                 vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                 meret_valaszt = bevform.cleaned_data['meret_valaszt'],                                         
-                                                ).exists():
-                        '''Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                                vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                                meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'])'''
-                        if bevform.cleaned_data['rogzit_datum'] != Alapanyag.objects.get(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
-                                                                                        vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
-                                                                                        meret_valaszt = bevform.cleaned_data['meret_valaszt'],).rogzit_datum:
+                                                ).exists():                        
+                           
                             Alapanyag.objects.filter(anyagtipusa = bevform.cleaned_data['anyagtipusa'],
                                                     vastagsag_valaszt = bevform.cleaned_data['vastagsag_valaszt'],
                                                     meret_valaszt = bevform.cleaned_data['meret_valaszt'],).update(darabszam=F('darabszam') + bevform.cleaned_data['darabszam'],
                                                                                                             rogzit_datum=bevform.cleaned_data['rogzit_datum'])
-                            bevform = BevitelForm()
-                            kiform = KiadasForm()
-                        else:
                             messages.error(request, f'"{bevform.cleaned_data["anyagtipusa"]}, {bevform.cleaned_data["vastagsag_valaszt"]}, {bevform.cleaned_data["meret_valaszt"]}" ilyen anyag ezekkel a paraméterekkel, már van rögzítve a raktárban!')
                             bevform = BevitelForm()
                             kiform = KiadasForm()
@@ -138,6 +130,7 @@ def bevitel_kiadas( request):
                         kiform = KiadasForm()
                         return redirect('raktar')
             elif 'kiad' in request.POST:          
+                kiform = KiadasForm(request.POST or None)       
                 if kiform.is_valid():
                     if Alapanyag.objects.filter(anyagtipusa = kiform.cleaned_data['anyagtipusa'],
                                                     vastagsag_valaszt = kiform.cleaned_data['vastagsag_valaszt'],
@@ -149,11 +142,11 @@ def bevitel_kiadas( request):
                         
                         kiform = KiadasForm()
                         return redirect('raktar')
-        return render(request, 'raktar.html', { 'object_list':alapanyagok_lista,
-                                                'bevform': bevform,
-                                                'kiform': kiform })
+        return render(request, 'raktar.html', {'object_list':alapanyagok_lista,'bevform': bevform,'kiform': kiform })
     except Exception as e:
          db_logger.error(e)
+
+
 
 def megrendeles(request):
     try:
@@ -169,8 +162,7 @@ def megrendeles(request):
                     megrform.save()
                     megrform = MegrendelesForm()  
 
-        return render(request, 'megrendeles.html', { 'object_list':megrendelesek_lista,
-                                                'megrform': megrform})
+        return render(request, 'megrendeles.html', { 'object_list':megrendelesek_lista,'megrform': megrform})
     except Exception as e:
         db_logger.error(e)
 
